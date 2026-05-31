@@ -29,7 +29,7 @@ button {
   padding: 10px;
 }
 
-#boardMessage {
+#boardMessagesDiv {
   height: 200px;
   max-width: 550px;
   width: 100%;
@@ -48,7 +48,7 @@ button {
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
-#boardMessage div {
+#boardMessagesDiv div {
   margin: 6px 0;
   padding: 8px 10px;
   white-space: normal;
@@ -78,4 +78,20 @@ button {
 
 #boardNewMsg {
   flex: 1;
+}
+
+#quickButtons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+#quickButtons button {
+  padding: 6px 12px;
+  border-radius: 20px;
+}
+
+#quickButtons button:hover {
+  background: #e6e6e6;
 }

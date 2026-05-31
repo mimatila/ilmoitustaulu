@@ -1,5 +1,99 @@
 let loading = false;
 let refreshInterval = null;
+let editingIndex = null;
+
+function renderQuickButtons(buttons) {
+  const container = document.getElementById("quickButtons");
+
+  if (!Array.isArray(buttons)) return;
+
+  container.innerHTML = "";
+
+  buttons.forEach((text, index) => {
+    const btn = document.createElement("button");
+    btn.innerText = text;
+
+    btn.onclick = () => quickSend(text);
+
+    const editBtn = document.createElement("button");
+    editBtn.innerText = "✏️";
+    editBtn.onclick = () => selectQuickButton(index, text);
+
+    container.appendChild(btn);
+    container.appendChild(editBtn);
+  });
+}
+
+function selectQuickButton(index, text) {
+  document.getElementById("quickEditInput").value = text;
+  editingIndex = index;
+}
+
+function saveQuickButton() {
+  const input = document.getElementById("quickEditInput");
+  const newText = input.value.trim();
+
+  if (editingIndex === null) return;
+
+  const boardName = localStorage.getItem("boardName");
+  const boardPassword = localStorage.getItem("boardPassword");
+
+  fetch("http://localhost:3000/quickButtons", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      boardName,
+      boardPassword,
+      index: editingIndex,
+      text: newText
+    })
+  })
+  .then(res => res.json())
+  .then(() => {
+    loadMessage(true);
+    input.value = "";
+    editingIndex = null;
+  });
+}
+
+function editQuickButtons() {
+  const current = getQuickButtons();
+
+  const edited = prompt(
+    "Muokkaa napit pilkulla erotettuna:",
+    current.join(", ")
+  );
+
+  if (!edited) return;
+
+  const newList = edited.split(",").map(x => x.trim()).slice(0, 10);
+
+  localStorage.setItem("quickButtons", JSON.stringify(newList));
+  renderQuickButtons();
+}
+
+function quickSend(text) {
+  const boardName = localStorage.getItem("boardName");
+  const boardPassword = localStorage.getItem("boardPassword");
+  const boardUsername = localStorage.getItem("boardUsername") || boardName;
+
+  fetch("http://localhost:3000/boardMessage", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      boardName,
+      boardPassword,
+      boardMessage: text,
+      boardUsername
+    })
+  })
+  .then(res => res.json())
+  .then(data => {
+    if (!data.success) return alert(data.message);
+
+    loadMessage(true);
+  });
+}
 
 document.addEventListener("DOMContentLoaded", () => {
   const el = document.getElementById("boardCount");
@@ -28,7 +122,7 @@ function initApp() {
   bindUI();
   autoLoginFill();
 
-  if (document.getElementById("boardMessages")) {
+  if (document.getElementById("boardMessagesDiv")) {
     initBoard();
   }
 
@@ -86,13 +180,12 @@ function autoLoginFill() {
   const boardUsername = localStorage.getItem("boardUsername") || "";
 
   const loggedIn = localStorage.getItem("loggedIn");
-  const skip = sessionStorage.getItem("skipAutoLogin");
 
   const nameInput = document.getElementById("boardName");
 
   if (!nameInput) return;
 
-  if (!skip && loggedIn === "true") {
+  if (loggedIn === "true") {
     window.location.href = "board.html";
     return;
   }
@@ -113,7 +206,7 @@ function initBoard() {
   const boardName = getBoardName();
 
   const boardNameEl = document.getElementById("boardTitle");
-  const box = document.getElementById("boardMessages");
+  const box = document.getElementById("boardMessagesDiv");
 
   if (!boardNameEl || !box || !boardName) return;
 
@@ -144,7 +237,9 @@ refreshInterval = setInterval(() => {
 
 function loadMessage(forceScroll = false) {
 
-  const box = document.getElementById("boardMessage");
+  console.log("loadMessage called", loading);
+
+  const box = document.getElementById("boardMessagesDiv");
   if (!box) return;
 
   if (loading) return;
@@ -159,44 +254,36 @@ function loadMessage(forceScroll = false) {
   }
 
   fetch(`http://localhost:3000/board/${boardName}`)
-    .then(res => res.json())
-    .then(data => {
+  .then(res => res.json())
+  .then(data => {
 
-      const isAtBottom =
-        box.scrollTop + box.clientHeight >= box.scrollHeight - 10;
+    renderQuickButtons(data.quickButtons ?? defaultQuickButtons);
 
-      box.innerHTML = "";
+    const isAtBottom =
+      box.scrollTop + box.clientHeight >= box.scrollHeight - 10;
 
-      (data.boardMessages || []).forEach(msg => {
-        const div = document.createElement("div");
+    box.innerHTML = "";
 
-        const date = new Date(msg.time);
-        const now = new Date();
+    console.log("MESSAGES:", data.boardMessages);
 
-        const isToday =
-          date.getDate() === now.getDate() &&
-          date.getMonth() === now.getMonth() &&
-          date.getFullYear() === now.getFullYear();
+    (data.boardMessages || []).forEach(msg => {
+  const div = document.createElement("div");
 
-        const todayMode = document.getElementById("todayMode")?.checked;
+  const date = new Date(msg.time);
 
-        if (todayMode && isToday) {
-          div.innerText = `Tänään: ${msg.author}: ${msg.text}`;
-        } else {
-          div.innerText = `${date.toLocaleString()} - ${msg.author}: ${msg.text}`;
-        }
+  div.innerText = `${date.toLocaleString()} - ${msg.author}: ${msg.text}`;
 
-        box.appendChild(div);
-      });
+  box.appendChild(div);
+});
 
-      if (forceScroll || isAtBottom) {
-        box.scrollTop = box.scrollHeight;
-      }
-    })
-    .catch(console.error)
-    .finally(() => {
-      loading = false;
-    });
+    if (forceScroll || isAtBottom) {
+      box.scrollTop = box.scrollHeight;
+    }
+  })
+  .catch(console.error)
+  .finally(() => {
+    loading = false;
+  });
 }
 
 
@@ -222,7 +309,7 @@ function updateMessage() {
   })
   .then(res => res.json())
   .then(data => {
-
+     console.log("BOARD RESPONSE:", data);
     if (!data.success) return alert(data.boardMessage);
 
     messageEl.value = "";
@@ -370,11 +457,6 @@ function clearTable() {
 // =====================
 // NAV
 // =====================
-
-function koti() {
-  sessionStorage.setItem("skipAutoLogin", "1");
-  window.location.href = "index.html";
-}
 
 function logout() {
   localStorage.clear();

@@ -80,7 +80,19 @@ app.post("/create", (req, res) => {
   owner: boardUsername,
   ownerPassword,
   members: [boardUsername],
-  boardMessages: []
+  boardMessages: [],
+  quickButtons: [
+  "Kaupassa",
+  "Töissä",
+  "Kotona",
+  "Nukkumassa",
+  "Syömässä",
+  "Tulossa",
+  "Myöhässä",
+  "Sairas",
+  "Tauolla",
+  "Kuntosalilla"
+],
 };
 
   fs.writeFileSync(FILE, JSON.stringify(data, null, 2));
@@ -129,7 +141,7 @@ app.delete("/delete/:boardName", (req, res) => {
 });
 
 app.post("/boardMessage", (req, res) => {
-  console.log("wittu", req.body);
+  
   const { boardName, boardPassword, boardMessage, boardUsername } = req.body;
 
   const data = JSON.parse(
@@ -185,6 +197,22 @@ app.get("/board/:boardName", (req, res) => {
     });
   }
 
+  // 👇 TÄHÄN TÄMÄ
+  if (!board.quickButtons) {
+    board.quickButtons = [
+      "Kaupassa",
+      "Töissä",
+      "Kotona",
+      "Nukkumassa",
+      "Syömässä",
+      "Tulossa",
+      "Myöhässä",
+      "Sairas",
+      "Tauolla",
+      "Kuntosalilla"
+    ];
+  }
+
   res.json(board);
 });
 
@@ -209,9 +237,9 @@ app.delete("/clear/:boardName", (req, res) => {
 
   // 🔥 TÄRKEIN TARKISTUS
   if (
-    board.owner !== boardUsername ||
-    ownerPassword !== ownerPassword
-  ) {
+  board.owner !== boardUsername ||
+  board.ownerPassword !== ownerPassword
+) {
     return res.status(403).json({
       success: false,
       message: "Ei oikeuksia (ei owner)"
@@ -236,6 +264,40 @@ app.get("/boards/count", (req, res) => {
   console.log("COUNT:", count);
 
   res.json({ count });
+});
+
+app.post("/quickButtons", (req, res) => {
+
+  console.log("HIT /quickButtons", req.body);
+  const { boardName, boardPassword, index, text } = req.body;
+
+  const data = JSON.parse(fs.readFileSync(FILE, "utf8"));
+
+  if (!data[boardName]) {
+    return res.status(404).json({ success: false });
+  }
+
+  if (data[boardName].boardPassword !== boardPassword) {
+    return res.status(401).json({ success: false });
+  }
+
+  // 🔥 TÄMÄ TÄNNE
+  if (
+    typeof index !== "number" ||
+    index < 0 ||
+    index >= data[boardName].quickButtons.length
+  ) {
+    return res.status(400).json({
+      success: false,
+      message: "Invalid index"
+    });
+  }
+
+  data[boardName].quickButtons[index] = text;
+
+  fs.writeFileSync(FILE, JSON.stringify(data, null, 2));
+
+  res.json({ success: true });
 });
 
 app.listen(3000, () => {

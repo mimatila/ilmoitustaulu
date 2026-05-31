@@ -9,14 +9,18 @@
 <h1 id="boardTitle"></h1>
 
 <div class="board">
-  <div id="boardMessage"></div>
+  <div id="boardMessagesDiv"></div>
 </div>
 <div class="input-row">
   <input id="boardNewMsg" placeholder="Kirjoita uusi viesti">
   <button onclick="updateMessage()">Päivitä</button>
 </div>
+<div id="quickButtons"></div>
+<div class="quick-row">
+<input id="quickEditInput" placeholder="Muokkaa nappia">
+<button onclick="saveQuickButton()">Päivitä nappi</button>
+</div>
 <div class="button-row">
-<button onclick="koti()">Koti</button>
 <button onclick="logout()">Logout</button>
 <button onclick="clearTable()">Clear</button>
 <label>
