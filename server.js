@@ -269,6 +269,7 @@ app.get("/boards/count", (req, res) => {
 app.post("/quickButtons", (req, res) => {
 
   console.log("HIT /quickButtons", req.body);
+
   const { boardName, boardPassword, index, text } = req.body;
 
   const data = JSON.parse(fs.readFileSync(FILE, "utf8"));
@@ -281,7 +282,23 @@ app.post("/quickButtons", (req, res) => {
     return res.status(401).json({ success: false });
   }
 
-  // 🔥 TÄMÄ TÄNNE
+  // 🔥 VARMISTUS ETTÄ ARRAY ON OLEMASSA
+  if (!data[boardName].quickButtons) {
+    data[boardName].quickButtons = [
+      "Kaupassa",
+      "Töissä",
+      "Kotona",
+      "Nukkumassa",
+      "Syömässä",
+      "Tulossa",
+      "Myöhässä",
+      "Sairas",
+      "Tauolla",
+      "Kuntosalilla"
+    ];
+  }
+
+  // 🔥 INDEX CHECK TURVALLISESTI
   if (
     typeof index !== "number" ||
     index < 0 ||

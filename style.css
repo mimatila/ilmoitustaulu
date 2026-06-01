@@ -68,6 +68,33 @@ button {
   margin: 0 auto;   /* 🔥 keskittää vaakasuunnassa */
 }
 
+.quick-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  max-width: 500px;
+  margin: 10px auto;
+}
+
+#quickEditInput {
+  flex: 1;
+}
+
+.input-row button,
+.quick-row button {
+  width: 120px;
+}
+
+#quickEditor {
+  display: none;
+}
+
+#quickSelect {
+  width: 100%;
+  max-width: 500px;
+  padding: 8px;
+}
+
 .button-row {
   display: flex;
   gap: 10px;

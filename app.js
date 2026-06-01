@@ -1,32 +1,59 @@
 let loading = false;
 let refreshInterval = null;
 let editingIndex = null;
+let currentButtonsCache = [];
+let selectedQuickIndex = "";
 
-function renderQuickButtons(buttons) {
-  const container = document.getElementById("quickButtons");
+function quickSend(text) {
+  const boardName = localStorage.getItem("boardName");
+  const boardPassword = localStorage.getItem("boardPassword");
+  const boardUsername = localStorage.getItem("boardUsername") || boardName;
 
-  if (!Array.isArray(buttons)) return;
+  fetch("http://localhost:3000/boardMessage", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      boardName,
+      boardPassword,
+      boardMessage: text,
+      boardUsername
+    })
+  })
+  .then(res => res.json())
+  .then(data => {
+    if (!data.success) return alert(data.message);
 
-  container.innerHTML = "";
-
-  buttons.forEach((text, index) => {
-    const btn = document.createElement("button");
-    btn.innerText = text;
-
-    btn.onclick = () => quickSend(text);
-
-    const editBtn = document.createElement("button");
-    editBtn.innerText = "✏️";
-    editBtn.onclick = () => selectQuickButton(index, text);
-
-    container.appendChild(btn);
-    container.appendChild(editBtn);
+    loadMessage(true);
   });
 }
 
-function selectQuickButton(index, text) {
-  document.getElementById("quickEditInput").value = text;
-  editingIndex = index;
+function renderQuickSelect(buttons) {
+  const select = document.getElementById("quickSelect");
+
+  currentButtonsCache = buttons;
+
+  const previous = select.value;
+
+  select.innerHTML = "";
+
+  const empty = document.createElement("option");
+  empty.value = "";
+  empty.innerText = "Valitse tila...";
+  select.appendChild(empty);
+
+  buttons.forEach((text, index) => {
+    const opt = document.createElement("option");
+    opt.value = String(index);
+    opt.innerText = text;
+    select.appendChild(opt);
+  });
+
+  // 🔥 ÄLÄ pakota tyhjää takaisin
+  if (previous && previous !== "") {
+    select.value = previous;
+  } else {
+    select.value = "";
+  }
 }
 
 function saveQuickButton() {
@@ -50,49 +77,23 @@ function saveQuickButton() {
   })
   .then(res => res.json())
   .then(() => {
-    loadMessage(true);
-    input.value = "";
+    document.getElementById("quickEditor").style.display = "none";
     editingIndex = null;
-  });
-}
-
-function editQuickButtons() {
-  const current = getQuickButtons();
-
-  const edited = prompt(
-    "Muokkaa napit pilkulla erotettuna:",
-    current.join(", ")
-  );
-
-  if (!edited) return;
-
-  const newList = edited.split(",").map(x => x.trim()).slice(0, 10);
-
-  localStorage.setItem("quickButtons", JSON.stringify(newList));
-  renderQuickButtons();
-}
-
-function quickSend(text) {
-  const boardName = localStorage.getItem("boardName");
-  const boardPassword = localStorage.getItem("boardPassword");
-  const boardUsername = localStorage.getItem("boardUsername") || boardName;
-
-  fetch("http://localhost:3000/boardMessage", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      boardName,
-      boardPassword,
-      boardMessage: text,
-      boardUsername
-    })
-  })
-  .then(res => res.json())
-  .then(data => {
-    if (!data.success) return alert(data.message);
-
     loadMessage(true);
   });
+}
+
+function sendQuick(index) {
+
+  if (index === "" || index == null) return;
+
+  selectedQuickIndex = index; // 👈 TÄRKEÄ
+
+  const text = currentButtonsCache[Number(index)];
+  if (!text) return;
+
+  document.getElementById("boardNewMsg").value = text;
+  updateMessage();
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -257,7 +258,9 @@ function loadMessage(forceScroll = false) {
   .then(res => res.json())
   .then(data => {
 
-    renderQuickButtons(data.quickButtons ?? defaultQuickButtons);
+  renderQuickSelect(data.quickButtons ?? []);
+
+  if (editingIndex !== null) return; // 👈 estää UI resetin
 
     const isAtBottom =
       box.scrollTop + box.clientHeight >= box.scrollHeight - 10;
@@ -468,4 +471,62 @@ document.addEventListener("visibilitychange", () => {
     loadMessage(false);
   }
 });
+
+function toggleEditor() {
+  const el = document.getElementById("quickEditor");
+  el.style.display = el.style.display === "none" ? "flex" : "none";
+}
+
+function openEdit(index) {
+  index = Number(index);
+
+  if (!currentButtonsCache.length) {
+    return alert("Napit ei ladattu vielä");
+  }
+
+  if (index < 0 || index >= currentButtonsCache.length) {
+    return alert("Virheellinen valinta");
+  }
+
+  editingIndex = index;
+
+  document.getElementById("quickEditInput").value =
+    currentButtonsCache[index];
+
+  document.getElementById("quickEditor").style.display = "flex";
+}
+
+function handleEditClick() {
+  const select = document.getElementById("quickSelect");
+
+  const val = select.value;
+
+  console.log("SELECT VALUE:", val);
+
+  if (val === "") {
+    alert("Valitse ensin tila dropdownista");
+    return;
+  }
+
+  openEdit(Number(val));
+}
+
+const select = document.getElementById("quickSelect");
+const btn = document.getElementById("editBtn");
+
+if (select && btn) {
+  select.addEventListener("change", (e) => {
+    btn.disabled = !e.target.value;
+  });
+}
+
+function handleSelectChange(e) {
+  const val = e.target.value;
+  if (!val) return;
+
+  sendQuick(val);
+}
+
+document.getElementById("quickSelect")
+  .addEventListener("change", handleSelectChange);
 

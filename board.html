@@ -11,26 +11,38 @@
 <div class="board">
   <div id="boardMessagesDiv"></div>
 </div>
+
+<!-- viesti -->
 <div class="input-row">
-  <input id="boardNewMsg" placeholder="Kirjoita uusi viesti">
+  <input id="boardNewMsg" placeholder="Kirjoita viesti">
   <button onclick="updateMessage()">Päivitä</button>
 </div>
-<div id="quickButtons"></div>
-<div class="quick-row">
-<input id="quickEditInput" placeholder="Muokkaa nappia">
-<button onclick="saveQuickButton()">Päivitä nappi</button>
+
+<!-- dropdown -->
+<div class="input-row">
+  <select id="quickSelect">
+    <option value="">Valitse tila...</option>
+  </select>
+  <button id="editBtn" onclick="handleEditClick()">
+  Muokkaa valittua
+</button>
 </div>
+
+<!-- kontrollit -->
 <div class="button-row">
-<button onclick="logout()">Logout</button>
-<button onclick="clearTable()">Clear</button>
-<label>
-  <input type="checkbox" id="todayMode">
-  Tänään-moodi
-</label>
+  <button onclick="logout()">Logout</button>
+  <button onclick="clearTable()">Clear</button>
+  <label>
+    <input type="checkbox" id="todayMode">
+    Tänään-moodi
+  </label>
 </div>
 
 <script src="app.js"></script>
 
-
+<div id="quickEditor" style="display:none;" class="quick-row">
+  <input id="quickEditInput" placeholder="Muokkaa tekstiä">
+  <button onclick="saveQuickButton()">Tallenna</button>
+</div>
 </body>
 </html>
