@@ -2,10 +2,13 @@ let loading = false;
 let refreshInterval = null;
 let editingIndex = null;
 let currentButtonsCache = [];
-let selectedQuickIndex = "";
+let selectedQuickIndex = null;
 let editorOpen = false;
+let ignoreSelectChange = false;
 
-function quickSend(text) {
+function sendQuick(text) {
+  if (!text) return;
+
   const boardName = localStorage.getItem("boardName");
   const boardPassword = localStorage.getItem("boardPassword");
   const boardUsername = localStorage.getItem("boardUsername") || boardName;
@@ -23,7 +26,6 @@ function quickSend(text) {
   .then(res => res.json())
   .then(data => {
     if (!data.success) return alert(data.message);
-
     loadMessage(true);
   });
 }
@@ -31,9 +33,26 @@ function quickSend(text) {
 function renderQuickSelect(buttons) {
   const select = document.getElementById("quickSelect");
 
-  currentButtonsCache = buttons;
+  select.innerHTML = "";
 
-  const previous = selectedQuickIndex; // 👈 TÄRKEÄ
+  const empty = document.createElement("option");
+  empty.value = "";
+  empty.innerText = "Valitse tila...";
+  select.appendChild(empty);
+
+  buttons.forEach((text) => {
+  const opt = document.createElement("option");
+  opt.value = text;
+  opt.innerText = text;
+  select.appendChild(opt);
+  });
+}
+
+/*
+function renderQuickSelect(buttons) {
+  const select = document.getElementById("quickSelect");
+  console.log("MIKSI: ", selectedQuickIndex);
+  const previous = selectedQuickIndex;
 
   select.innerHTML = "";
 
@@ -49,13 +68,13 @@ function renderQuickSelect(buttons) {
     select.appendChild(opt);
   });
 
-  // palauta valinta
-  if (previous !== "" && previous != null) {
-    select.value = String(previous);
-  } else {
-    select.value = "";
+  console.log("MIKSI2: ", previous);
+  // 🔥 TÄMÄ on ratkaiseva kohta
+  if (previous !== null && previous !== undefined && previous !== "") {
+    
+   select.value = String(previous);
   }
-}
+}*/
 
 function saveQuickButton() {
   const input = document.getElementById("quickEditInput");
@@ -84,23 +103,25 @@ function saveQuickButton() {
 });
 }
 
-function sendQuick(index) {
+function handleQuickClick() {
+  const select = document.getElementById("quickSelect");
+  const val = select.value;
 
-  if (index === "" || index == null) return;
+  if (!val) return;
 
-  selectedQuickIndex = index;
-
-  const text = currentButtonsCache[Number(index)];
-  if (!text) return;
-
-  document.getElementById("boardNewMsg").value = text;
-  updateMessage();
-
-  // ❌ ÄLÄ tee tätä:
-  // selectedQuickIndex = ""
+  quickSend(val);
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+
+   const select = document.getElementById("quickSelect");
+
+  select.addEventListener("change", (e) => {
+  const text = e.target.value;
+  sendQuick(text);
+});
+
+
   const el = document.getElementById("boardCount");
 
   if (el) {
@@ -302,6 +323,9 @@ function loadMessage(forceScroll = false) {
 function updateMessage() {
 
   const messageEl = document.getElementById("boardNewMsg");
+
+  console.log("INPUT VALUE:", messageEl.value);
+
   if (!messageEl) return;
 
   const boardMessage = messageEl.value;
@@ -483,6 +507,10 @@ function toggleEditor() {
 }
 
 function openEdit(index) {
+
+  console.log("EDIT INDEX:", index);
+  console.log("CACHE:", currentButtonsCache);
+
   index = Number(index);
 
   if (!currentButtonsCache.length) {
@@ -490,6 +518,8 @@ function openEdit(index) {
   }
 
   const text = currentButtonsCache[index];
+
+  console.log("EDIT TEXT:", text);
 
   if (!text) {
     return alert("Virheellinen index");
@@ -502,7 +532,7 @@ function openEdit(index) {
 }
 
 function handleEditClick() {
-  if (selectedQuickIndex === "" || selectedQuickIndex == null) {
+  if (selectedQuickIndex == null) {
     alert("Valitse ensin tila dropdownista");
     return;
   }
@@ -510,18 +540,24 @@ function handleEditClick() {
   openEdit(Number(selectedQuickIndex));
 }
 
+/*
 document.getElementById("quickSelect")
   .addEventListener("change", (e) => {
     const val = e.target.value;
 
+    console.log("VALITTU:", val);
+
     selectedQuickIndex = val;
+
+    console.log("TALLENNETTU:", selectedQuickIndex);
 
     handleSelectChange(e);
   });
 
+  
   function handleSelectChange(e) {
   const val = e.target.value;
   if (!val) return;
 
   sendQuick(val);
-}
+}*/
