@@ -2,8 +2,6 @@ let loading = false;
 let refreshInterval = null;
 let editingIndex = null;
 let currentButtonsCache = [];
-let editorOpen = false;
-let ignoreSelectChange = false;
 
 function sendQuick(text) {
   console.log("SENDQUICK INPUT:", text);
@@ -91,33 +89,11 @@ function saveQuickButton() {
     mainInput.disabled = false;  // 👈 TÄHÄN
     mainInput.focus(); // 👈 TÄHÄN
   }
-  if (editInput) {
-    editInput.value = ""; // 👈 TÄRKEÄ
-  }
+  
   loadMessage(true);
-  document.getElementById("boardNewMsg").value = "";
+  //document.getElementById("boardNewMsg").value = "";
 });
 }
-
-/*
-function handleEditClick() {
-  const select = document.getElementById("quickSelect");
-
-  const value = select.value;
-
-  console.log("SELECT VALUE:", value);
-
-  if (value === "") {
-    alert("Valitse ensin tila");
-    return;
-  }
-
-  const index = Number(value);
-
-  console.log("EDIT INDEX:", index);
-
-  openEdit(index);
-}*/
 
 function handleQuick(text) {
   const editMode = document.getElementById("editMode").checked;
@@ -286,9 +262,6 @@ function loadMessage(forceScroll = false) {
 
   if (loading) return;
   loading = true;
-
-  const editorOpen =
-  document.getElementById("quickEditor")?.style.display === "flex";
 
   console.log("checkbox state:", document.getElementById("todayMode")?.checked);
 
@@ -523,32 +496,6 @@ function toggleEditor() {
   const el = document.getElementById("quickEditor");
   el.style.display = el.style.display === "none" ? "flex" : "none";
 }
-
-/*
-function openEdit(index) {
-
-  console.log("EDIT INDEX:", index);
-  console.log("CACHE:", currentButtonsCache);
-
-  index = Number(index);
-
-  if (!currentButtonsCache.length) {
-    return alert("Napit ei ladattu vielä");
-  }
-
-  const text = currentButtonsCache[index];
-
-  console.log("EDIT TEXT:", text);
-
-  if (!text) {
-    return alert("Virheellinen index");
-  }
-
-  editingIndex = index;
-
-  document.getElementById("quickEditInput").value = text;
-  document.getElementById("quickEditor").style.display = "flex";
-}*/
 
 function openEdit(index) {
   const text = currentButtonsCache[index];
