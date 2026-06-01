@@ -2,16 +2,24 @@ let loading = false;
 let refreshInterval = null;
 let editingIndex = null;
 let currentButtonsCache = [];
-let selectedQuickIndex = null;
 let editorOpen = false;
 let ignoreSelectChange = false;
 
 function sendQuick(text) {
-  if (!text) return;
+  console.log("SENDQUICK INPUT:", text);
+
+  if (!text) {
+    console.log("TEXT WAS EMPTY -> STOP");
+    return;
+  }
 
   const boardName = localStorage.getItem("boardName");
   const boardPassword = localStorage.getItem("boardPassword");
   const boardUsername = localStorage.getItem("boardUsername") || boardName;
+
+  console.log("SENDING TO SERVER:", {
+  text
+});
 
   fetch("http://localhost:3000/boardMessage", {
     method: "POST",
@@ -33,6 +41,8 @@ function sendQuick(text) {
 function renderQuickSelect(buttons) {
   const select = document.getElementById("quickSelect");
 
+  const previous = select.value; // 🔥 TALTEEN
+
   select.innerHTML = "";
 
   const empty = document.createElement("option");
@@ -40,12 +50,16 @@ function renderQuickSelect(buttons) {
   empty.innerText = "Valitse tila...";
   select.appendChild(empty);
 
-  buttons.forEach((text) => {
+  buttons.forEach((text, index) => {
   const opt = document.createElement("option");
-  opt.value = text;
+  opt.value = index;
   opt.innerText = text;
   select.appendChild(opt);
-  });
+});
+
+  select.value = previous; // 🔥 PALAUTA
+
+  
 }
 
 /*
@@ -117,10 +131,14 @@ document.addEventListener("DOMContentLoaded", () => {
    const select = document.getElementById("quickSelect");
 
   select.addEventListener("change", (e) => {
-  const text = e.target.value;
+  selectedQuickIndex = Number(e.target.value);
+
+  console.log("SELECTED QUICK INDEX:", selectedQuickIndex);
+
+  const text = currentButtonsCache[selectedQuickIndex];
+
   sendQuick(text);
 });
-
 
   const el = document.getElementById("boardCount");
 
@@ -286,7 +304,8 @@ function loadMessage(forceScroll = false) {
   .then(res => res.json())
   .then(data => {
 
-  renderQuickSelect(data.quickButtons ?? []);
+    currentButtonsCache = data.quickButtons ?? [];
+    renderQuickSelect(currentButtonsCache);
 
     const isAtBottom =
       box.scrollTop + box.clientHeight >= box.scrollHeight - 10;
@@ -296,14 +315,10 @@ function loadMessage(forceScroll = false) {
     console.log("MESSAGES:", data.boardMessages);
 
     (data.boardMessages || []).forEach(msg => {
-  const div = document.createElement("div");
-
-  const date = new Date(msg.time);
-
-  div.innerText = `${date.toLocaleString()} - ${msg.author}: ${msg.text}`;
-
-  box.appendChild(div);
-});
+    const div = document.createElement("div");
+    div.innerText = formatMessage(msg);
+    box.appendChild(div);
+    });
 
     if (forceScroll || isAtBottom) {
       box.scrollTop = box.scrollHeight;
@@ -532,32 +547,30 @@ function openEdit(index) {
 }
 
 function handleEditClick() {
-  if (selectedQuickIndex == null) {
-    alert("Valitse ensin tila dropdownista");
+  const index = Number(document.getElementById("quickSelect").value);
+
+  if (index < 0 || !currentButtonsCache[index]) {
+    alert("Virheellinen index");
     return;
   }
 
-  openEdit(Number(selectedQuickIndex));
+  openEdit(index);
 }
 
-/*
-document.getElementById("quickSelect")
-  .addEventListener("change", (e) => {
-    const val = e.target.value;
+function formatMessage(msg) {
+  const date = new Date(msg.time);
+  const now = new Date();
 
-    console.log("VALITTU:", val);
+  const isToday =
+    date.getDate() === now.getDate() &&
+    date.getMonth() === now.getMonth() &&
+    date.getFullYear() === now.getFullYear();
 
-    selectedQuickIndex = val;
+  const todayMode = document.getElementById("todayMode")?.checked;
 
-    console.log("TALLENNETTU:", selectedQuickIndex);
+  if (todayMode && isToday) {
+    return `Tänään: ${msg.author}: ${msg.text}`;
+  }
 
-    handleSelectChange(e);
-  });
-
-  
-  function handleSelectChange(e) {
-  const val = e.target.value;
-  if (!val) return;
-
-  sendQuick(val);
-}*/
+  return `${date.toLocaleString()} - ${msg.author}: ${msg.text}`;
+}
