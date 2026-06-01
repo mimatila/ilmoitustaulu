@@ -33,9 +33,13 @@ function sendQuick(text) {
   })
   .then(res => res.json())
   .then(data => {
-    if (!data.success) return alert(data.message);
-    loadMessage(true);
-  });
+  if (!data.success) return alert(data.message);
+
+  const input = document.getElementById("boardNewMsg");
+  if (input) input.value = "";   // 👈 TÄRKEÄ
+
+  loadMessage(true);
+});
 }
 
 function renderQuickSelect(buttons) {
@@ -81,10 +85,21 @@ function saveQuickButton() {
   .then(() => {
   document.getElementById("quickEditor").style.display = "none";
   editingIndex = null;
+  const mainInput = document.getElementById("boardNewMsg");
+  if (mainInput) {
+    mainInput.value = ""; // 👈 varmistus
+    mainInput.disabled = false;  // 👈 TÄHÄN
+    mainInput.focus(); // 👈 TÄHÄN
+  }
+  if (editInput) {
+    editInput.value = ""; // 👈 TÄRKEÄ
+  }
   loadMessage(true);
+  document.getElementById("boardNewMsg").value = "";
 });
 }
 
+/*
 function handleEditClick() {
   const select = document.getElementById("quickSelect");
 
@@ -102,6 +117,18 @@ function handleEditClick() {
   console.log("EDIT INDEX:", index);
 
   openEdit(index);
+}*/
+
+function handleQuick(text) {
+  const editMode = document.getElementById("editMode").checked;
+
+  console.log("EDIT MODE:", editMode);
+
+  if (editMode) {
+    document.getElementById("boardNewMsg").value = text;
+  } else {
+    sendQuick(text);
+  }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -110,13 +137,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (select) {
     select.addEventListener("change", (e) => {
-  if (e.target.value === "") return;
-
   const index = Number(e.target.value);
   const text = currentButtonsCache[index];
-  
 
-  sendQuick(text);
+  if (!text) return;
+
+  const editMode = document.getElementById("editMode").checked;
+
+  if (editMode) {
+    document.getElementById("boardNewMsg").value = text;
+  } else {
+    sendQuick(text);
+  }
 });
   }
 
@@ -492,6 +524,7 @@ function toggleEditor() {
   el.style.display = el.style.display === "none" ? "flex" : "none";
 }
 
+/*
 function openEdit(index) {
 
   console.log("EDIT INDEX:", index);
@@ -515,8 +548,29 @@ function openEdit(index) {
 
   document.getElementById("quickEditInput").value = text;
   document.getElementById("quickEditor").style.display = "flex";
+}*/
+
+function openEdit(index) {
+  const text = currentButtonsCache[index];
+
+  if (!text) return alert("Virheellinen index");
+
+  editingIndex = index;
+
+  // 👇 EDIT KENTTÄ
+  document.getElementById("quickEditInput").value = text;
+
+  // 👇 TÄRKEÄ LISÄYS
+  const mainInput = document.getElementById("boardNewMsg");
+  if (mainInput) {
+    mainInput.value = "";
+    mainInput.disabled = true;   // 👈 TÄHÄN
+  }
+
+  document.getElementById("quickEditor").style.display = "flex";
 }
 
+/*
 function handleEditClick() {
 
   const select = document.getElementById("quickSelect");
@@ -527,6 +581,24 @@ function handleEditClick() {
   const index = Number(select.value);
 
   console.log("EDIT INDEX:", index);
+
+  openEdit(index);
+}*/
+
+function handleEditClick() {
+  console.log("1. EDIT CLICK FIRED");
+
+  const select = document.getElementById("quickSelect");
+  console.log("2. SELECT:", select);
+
+  if (!select) return console.log("SELECT MISSING");
+
+  console.log("3. SELECT VALUE:", select.value);
+
+  if (select.value === "") return console.log("NO VALUE SELECTED");
+
+  const index = Number(select.value);
+  console.log("4. INDEX:", index);
 
   openEdit(index);
 }
