@@ -3,6 +3,7 @@ let refreshInterval = null;
 let editingIndex = null;
 let currentButtonsCache = [];
 let selectedQuickIndex = "";
+let editorOpen = false;
 
 function quickSend(text) {
   const boardName = localStorage.getItem("boardName");
@@ -32,7 +33,7 @@ function renderQuickSelect(buttons) {
 
   currentButtonsCache = buttons;
 
-  const previous = select.value;
+  const previous = selectedQuickIndex; // 👈 TÄRKEÄ
 
   select.innerHTML = "";
 
@@ -48,9 +49,9 @@ function renderQuickSelect(buttons) {
     select.appendChild(opt);
   });
 
-  // 🔥 ÄLÄ pakota tyhjää takaisin
-  if (previous && previous !== "") {
-    select.value = previous;
+  // palauta valinta
+  if (previous !== "" && previous != null) {
+    select.value = String(previous);
   } else {
     select.value = "";
   }
@@ -77,23 +78,26 @@ function saveQuickButton() {
   })
   .then(res => res.json())
   .then(() => {
-    document.getElementById("quickEditor").style.display = "none";
-    editingIndex = null;
-    loadMessage(true);
-  });
+  document.getElementById("quickEditor").style.display = "none";
+  editingIndex = null;
+  loadMessage(true);
+});
 }
 
 function sendQuick(index) {
 
   if (index === "" || index == null) return;
 
-  selectedQuickIndex = index; // 👈 TÄRKEÄ
+  selectedQuickIndex = index;
 
   const text = currentButtonsCache[Number(index)];
   if (!text) return;
 
   document.getElementById("boardNewMsg").value = text;
   updateMessage();
+
+  // ❌ ÄLÄ tee tätä:
+  // selectedQuickIndex = ""
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -246,6 +250,9 @@ function loadMessage(forceScroll = false) {
   if (loading) return;
   loading = true;
 
+  const editorOpen =
+  document.getElementById("quickEditor")?.style.display === "flex";
+
   console.log("checkbox state:", document.getElementById("todayMode")?.checked);
 
   const boardName = getBoardName();
@@ -259,8 +266,6 @@ function loadMessage(forceScroll = false) {
   .then(data => {
 
   renderQuickSelect(data.quickButtons ?? []);
-
-  if (editingIndex !== null) return; // 👈 estää UI resetin
 
     const isAtBottom =
       box.scrollTop + box.clientHeight >= box.scrollHeight - 10;
@@ -484,49 +489,39 @@ function openEdit(index) {
     return alert("Napit ei ladattu vielä");
   }
 
-  if (index < 0 || index >= currentButtonsCache.length) {
-    return alert("Virheellinen valinta");
+  const text = currentButtonsCache[index];
+
+  if (!text) {
+    return alert("Virheellinen index");
   }
 
   editingIndex = index;
 
-  document.getElementById("quickEditInput").value =
-    currentButtonsCache[index];
-
+  document.getElementById("quickEditInput").value = text;
   document.getElementById("quickEditor").style.display = "flex";
 }
 
 function handleEditClick() {
-  const select = document.getElementById("quickSelect");
-
-  const val = select.value;
-
-  console.log("SELECT VALUE:", val);
-
-  if (val === "") {
+  if (selectedQuickIndex === "" || selectedQuickIndex == null) {
     alert("Valitse ensin tila dropdownista");
     return;
   }
 
-  openEdit(Number(val));
+  openEdit(Number(selectedQuickIndex));
 }
 
-const select = document.getElementById("quickSelect");
-const btn = document.getElementById("editBtn");
+document.getElementById("quickSelect")
+  .addEventListener("change", (e) => {
+    const val = e.target.value;
 
-if (select && btn) {
-  select.addEventListener("change", (e) => {
-    btn.disabled = !e.target.value;
+    selectedQuickIndex = val;
+
+    handleSelectChange(e);
   });
-}
 
-function handleSelectChange(e) {
+  function handleSelectChange(e) {
   const val = e.target.value;
   if (!val) return;
 
   sendQuick(val);
 }
-
-document.getElementById("quickSelect")
-  .addEventListener("change", handleSelectChange);
-
