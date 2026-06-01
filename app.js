@@ -41,33 +41,6 @@ function sendQuick(text) {
 function renderQuickSelect(buttons) {
   const select = document.getElementById("quickSelect");
 
-  const previous = select.value; // 🔥 TALTEEN
-
-  select.innerHTML = "";
-
-  const empty = document.createElement("option");
-  empty.value = "";
-  empty.innerText = "Valitse tila...";
-  select.appendChild(empty);
-
-  buttons.forEach((text, index) => {
-  const opt = document.createElement("option");
-  opt.value = index;
-  opt.innerText = text;
-  select.appendChild(opt);
-});
-
-  select.value = previous; // 🔥 PALAUTA
-
-  
-}
-
-/*
-function renderQuickSelect(buttons) {
-  const select = document.getElementById("quickSelect");
-  console.log("MIKSI: ", selectedQuickIndex);
-  const previous = selectedQuickIndex;
-
   select.innerHTML = "";
 
   const empty = document.createElement("option");
@@ -82,13 +55,8 @@ function renderQuickSelect(buttons) {
     select.appendChild(opt);
   });
 
-  console.log("MIKSI2: ", previous);
-  // 🔥 TÄMÄ on ratkaiseva kohta
-  if (previous !== null && previous !== undefined && previous !== "") {
-    
-   select.value = String(previous);
-  }
-}*/
+  select.selectedIndex = 0;
+}
 
 function saveQuickButton() {
   const input = document.getElementById("quickEditInput");
@@ -117,42 +85,39 @@ function saveQuickButton() {
 });
 }
 
-function handleQuickClick() {
+function handleEditClick() {
   const select = document.getElementById("quickSelect");
-  const val = select.value;
 
-  if (!val) return;
+  const value = select.value;
 
-  quickSend(val);
+  console.log("SELECT VALUE:", value);
+
+  if (value === "") {
+    alert("Valitse ensin tila");
+    return;
+  }
+
+  const index = Number(value);
+
+  console.log("EDIT INDEX:", index);
+
+  openEdit(index);
 }
 
 document.addEventListener("DOMContentLoaded", () => {
 
-   const select = document.getElementById("quickSelect");
+  const select = document.getElementById("quickSelect");
 
-  select.addEventListener("change", (e) => {
-  selectedQuickIndex = Number(e.target.value);
+  if (select) {
+    select.addEventListener("change", (e) => {
+  if (e.target.value === "") return;
 
-  console.log("SELECTED QUICK INDEX:", selectedQuickIndex);
-
-  const text = currentButtonsCache[selectedQuickIndex];
+  const index = Number(e.target.value);
+  const text = currentButtonsCache[index];
+  
 
   sendQuick(text);
 });
-
-  const el = document.getElementById("boardCount");
-
-  if (el) {
-    el.innerText = "Ladataan...";
-
-    fetch("http://localhost:3000/boards/count")
-      .then(res => res.json())
-      .then(data => {
-        el.innerText = `Tauluja: ${data.count ?? 0}`;
-      })
-      .catch(() => {
-        el.innerText = "Tauluja ei saatu";
-      });
   }
 
   initApp();
@@ -224,15 +189,16 @@ function autoLoginFill() {
   const boardUsername = localStorage.getItem("boardUsername") || "";
 
   const loggedIn = localStorage.getItem("loggedIn");
+  const skip = sessionStorage.getItem("skipAutoLogin");
 
   const nameInput = document.getElementById("boardName");
 
   if (!nameInput) return;
 
-  if (loggedIn === "true") {
-    window.location.href = "board.html";
-    return;
-  }
+  if (!skip && loggedIn === "true") {
+  window.location.href = "board.html";
+  return;
+}
 
   nameInput.value = boardName;
   document.getElementById("boardPassword").value = boardPassword;
@@ -505,6 +471,11 @@ function clearTable() {
 // NAV
 // =====================
 
+function koti() {
+  sessionStorage.setItem("skipAutoLogin", "1");
+  window.location.href = "index.html";
+}
+
 function logout() {
   localStorage.clear();
   window.location.href = "index.html";
@@ -547,12 +518,15 @@ function openEdit(index) {
 }
 
 function handleEditClick() {
-  const index = Number(document.getElementById("quickSelect").value);
 
-  if (index < 0 || !currentButtonsCache[index]) {
-    alert("Virheellinen index");
-    return;
-  }
+  const select = document.getElementById("quickSelect");
+
+  console.log("SELECT VALUE:", select.value);
+  console.log("SELECTED INDEX:", select.selectedIndex);
+
+  const index = Number(select.value);
+
+  console.log("EDIT INDEX:", index);
 
   openEdit(index);
 }

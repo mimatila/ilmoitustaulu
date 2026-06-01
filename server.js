@@ -107,6 +107,7 @@ app.post("/create", (req, res) => {
 app.delete("/delete/:boardName", (req, res) => {
 
   const boardName = req.params.boardName;
+  console.log("hep: ", boardName);
   const { ownerPassword } = req.body;
 
   const data = JSON.parse(
