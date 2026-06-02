@@ -60,41 +60,7 @@ function renderQuickSelect(buttons) {
   select.selectedIndex = 0;
 }
 
-function saveQuickButton() {
-  const input = document.getElementById("quickEditInput");
-  const newText = input.value.trim();
-
-  if (editingIndex === null) return;
-
-  const boardName = localStorage.getItem("boardName");
-  const boardPassword = localStorage.getItem("boardPassword");
-
-  fetch("http://localhost:3000/quickButtons", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      boardName,
-      boardPassword,
-      index: editingIndex,
-      text: newText
-    })
-  })
-  .then(res => res.json())
-  .then(() => {
-  document.getElementById("quickEditor").style.display = "none";
-  editingIndex = null;
-  const mainInput = document.getElementById("boardNewMsg");
-  if (mainInput) {
-    mainInput.value = ""; // 👈 varmistus
-    mainInput.disabled = false;  // 👈 TÄHÄN
-    mainInput.focus(); // 👈 TÄHÄN
-  }
-  
-  loadMessage(true);
-  //document.getElementById("boardNewMsg").value = "";
-});
-}
-
+/*
 function handleQuick(text) {
   const editMode = document.getElementById("editMode").checked;
 
@@ -105,14 +71,15 @@ function handleQuick(text) {
   } else {
     sendQuick(text);
   }
-}
+}*/
 
 document.addEventListener("DOMContentLoaded", () => {
 
   const select = document.getElementById("quickSelect");
 
   if (select) {
-    select.addEventListener("change", (e) => {
+  select.addEventListener("change", (e) => {
+
   const index = Number(e.target.value);
   const text = currentButtonsCache[index];
 
@@ -121,11 +88,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const editMode = document.getElementById("editMode").checked;
 
   if (editMode) {
+    editingIndex = index;
     document.getElementById("boardNewMsg").value = text;
   } else {
     sendQuick(text);
   }
-});
+  });
   }
 
   initApp();
@@ -176,10 +144,6 @@ function bindUI() {
 // =====================
 // SAFE HELPERS
 // =====================
-
-function isTypingField(el) {
-  return el && (el.tagName === "INPUT" || el.tagName === "TEXTAREA");
-}
 
 function getBoardName() {
   return localStorage.getItem("boardName");
@@ -492,31 +456,6 @@ document.addEventListener("visibilitychange", () => {
   }
 });
 
-function toggleEditor() {
-  const el = document.getElementById("quickEditor");
-  el.style.display = el.style.display === "none" ? "flex" : "none";
-}
-
-function openEdit(index) {
-  const text = currentButtonsCache[index];
-
-  if (!text) return alert("Virheellinen index");
-
-  editingIndex = index;
-
-  // 👇 EDIT KENTTÄ
-  document.getElementById("quickEditInput").value = text;
-
-  // 👇 TÄRKEÄ LISÄYS
-  const mainInput = document.getElementById("boardNewMsg");
-  if (mainInput) {
-    mainInput.value = "";
-    mainInput.disabled = true;   // 👈 TÄHÄN
-  }
-
-  document.getElementById("quickEditor").style.display = "flex";
-}
-
 /*
 function handleEditClick() {
 
@@ -532,22 +471,40 @@ function handleEditClick() {
   openEdit(index);
 }*/
 
-function handleEditClick() {
-  console.log("1. EDIT CLICK FIRED");
+function handleSaveClick() {
 
-  const select = document.getElementById("quickSelect");
-  console.log("2. SELECT:", select);
+  if (editingIndex === null) {
+    alert("Valitse ensin tila");
+    return;
+  }
 
-  if (!select) return console.log("SELECT MISSING");
+  const text =
+    document.getElementById("boardNewMsg").value.trim();
 
-  console.log("3. SELECT VALUE:", select.value);
+  const boardName = localStorage.getItem("boardName");
+  const boardPassword = localStorage.getItem("boardPassword");
 
-  if (select.value === "") return console.log("NO VALUE SELECTED");
+  fetch("http://localhost:3000/quickButtons", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      boardName,
+      boardPassword,
+      index: editingIndex,
+      text
+    })
+  })
+  .then(res => res.json())
+  .then(() => {
 
-  const index = Number(select.value);
-  console.log("4. INDEX:", index);
+    document.getElementById("boardNewMsg").value = "";
 
-  openEdit(index);
+    editingIndex = null;
+
+    loadMessage(true);
+  });
 }
 
 function formatMessage(msg) {

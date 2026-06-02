@@ -618,19 +618,149 @@
         "author": "Opa",
         "time": "2026-06-01T23:19:58.516Z",
         "text": "Syömässä"
+      },
+      {
+        "author": "Opa",
+        "time": "2026-06-01T23:22:22.863Z",
+        "text": "Sairas"
+      },
+      {
+        "author": "Opa",
+        "time": "2026-06-01T23:22:25.548Z",
+        "text": "Kotona"
+      },
+      {
+        "author": "Opa",
+        "time": "2026-06-01T23:25:42.338Z",
+        "text": "Myöhässäkö"
+      },
+      {
+        "author": "Opa",
+        "time": "2026-06-01T23:25:45.321Z",
+        "text": "Nukkumassa"
+      },
+      {
+        "author": "Opa",
+        "time": "2026-06-01T23:26:04.533Z",
+        "text": "Kuntosalilla ko oot"
+      },
+      {
+        "author": "Opa",
+        "time": "2026-06-01T23:26:23.556Z",
+        "text": "Sairas"
+      },
+      {
+        "author": "Opa",
+        "time": "2026-06-01T23:26:25.733Z",
+        "text": "Sairas"
+      },
+      {
+        "author": "Opa",
+        "time": "2026-06-01T23:26:48.214Z",
+        "text": "Tauolla"
+      },
+      {
+        "author": "Opa",
+        "time": "2026-06-02T15:14:13.479Z",
+        "text": "Kuntosalilla ko oot"
+      },
+      {
+        "author": "Opa",
+        "time": "2026-06-02T15:33:33.558Z",
+        "text": "Syömässä"
+      },
+      {
+        "author": "Opa",
+        "time": "2026-06-02T15:33:37.781Z",
+        "text": "Nukkumassa"
+      },
+      {
+        "author": "Opa",
+        "time": "2026-06-02T15:34:08.119Z",
+        "text": "Tauolla ollaan"
+      },
+      {
+        "author": "Opa",
+        "time": "2026-06-02T15:34:11.522Z",
+        "text": "Kaupassa"
+      },
+      {
+        "author": "Opa",
+        "time": "2026-06-02T15:34:32.502Z",
+        "text": "Kaupassa taas"
+      },
+      {
+        "author": "Opa",
+        "time": "2026-06-02T15:37:53.544Z",
+        "text": "Myöhässäkö"
+      },
+      {
+        "author": "Opa",
+        "time": "2026-06-02T15:37:56.905Z",
+        "text": "hey"
+      },
+      {
+        "author": "Opa",
+        "time": "2026-06-02T15:41:05.093Z",
+        "text": "Tauolla ollaan tänään"
+      },
+      {
+        "author": "Opa",
+        "time": "2026-06-02T15:52:44.384Z",
+        "text": "Tauolla ollaan tänään"
+      },
+      {
+        "author": "Opa",
+        "time": "2026-06-02T15:52:47.999Z",
+        "text": "e"
+      },
+      {
+        "author": "Opa",
+        "time": "2026-06-02T15:52:54.351Z",
+        "text": "hey"
+      },
+      {
+        "author": "Opa",
+        "time": "2026-06-02T16:00:01.589Z",
+        "text": "Tauolla ollaan tänään"
+      },
+      {
+        "author": "Opa",
+        "time": "2026-06-02T16:00:03.818Z",
+        "text": "gey"
+      },
+      {
+        "author": "Opa",
+        "time": "2026-06-02T16:00:09.403Z",
+        "text": "Kuntosalilla ko oot taas"
+      },
+      {
+        "author": "Opa",
+        "time": "2026-06-02T16:02:04.732Z",
+        "text": "Kaupassa taas"
+      },
+      {
+        "author": "Opa",
+        "time": "2026-06-02T16:02:21.158Z",
+        "text": "Tulossako"
+      },
+      {
+        "author": "Opa",
+        "time": "2026-06-02T16:02:31.423Z",
+        "text": "Sairas"
       }
     ],
     "quickButtons": [
-      "Kaupassako",
+      "Kaupassa taas",
       "Töissä",
       "Kotona",
-      "Nukkumassa",
-      "Syömässä",
+      "Nukkumassa taas?",
+      "Syömässä taas",
       "Tulossako",
       "Myöhässäkö",
-      "Sairas",
-      "Tauollako",
-      "Kuntosalilla"
+      "Sairas tänään",
+      "Tauolla ollaan tänään",
+      "Kuntosalilla ko oot taas"
     ]
   }
 }

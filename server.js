@@ -22,7 +22,8 @@ app.post("/login", (req, res) => {
 
   const { boardName, boardPassword, boardUsername } = req.body;
 
-  const data = JSON.parse(fs.readFileSync(FILE, "utf8"));
+  //const data = JSON.parse(fs.readFileSync(FILE, "utf8"));
+  const data = loadData();
 
   if (!data[boardName]) {
     return res.status(404).json({
@@ -45,7 +46,8 @@ app.post("/login", (req, res) => {
 ) {
   data[boardName].members.push(boardUsername);
 
-  fs.writeFileSync(FILE, JSON.stringify(data, null, 2));
+  //fs.writeFileSync(FILE, JSON.stringify(data, null, 2));
+  saveData(data);
 }
 
   // 👍 onnistui
@@ -60,7 +62,8 @@ app.post("/create", (req, res) => {
   const { boardName, boardPassword, boardUsername, ownerPassword } = req.body;
   console.log(req.body);
 
-  const data = JSON.parse(fs.readFileSync(FILE, "utf8"));
+  //const data = JSON.parse(fs.readFileSync(FILE, "utf8"));
+  const data = loadData();
 
   if (data[boardName]) {
     return res.status(400).json({
@@ -95,7 +98,8 @@ app.post("/create", (req, res) => {
 ],
 };
 
-  fs.writeFileSync(FILE, JSON.stringify(data, null, 2));
+  //fs.writeFileSync(FILE, JSON.stringify(data, null, 2));
+  saveData(data);
 
   res.json({
     success: true,
@@ -187,7 +191,8 @@ app.get("/favicon.ico", (req, res) => {
 
 app.get("/board/:boardName", (req, res) => {
 
-  const data = JSON.parse(fs.readFileSync(FILE, "utf8"));
+  //const data = JSON.parse(fs.readFileSync(FILE, "utf8"));
+  const data = loadData();
 
   const board = data[req.params.boardName];
 
@@ -198,33 +203,23 @@ app.get("/board/:boardName", (req, res) => {
     });
   }
 
-  // 👇 TÄHÄN TÄMÄ
-  if (!board.quickButtons) {
-    board.quickButtons = [
-      "Kaupassa",
-      "Töissä",
-      "Kotona",
-      "Nukkumassa",
-      "Syömässä",
-      "Tulossa",
-      "Myöhässä",
-      "Sairas",
-      "Tauolla",
-      "Kuntosalilla"
-    ];
-  }
 
   res.json(board);
 });
 
 app.get("/boards", (req, res) => {
-  const data = JSON.parse(fs.readFileSync(FILE, "utf8"));
+
+  //const data = JSON.parse(fs.readFileSync(FILE, "utf8"));
+  const data = loadData();
+
   res.json(data);
 });
 
 app.delete("/clear/:boardName", (req, res) => {
 
-  const data = JSON.parse(fs.readFileSync(FILE, "utf8"));
+  //const data = JSON.parse(fs.readFileSync(FILE, "utf8"));
+  const data = loadData();
+
   const board = data[req.params.boardName];
 
   const { ownerPassword, boardUsername } = req.body;
@@ -249,7 +244,8 @@ app.delete("/clear/:boardName", (req, res) => {
 
   board.boardMessages = [];
 
-  fs.writeFileSync(FILE, JSON.stringify(data, null, 2));
+  //fs.writeFileSync(FILE, JSON.stringify(data, null, 2));
+  saveData(data);
 
   res.json({
     success: true,
@@ -258,7 +254,9 @@ app.delete("/clear/:boardName", (req, res) => {
 });
 
 app.get("/boards/count", (req, res) => {
-  const data = JSON.parse(fs.readFileSync(FILE, "utf8"));
+
+  //const data = JSON.parse(fs.readFileSync(FILE, "utf8"));
+  const data = loadData();
 
   const count = Object.keys(data).length;
 
@@ -273,7 +271,8 @@ app.post("/quickButtons", (req, res) => {
 
   const { boardName, boardPassword, index, text } = req.body;
 
-  const data = JSON.parse(fs.readFileSync(FILE, "utf8"));
+  //const data = JSON.parse(fs.readFileSync(FILE, "utf8"));
+  const data = loadData();
 
   if (!data[boardName]) {
     return res.status(404).json({ success: false });
@@ -313,10 +312,20 @@ app.post("/quickButtons", (req, res) => {
 
   data[boardName].quickButtons[index] = text;
 
-  fs.writeFileSync(FILE, JSON.stringify(data, null, 2));
+  //fs.writeFileSync(FILE, JSON.stringify(data, null, 2));
+  saveData(data);
 
   res.json({ success: true });
 });
+
+function loadData() {
+  return JSON.parse(fs.readFileSync(FILE, "utf8"));
+}
+
+function saveData(data) {
+
+  fs.writeFileSync(FILE, JSON.stringify(data, null, 2));
+}
 
 app.listen(3000, () => {
   console.log("Serveri käynnissä portissa 3000");

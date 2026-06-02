@@ -97,10 +97,18 @@ button {
 
 .button-row {
   display: flex;
-  gap: 10px;
+  justify-content: center;
   align-items: center;
-  max-width: 150px;
-  margin: 0 auto;   /* 🔥 keskittää vaakasuunnassa */
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 20px auto;
+  max-width: 600px;
+}
+
+.button-row button {
+  width: 80px;
+  padding: 6px 8px;
+  box-sizing: border-box;
 }
 
 #boardNewMsg {
@@ -114,6 +122,13 @@ button {
   gap: 8px;
 }
 
+.button-row label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+}
+
 #quickButtons button {
   padding: 6px 12px;
   border-radius: 20px;
@@ -121,4 +136,11 @@ button {
 
 #quickButtons button:hover {
   background: #e6e6e6;
+}
+
+.input-row button,
+#saveBtn {
+  width: 120px !important;
+  flex: 0 0 120px;
+  box-sizing: border-box;
 }
