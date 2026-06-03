@@ -328,6 +328,28 @@ function saveData(data) {
   fs.writeFileSync(FILE, JSON.stringify(data, null, 2));
 }
 
+app.delete("/message/:boardName/:id", (req, res) => {
+  const { boardName, id } = req.params;
+  const { boardPassword } = req.body;
+
+  console.log("PARAMS:", req.params);
+
+  const data = JSON.parse(fs.readFileSync(FILE, "utf8"));
+  const board = data[boardName];
+
+  if (!board) return res.status(404).json({ success: false });
+
+  if (board.boardPassword !== boardPassword) {
+    return res.status(401).json({ success: false });
+  }
+  
+  board.boardMessages = board.boardMessages.filter(m => m.id !== id);
+
+  fs.writeFileSync(FILE, JSON.stringify(data, null, 2));
+
+  res.json({ success: true });
+});
+
 app.listen(3000, () => {
   console.log("Serveri käynnissä portissa 3000");
 });

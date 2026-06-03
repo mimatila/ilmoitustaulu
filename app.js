@@ -252,11 +252,48 @@ function loadMessage(forceScroll = false) {
 
     console.log("MESSAGES:", data.boardMessages);
 
+    /*
     (data.boardMessages || []).forEach(msg => {
     const div = document.createElement("div");
     div.innerText = formatMessage(msg);
     box.appendChild(div);
-    });
+    });*/
+
+    data.boardMessages.forEach(msg => {
+  const div = document.createElement("div");
+  div.className = "msg-row";
+
+  const text = document.createElement("span");
+  text.innerText = formatMessage(msg);
+
+  div.appendChild(text);
+
+  const editMode = document.getElementById("editMode")?.checked;
+  const username = localStorage.getItem("boardUsername");
+  //const owner = localStorage.getItem("boardUsername") === boardName; // jos käytät owner-logiikkaa erikseen
+  const owner = data.owner === username;
+
+  /*
+  const showTrash =
+    (editMode && msg.author === username) || owner;
+  */
+  const showTrash =
+  (editMode && owner) || (editMode && msg.author === username);
+
+  if (showTrash) {
+    const trash = document.createElement("button");
+    trash.innerText = "🗑";
+    trash.className = "trash-btn";
+
+    trash.onclick = () => deleteMessage(msg.id);
+
+    console.log("DELETE CLICK", msg.id);
+
+    div.appendChild(trash);
+  }
+
+  box.appendChild(div);
+});
 
     if (forceScroll || isAtBottom) {
       box.scrollTop = box.scrollHeight;
@@ -544,3 +581,26 @@ function loadBoardCount() {
       el.innerText = "Tauluja ei saatu";
     });
 }
+
+function deleteMessage(id) {
+  if (!confirm("Oletko varma että haluat poistaa viestin?")) {
+    return;
+  }
+
+  const boardName = localStorage.getItem("boardName");
+  const boardPassword = localStorage.getItem("boardPassword");
+
+  fetch(`http://localhost:3000/message/${boardName}/${id}`, {
+    method: "DELETE",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ boardPassword })
+  })
+  .then(res => res.json())
+  .then(data => {
+    loadMessage(true);
+  });
+}
+
+document.getElementById("editMode")?.addEventListener("change", () => {
+  loadMessage(true);
+});
