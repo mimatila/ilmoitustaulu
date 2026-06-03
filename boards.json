@@ -748,6 +748,27 @@
         "author": "Opa",
         "time": "2026-06-02T16:02:31.423Z",
         "text": "Sairas"
+      },
+      {
+        "author": "Opa",
+        "time": "2026-06-03T16:44:41.272Z",
+        "text": "hey"
+      },
+      {
+        "author": "Opa",
+        "time": "2026-06-03T16:44:55.471Z",
+        "text": "Tauolla ollaan tänään"
+      },
+      {
+        "author": "Opa",
+        "time": "2026-06-03T16:45:01.925Z",
+        "text": "Kuntosalilla ko oot taas"
+      },
+      {
+        "id": "09a84f0e-382e-4bd3-8373-d92dc2ef7287",
+        "author": "Opa",
+        "time": "2026-06-03T16:52:50.499Z",
+        "text": "Kuntosalilla ko oot"
       }
     ],
     "quickButtons": [
@@ -760,7 +781,7 @@
       "Myöhässäkö",
       "Sairas tänään",
       "Tauolla ollaan tänään",
-      "Kuntosalilla ko oot taas"
+      "Kuntosalilla ko oot"
     ]
   }
 }

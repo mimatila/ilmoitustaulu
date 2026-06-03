@@ -171,6 +171,7 @@ app.post("/boardMessage", (req, res) => {
   //data[boardName].messages.push(message);
 
   data[boardName].boardMessages.push({
+  id: crypto.randomUUID(),
   author: boardUsername,
   time: new Date().toISOString(),
   text: boardMessage

@@ -76,6 +76,9 @@ function handleQuick(text) {
 document.addEventListener("DOMContentLoaded", () => {
 
   const select = document.getElementById("quickSelect");
+  const el = document.getElementById("boardCount");
+
+  loadBoardCount();
 
   if (select) {
   select.addEventListener("change", (e) => {
@@ -523,4 +526,21 @@ function formatMessage(msg) {
   }
 
   return `${date.toLocaleString()} - ${msg.author}: ${msg.text}`;
+}
+
+function loadBoardCount() {
+
+  const el = document.getElementById("boardCount");
+  if (!el) return;
+
+  el.innerText = "Ladataan...";
+
+  fetch("http://localhost:3000/boards/count")
+    .then(res => res.json())
+    .then(data => {
+      el.innerText = `Tauluja: ${data.count ?? 0}`;
+    })
+    .catch(() => {
+      el.innerText = "Tauluja ei saatu";
+    });
 }
