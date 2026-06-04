@@ -6,7 +6,8 @@
     "members": [
       "Opa",
       "teemu",
-      "Teemu"
+      "Teemu",
+      "ilpo"
     ],
     "boardMessages": [
       {
@@ -338,6 +339,66 @@
         "author": "Opa",
         "time": "2026-06-04T01:10:58.212Z",
         "text": "hey"
+      },
+      {
+        "id": "d52accbc-57cf-486a-8edc-936e946605dd",
+        "author": "teemu",
+        "time": "2026-06-04T09:28:53.937Z",
+        "text": "Tauolla"
+      },
+      {
+        "id": "453ad25a-8cc6-413a-a2a2-9c86aefd6bcb",
+        "author": "Opa",
+        "time": "2026-06-04T09:29:43.977Z",
+        "text": "hey"
+      },
+      {
+        "id": "298e3fe4-b669-4264-9b44-eaba6c26dffc",
+        "author": "Teemu",
+        "time": "2026-06-04T09:30:00.449Z",
+        "text": "Sairas"
+      },
+      {
+        "id": "95fbc284-9aef-46e3-b9c0-e5509d6b5255",
+        "author": "Teemu",
+        "time": "2026-06-04T09:33:08.115Z",
+        "text": "Kuntosalillamol"
+      },
+      {
+        "id": "92c3863a-852f-4303-964c-386127cd8029",
+        "author": "ilpo",
+        "time": "2026-06-04T09:56:47.259Z",
+        "text": "he"
+      },
+      {
+        "id": "45582f5a-974f-4590-a3ca-fb29220ef5c9",
+        "author": "Opa",
+        "time": "2026-06-04T09:56:58.957Z",
+        "text": "hey"
+      },
+      {
+        "id": "39a14c8e-2943-4eff-b05c-c3100a093366",
+        "author": "Opa",
+        "time": "2026-06-04T09:59:20.095Z",
+        "text": "hey"
+      },
+      {
+        "id": "a0a0034a-b803-471c-bfa8-ab9d77bc745c",
+        "author": "teemu",
+        "time": "2026-06-04T09:59:30.254Z",
+        "text": "hey"
+      },
+      {
+        "id": "4dde52a0-24ce-4fcf-b774-d307d002e45a",
+        "author": "Opa",
+        "time": "2026-06-04T10:02:42.696Z",
+        "text": "hey"
+      },
+      {
+        "id": "98291716-419f-4b36-bb41-487f8d20cf2e",
+        "author": "Opa",
+        "time": "2026-06-04T10:03:02.062Z",
+        "text": "hey"
       }
     ],
     "quickButtons": [
@@ -354,16 +415,20 @@
     ],
     "visitedUsers": [
       {
-        "name": "teemu",
-        "lastSeen": 1780533946640
+        "name": "Teemu",
+        "lastSeen": 1780567233504
       },
       {
-        "name": "Teemu",
-        "lastSeen": 1780530884376
+        "name": "teemu",
+        "lastSeen": 1780567166581
       },
       {
         "name": "Opa",
-        "lastSeen": 1780523808571
+        "lastSeen": 1780567154226
+      },
+      {
+        "name": "ilpo",
+        "lastSeen": 1780566656715
       }
     ]
   }

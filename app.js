@@ -343,6 +343,9 @@ function updateMessage() {
 
 function loginBoard() {
 
+  console.log("joopajoo76");
+  alert("joopajoo");
+
   const boardName = document.getElementById("boardName").value;
   const boardPassword = document.getElementById("boardPassword").value;
   const boardUsername = document.getElementById("boardUsername").value;
@@ -367,6 +370,9 @@ function loginBoard() {
     sendVisitPing(); // kerran
 
     window.location.href = "board.html";
+    
+    //window.open('board.html','_blank');
+    //window.open('board.html');
     
   });
 }
@@ -627,6 +633,8 @@ function sendVisitPing() {
     })
   }).catch(console.error);
 }
+
+
 
 
 
