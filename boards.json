@@ -1,270 +1,342 @@
 {
-  "Pena": {
+  "Mika": {
     "boardPassword": "1",
-    "owner": "Pasi",
+    "owner": "Opa",
     "ownerPassword": "2",
     "members": [
-      "Pasi"
+      "Opa",
+      "teemu",
+      "Teemu"
     ],
     "boardMessages": [
       {
-        "author": "Pasi",
-        "time": "2026-06-01T13:22:16.828Z",
-        "text": "Kaupassa"
-      },
-      {
-        "author": "Pasi",
-        "time": "2026-06-01T13:24:01.431Z",
-        "text": "Kuntosalilla"
-      },
-      {
-        "author": "Pasi",
-        "time": "2026-06-01T13:26:52.069Z",
-        "text": "Tauolla"
-      },
-      {
-        "author": "Pasi",
-        "time": "2026-06-01T13:27:22.290Z",
-        "text": "Kaupassa"
-      },
-      {
-        "author": "Pasi",
-        "time": "2026-06-01T13:33:25.976Z",
-        "text": "Sairas"
-      },
-      {
-        "author": "Pasi",
-        "time": "2026-06-01T13:34:06.920Z",
-        "text": "Kaupassa"
-      },
-      {
-        "author": "Pasi",
-        "time": "2026-06-01T13:38:49.015Z",
-        "text": "Kuntosalilla"
-      },
-      {
-        "author": "Pasi",
-        "time": "2026-06-01T13:38:52.739Z",
+        "id": "59b11e9a-3e5f-4dd7-a5e1-bdd0c6b4af32",
+        "author": "Opa",
+        "time": "2026-06-03T20:18:48.911Z",
         "text": "hey"
       },
       {
-        "author": "Pasi",
-        "time": "2026-06-01T13:49:45.182Z",
-        "text": "Kaupassa"
-      },
-      {
-        "author": "Pasi",
-        "time": "2026-06-01T13:52:23.820Z",
-        "text": "Kotona"
-      },
-      {
-        "author": "Pasi",
-        "time": "2026-06-01T13:58:51.475Z",
-        "text": "Sairas"
-      },
-      {
-        "author": "Pasi",
-        "time": "2026-06-01T14:01:23.661Z",
-        "text": "Kaupassa"
-      },
-      {
-        "author": "Pasi",
-        "time": "2026-06-01T14:03:45.440Z",
-        "text": "Kaupassa"
-      },
-      {
-        "author": "Pasi",
-        "time": "2026-06-01T14:06:50.285Z",
+        "id": "450e3abe-cca2-4183-b2ad-f8cb66734086",
+        "author": "Opa",
+        "time": "2026-06-03T20:18:54.505Z",
         "text": "Tauolla"
       },
       {
-        "author": "Pasi",
-        "time": "2026-06-01T14:07:35.581Z",
-        "text": "Kuntosalilla"
-      },
-      {
-        "author": "Pasi",
-        "time": "2026-06-01T14:14:45.836Z",
-        "text": "Tauolla"
-      },
-      {
-        "author": "Pasi",
-        "time": "2026-06-01T14:15:32.435Z",
-        "text": "Kuntosalilla"
-      },
-      {
-        "author": "Pasi",
-        "time": "2026-06-01T14:17:21.635Z",
-        "text": "Kuntosalilla"
-      },
-      {
-        "author": "Pasi",
-        "time": "2026-06-01T14:17:52.873Z",
-        "text": "Kuntosalilla"
-      },
-      {
-        "author": "Pasi",
-        "time": "2026-06-01T14:19:00.623Z",
-        "text": "Kuntosalilla"
-      },
-      {
-        "author": "Pasi",
-        "time": "2026-06-01T14:19:23.534Z",
-        "text": "hey"
-      },
-      {
-        "author": "Pasi",
-        "time": "2026-06-01T14:19:26.656Z",
-        "text": "Kaupassa"
-      },
-      {
-        "author": "Pasi",
-        "time": "2026-06-01T14:22:09.934Z",
-        "text": "Tauolla"
-      },
-      {
-        "author": "Pasi",
-        "time": "2026-06-01T14:28:40.375Z",
-        "text": ""
-      },
-      {
-        "author": "Pasi",
-        "time": "2026-06-01T14:31:51.712Z",
-        "text": "Kuntosalilla"
-      },
-      {
-        "author": "Pasi",
-        "time": "2026-06-01T14:38:42.901Z",
-        "text": ""
-      },
-      {
-        "author": "Pasi",
-        "time": "2026-06-01T14:50:21.506Z",
-        "text": "Kuntosalilla"
-      },
-      {
-        "author": "Pasi",
-        "time": "2026-06-01T14:50:24.675Z",
-        "text": "Kaupassa"
-      },
-      {
-        "author": "Pasi",
-        "time": "2026-06-01T14:50:30.091Z",
-        "text": "hey"
-      },
-      {
-        "author": "Pasi",
-        "time": "2026-06-01T14:53:12.779Z",
-        "text": "Kuntosalilla"
-      },
-      {
-        "author": "Pasi",
-        "time": "2026-06-01T14:56:13.984Z",
-        "text": "Töissä"
-      },
-      {
-        "author": "Pasi",
-        "time": "2026-06-01T14:56:18.616Z",
-        "text": "Kuntosalilla"
-      },
-      {
-        "author": "Pasi",
-        "time": "2026-06-01T15:02:52.924Z",
-        "text": "Kuntosalilla"
-      },
-      {
-        "author": "Pasi",
-        "time": "2026-06-01T15:03:54.021Z",
-        "text": "Tauolla"
-      },
-      {
-        "author": "Pasi",
-        "time": "2026-06-01T15:04:48.414Z",
-        "text": "Tauolla"
-      },
-      {
-        "author": "Pasi",
-        "time": "2026-06-01T15:05:11.276Z",
-        "text": "Kaupassa"
-      },
-      {
-        "author": "Pasi",
-        "time": "2026-06-01T15:14:40.733Z",
-        "text": "Töissä"
-      },
-      {
-        "author": "Pasi",
-        "time": "2026-06-01T15:20:48.057Z",
-        "text": "Kuntosalilla"
-      },
-      {
-        "author": "Pasi",
-        "time": "2026-06-01T15:20:51.249Z",
-        "text": "Kaupassa"
-      },
-      {
-        "author": "Pasi",
-        "time": "2026-06-01T15:21:10.965Z",
-        "text": "Kaupassa"
-      },
-      {
-        "author": "Pasi",
-        "time": "2026-06-01T15:21:15.010Z",
-        "text": "Kuntosalilla"
-      },
-      {
-        "author": "Pasi",
-        "time": "2026-06-01T15:43:28.691Z",
-        "text": "0"
-      },
-      {
-        "author": "Pasi",
-        "time": "2026-06-01T15:43:31.860Z",
-        "text": "4"
-      },
-      {
-        "author": "Pasi",
-        "time": "2026-06-01T15:52:42.932Z",
+        "id": "53f47357-65f5-41bd-bdde-a4748b565421",
+        "author": "Opa",
+        "time": "2026-06-03T20:18:57.118Z",
         "text": "Myöhässä"
       },
       {
-        "author": "Pasi",
-        "time": "2026-06-01T15:52:49.581Z",
-        "text": "Kaupassa"
+        "id": "030f131a-932a-4b95-9ddf-2a402c55cb9f",
+        "author": "Opa",
+        "time": "2026-06-03T20:26:55.204Z",
+        "text": "Tauolla"
       },
       {
-        "author": "Pasi",
-        "time": "2026-06-01T15:53:39.535Z",
+        "id": "faa82bef-b324-47b7-82e1-fc8f2778cfd9",
+        "author": "Opa",
+        "time": "2026-06-03T20:26:58.141Z",
         "text": "Myöhässä"
       },
       {
-        "author": "Pasi",
-        "time": "2026-06-01T15:55:57.296Z",
-        "text": "0"
+        "id": "06f7d3da-0ded-4087-b5ff-08c26b338100",
+        "author": "Opa",
+        "time": "2026-06-03T20:27:00.862Z",
+        "text": "Nukkumassa"
       },
       {
-        "author": "Pasi",
-        "time": "2026-06-01T16:00:07.886Z",
-        "text": "Kaupassa"
+        "id": "842b877b-2d5c-428d-8b14-39ebf888d6ab",
+        "author": "Opa",
+        "time": "2026-06-03T20:27:04.416Z",
+        "text": "hey"
       },
       {
-        "author": "Pasi",
-        "time": "2026-06-01T16:05:13.544Z",
-        "text": "Kuntosalilla"
+        "id": "aec752ed-97a0-4720-827a-67744736acf4",
+        "author": "Opa",
+        "time": "2026-06-03T20:36:34.829Z",
+        "text": "Tauolla"
       },
       {
-        "author": "Pasi",
-        "time": "2026-06-01T16:07:31.884Z",
-        "text": "8"
+        "id": "cd2b615b-54f3-4ec6-b02c-77183b73b55e",
+        "author": "Teemu",
+        "time": "2026-06-03T20:36:50.443Z",
+        "text": "hey"
       },
       {
-        "author": "Pasi",
-        "time": "2026-06-01T16:09:01.594Z",
+        "id": "ef85d002-07cf-4ea3-9f41-2447dcf99eb3",
+        "author": "Opa",
+        "time": "2026-06-03T20:37:06.140Z",
+        "text": "hey"
+      },
+      {
+        "id": "ed5202bb-8e76-4ef0-9070-909fc1520ba6",
+        "author": "Opa",
+        "time": "2026-06-03T20:38:32.948Z",
+        "text": "heu"
+      },
+      {
+        "id": "b02821aa-e7cb-4e01-9dad-a66e5e9e44fb",
+        "author": "Opa",
+        "time": "2026-06-03T20:40:01.564Z",
+        "text": "Tulossa"
+      },
+      {
+        "id": "8853a56d-f978-4c38-b81f-58e2e382c904",
+        "author": "teemu",
+        "time": "2026-06-03T20:40:14.145Z",
+        "text": "Sairas"
+      },
+      {
+        "id": "1c34be31-73b7-4718-bb20-bc727a69220c",
+        "author": "Teemu",
+        "time": "2026-06-03T20:53:09.029Z",
+        "text": "Tauolla"
+      },
+      {
+        "id": "dc501fe7-c2ec-48af-9f2c-f3c45b5506a7",
+        "author": "Teemu",
+        "time": "2026-06-03T21:15:34.147Z",
+        "text": "Tauolla"
+      },
+      {
+        "id": "a2bb47ee-5e8e-4be3-8ca9-b43490631128",
+        "author": "Teemu",
+        "time": "2026-06-03T21:15:36.705Z",
+        "text": "Myöhässä"
+      },
+      {
+        "id": "23a7e394-4ed3-44f5-a2e0-01c2b7b576eb",
+        "author": "Teemu",
+        "time": "2026-06-03T21:15:53.563Z",
+        "text": "hey"
+      },
+      {
+        "id": "36fe5680-833c-42fb-b6a2-5f7e0a23a00c",
+        "author": "Opa",
+        "time": "2026-06-03T21:16:07.306Z",
+        "text": "Tauolla"
+      },
+      {
+        "id": "043e7ae3-03f6-4e1d-a46f-399466b85fef",
+        "author": "Opa",
+        "time": "2026-06-03T21:16:11.674Z",
         "text": "Syömässä"
       },
       {
-        "author": "Pasi",
-        "time": "2026-06-01T16:09:05.677Z",
+        "id": "a54974a3-520c-46b2-a159-5885e3d7e26b",
+        "author": "Opa",
+        "time": "2026-06-03T21:16:23.604Z",
+        "text": "hey"
+      },
+      {
+        "id": "762c5d0c-21d9-463a-8563-1eb847208fd2",
+        "author": "teemu",
+        "time": "2026-06-03T21:16:37.128Z",
+        "text": "hey"
+      },
+      {
+        "id": "aeb85cdf-f859-47cc-b705-94eb28921e07",
+        "author": "teemu",
+        "time": "2026-06-03T21:25:44.104Z",
+        "text": "Kuntosalilla"
+      },
+      {
+        "id": "7e2cbfec-8b5f-4548-8d08-401c9eb82a87",
+        "author": "teemu",
+        "time": "2026-06-03T21:26:12.449Z",
+        "text": "Tauolla"
+      },
+      {
+        "id": "8dd803b8-a849-4088-9d76-7d8c3aa3baa5",
+        "author": "teemu",
+        "time": "2026-06-03T21:27:20.916Z",
+        "text": "Kuntosalilla"
+      },
+      {
+        "id": "973163f8-8338-47e0-ae4c-2bb61e8af4b0",
+        "author": "teemu",
+        "time": "2026-06-03T21:27:25.986Z",
+        "text": "Myöhässä"
+      },
+      {
+        "id": "148d60c5-f64e-43ee-a594-eb0bb98f189a",
+        "author": "Opa",
+        "time": "2026-06-03T21:27:37.915Z",
+        "text": "Tauolla"
+      },
+      {
+        "id": "9442ec8c-d104-42f0-8578-ee89d364e60d",
+        "author": "Opa",
+        "time": "2026-06-03T21:46:18.728Z",
+        "text": "Tauolla"
+      },
+      {
+        "id": "e33bd851-ade6-4771-86f5-82fd5303284e",
+        "author": "Opa",
+        "time": "2026-06-03T21:51:57.233Z",
+        "text": "Sairas"
+      },
+      {
+        "id": "a081bbb4-5057-4b13-8ca8-2608e81b6d0d",
+        "author": "Opa",
+        "time": "2026-06-03T21:52:00.732Z",
+        "text": "Myöhässä"
+      },
+      {
+        "id": "19721b46-f3fb-43db-85e4-8359c31122ed",
+        "author": "Opa",
+        "time": "2026-06-03T21:53:00.219Z",
+        "text": "Sairas"
+      },
+      {
+        "id": "d1c58196-425b-4bc2-a4f2-877e87566280",
+        "author": "Opa",
+        "time": "2026-06-03T22:03:14.897Z",
+        "text": "Tauolla"
+      },
+      {
+        "id": "64b6f4a8-c097-4992-b6d1-862893ce2d11",
+        "author": "Opa",
+        "time": "2026-06-03T22:03:20.021Z",
+        "text": "hey"
+      },
+      {
+        "id": "81903c6d-d0b4-490c-88e9-5b7d2665e52b",
+        "author": "teemu",
+        "time": "2026-06-03T22:03:28.992Z",
+        "text": "Sairas"
+      },
+      {
+        "id": "451044c5-f84e-47e1-a26d-9883ea2fc4eb",
+        "author": "teemu",
+        "time": "2026-06-03T22:03:47.285Z",
+        "text": "Sairas"
+      },
+      {
+        "id": "156b424c-6d45-4282-9c80-84f26e49c6a5",
+        "author": "teemu",
+        "time": "2026-06-03T22:03:51.265Z",
+        "text": "Syömässä"
+      },
+      {
+        "id": "703d1e30-6270-4333-b411-89090a3495c2",
+        "author": "teemu",
+        "time": "2026-06-03T22:04:00.837Z",
+        "text": "Sairas"
+      },
+      {
+        "id": "b02171ee-4f95-4519-b198-97ece8043b0a",
+        "author": "teemu",
+        "time": "2026-06-03T22:04:04.231Z",
+        "text": "Myöhässä"
+      },
+      {
+        "id": "4a34e4a5-1995-48c5-8fe2-3e3db8d669f9",
+        "author": "teemu",
+        "time": "2026-06-03T22:04:05.570Z",
+        "text": ""
+      },
+      {
+        "id": "8c46935a-db43-4f12-82fa-6a3db20078d5",
+        "author": "Opa",
+        "time": "2026-06-03T22:04:20.827Z",
+        "text": "hey"
+      },
+      {
+        "id": "6ffce39f-b78f-4aa0-b314-0d7960b04eda",
+        "author": "Teemu",
+        "time": "2026-06-03T22:04:32.195Z",
+        "text": "hey"
+      },
+      {
+        "id": "64047ded-b909-40eb-ad61-09da639cf8dd",
+        "author": "Teemu",
+        "time": "2026-06-03T22:06:09.793Z",
+        "text": "Sairas"
+      },
+      {
+        "id": "8414e50d-10ca-481e-a7db-51eca31a41f9",
+        "author": "Teemu",
+        "time": "2026-06-03T22:06:13.440Z",
+        "text": "Syömässä"
+      },
+      {
+        "id": "8623ac86-6d26-4aa2-8019-e4cd1e601145",
+        "author": "Teemu",
+        "time": "2026-06-03T22:34:16.611Z",
+        "text": "Sairas"
+      },
+      {
+        "id": "f6a68605-dafd-4627-acf9-01549238aea2",
+        "author": "Teemu",
+        "time": "2026-06-03T22:36:23.658Z",
+        "text": "Tauolla"
+      },
+      {
+        "id": "952af744-b8eb-40d5-8fe3-ab7541c15a27",
+        "author": "Teemu",
+        "time": "2026-06-03T23:02:43.435Z",
+        "text": "Sairas"
+      },
+      {
+        "id": "7a98e937-db44-4ee3-91e9-26d3f6facc73",
+        "author": "teemu",
+        "time": "2026-06-04T00:00:26.464Z",
+        "text": "Myöhässä"
+      },
+      {
+        "id": "8df3f52b-0dd4-433b-99f0-a5ec3e4a9db6",
+        "author": "teemu",
+        "time": "2026-06-04T00:13:53.506Z",
+        "text": "Tauolla"
+      },
+      {
+        "id": "81d55176-e716-4e3a-927c-a203f9027827",
+        "author": "teemu",
+        "time": "2026-06-04T00:13:58.648Z",
+        "text": "Myöhässä"
+      },
+      {
+        "id": "87181962-4571-457a-aac4-f275d75b6b3e",
+        "author": "teemu",
+        "time": "2026-06-04T00:44:58.341Z",
+        "text": "Kuntosalillamol"
+      },
+      {
+        "id": "e509d040-78a5-40a3-878d-7a4973477f3b",
+        "author": "teemu",
+        "time": "2026-06-04T00:56:21.105Z",
+        "text": "Sairas"
+      },
+      {
+        "id": "588103ba-45b1-4e74-8867-d27bfd7ff276",
+        "author": "teemu",
+        "time": "2026-06-04T00:56:38.511Z",
+        "text": "hey"
+      },
+      {
+        "id": "e4bb68e0-e8df-4993-837e-552f466cbcce",
+        "author": "teemu",
+        "time": "2026-06-04T00:57:02.987Z",
+        "text": "hey"
+      },
+      {
+        "id": "37d7c193-7c69-441f-a9ed-79b594a6cfc7",
+        "author": "teemu",
+        "time": "2026-06-04T00:57:23.260Z",
+        "text": "Tauolla"
+      },
+      {
+        "id": "28e1181e-2c85-4472-88c2-ac93fff16b20",
+        "author": "Opa",
+        "time": "2026-06-04T00:57:54.483Z",
+        "text": "Tauolla"
+      },
+      {
+        "id": "275ca5cc-3717-43e2-af07-682e077b218d",
+        "author": "Opa",
+        "time": "2026-06-04T01:10:58.212Z",
         "text": "hey"
       }
     ],
@@ -278,48 +350,21 @@
       "Myöhässä",
       "Sairas",
       "Tauolla",
-      "Kuntosalilla"
-    ]
-  },
-  "Mika": {
-    "boardPassword": "1",
-    "owner": "Opa",
-    "ownerPassword": "2",
-    "members": [
-      "Opa",
-      "Teemu"
+      "Kuntosalillamol"
     ],
-    "boardMessages": [
+    "visitedUsers": [
       {
-        "id": "9419b43a-f52d-49d6-95a0-997c34b4dbf1",
-        "author": "Opa",
-        "time": "2026-06-03T17:20:25.043Z",
-        "text": "Myöhässäkö"
+        "name": "teemu",
+        "lastSeen": 1780533946640
       },
       {
-        "id": "32b41e34-3df4-4eaa-8e5d-68d3896fb284",
-        "author": "Opa",
-        "time": "2026-06-03T17:20:27.506Z",
-        "text": "Syömässä taas"
+        "name": "Teemu",
+        "lastSeen": 1780530884376
       },
       {
-        "id": "adcc43f3-8ce4-4bd9-bcc3-59fd89ba05bd",
-        "author": "Teemu",
-        "time": "2026-06-03T17:33:02.718Z",
-        "text": "Tauolla ollaan tänään"
+        "name": "Opa",
+        "lastSeen": 1780523808571
       }
-    ],
-    "quickButtons": [
-      "Kaupassa taas",
-      "Töissä",
-      "Kotona",
-      "Nukkumassa taas?",
-      "Syömässä taas",
-      "Tulossako",
-      "Myöhässäkö",
-      "Sairas tänään",
-      "Tauolla ollaan tänään",
-      "Kuntosalilla ko oot"
     ]
   }
 }

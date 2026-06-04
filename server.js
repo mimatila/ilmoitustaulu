@@ -78,24 +78,25 @@ app.post("/create", (req, res) => {
   messages: []
   };*/
 
- data[boardName] = {
+data[boardName] = {
   boardPassword,
   owner: boardUsername,
   ownerPassword,
   members: [boardUsername],
   boardMessages: [],
   quickButtons: [
-  "Kaupassa",
-  "Töissä",
-  "Kotona",
-  "Nukkumassa",
-  "Syömässä",
-  "Tulossa",
-  "Myöhässä",
-  "Sairas",
-  "Tauolla",
-  "Kuntosalilla"
-],
+    "Kaupassa",
+    "Töissä",
+    "Kotona",
+    "Nukkumassa",
+    "Syömässä",
+    "Tulossa",
+    "Myöhässä",
+    "Sairas",
+    "Tauolla",
+    "Kuntosalilla"
+  ],
+  visitedUsers: []   // 👈 TÄMÄ
 };
 
   //fs.writeFileSync(FILE, JSON.stringify(data, null, 2));
@@ -344,6 +345,40 @@ app.delete("/message/:boardName/:id", (req, res) => {
   }
   
   board.boardMessages = board.boardMessages.filter(m => m.id !== id);
+
+  fs.writeFileSync(FILE, JSON.stringify(data, null, 2));
+
+  res.json({ success: true });
+});
+
+app.post("/visit", (req, res) => {
+
+  console.log("humppaa eka kerta");
+  
+  const { boardName, boardUsername } = req.body;
+
+  const data = JSON.parse(fs.readFileSync(FILE, "utf8"));
+  const board = data[boardName];
+
+  if (!board) {
+    return res.status(404).json({ success: false });
+  }
+
+  if (!board.visitedUsers) board.visitedUsers = [];
+
+  let user = board.visitedUsers.find(u => u.name === boardUsername);
+  console.log("humppaa");
+  if (user) {
+    user.lastSeen = Date.now();
+  } else {
+    board.visitedUsers.push({
+      name: boardUsername,
+      lastSeen: Date.now()
+    });
+  }
+
+  board.visitedUsers.sort((a, b) => b.lastSeen - a.lastSeen);
+  board.visitedUsers = board.visitedUsers.slice(0, 5);
 
   fs.writeFileSync(FILE, JSON.stringify(data, null, 2));
 

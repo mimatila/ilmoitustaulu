@@ -6,18 +6,9 @@ let currentButtonsCache = [];
 function sendQuick(text) {
   console.log("SENDQUICK INPUT:", text);
 
-  if (!text) {
-    console.log("TEXT WAS EMPTY -> STOP");
-    return;
-  }
-
   const boardName = localStorage.getItem("boardName");
   const boardPassword = localStorage.getItem("boardPassword");
   const boardUsername = localStorage.getItem("boardUsername") || boardName;
-
-  console.log("SENDING TO SERVER:", {
-  text
-});
 
   fetch("http://localhost:3000/boardMessage", {
     method: "POST",
@@ -107,13 +98,11 @@ document.addEventListener("DOMContentLoaded", () => {
 // =====================
 
 function initApp() {
-  bindUI();
+  bindUI();  
   autoLoginFill();
-
   if (document.getElementById("boardMessagesDiv")) {
     initBoard();
   }
-
 }
 
 
@@ -159,6 +148,8 @@ function getBoardName() {
 
 function autoLoginFill() {
 
+  if (location.pathname.includes("board.html")) return;
+
   const boardName = localStorage.getItem("boardName") || "";
   const boardPassword = localStorage.getItem("boardPassword") || "";
   const boardUsername = localStorage.getItem("boardUsername") || "";
@@ -171,9 +162,9 @@ function autoLoginFill() {
   if (!nameInput) return;
 
   if (!skip && loggedIn === "true") {
-  window.location.href = "board.html";
-  return;
-}
+    window.location.href = "board.html";
+    return;
+  }
 
   nameInput.value = boardName;
   document.getElementById("boardPassword").value = boardPassword;
@@ -188,7 +179,12 @@ function autoLoginFill() {
 
 function initBoard() {
 
+console.log("BOARD INIT ONCE");
   const boardName = getBoardName();
+
+  //sendVisitPing(); // kerran
+
+  loadMessage(true); // heti päivitys
 
   const boardNameEl = document.getElementById("boardTitle");
   const box = document.getElementById("boardMessagesDiv");
@@ -196,8 +192,6 @@ function initBoard() {
   if (!boardNameEl || !box || !boardName) return;
 
   boardNameEl.innerText = boardName;
-
-  loadMessage(true);
 
 if (refreshInterval) clearInterval(refreshInterval);
 
@@ -214,15 +208,13 @@ refreshInterval = setInterval(() => {
 
 }
 
-
-
 // =====================
 // LOAD MESSAGES
 // =====================
 
 function loadMessage(forceScroll = false) {
 
-  console.log("loadMessage called", loading);
+  console.trace("LOADMESSAGE CALL STACK");
 
   const box = document.getElementById("boardMessagesDiv");
   if (!box) return;
@@ -243,11 +235,16 @@ function loadMessage(forceScroll = false) {
   .then(data => {
 
     currentButtonsCache = data.quickButtons ?? [];
+
+    console.log("RENDER QUICK SELECT");
+
     renderQuickSelect(currentButtonsCache);
+    renderVisitedUsers(data.visitedUsers);
 
     const isAtBottom =
       box.scrollTop + box.clientHeight >= box.scrollHeight - 10;
 
+      console.log("CLEARING MESSAGE BOX");
     box.innerHTML = "";
 
     console.log("MESSAGES:", data.boardMessages);
@@ -278,7 +275,7 @@ function loadMessage(forceScroll = false) {
     (editMode && msg.author === username) || owner;
   */
   const showTrash =
-  (editMode && owner) || (editMode && msg.author === username);
+  editMode && (owner || msg.author === username);
 
   if (showTrash) {
     const trash = document.createElement("button");
@@ -287,11 +284,11 @@ function loadMessage(forceScroll = false) {
 
     trash.onclick = () => deleteMessage(msg.id);
 
-    console.log("DELETE CLICK", msg.id);
+    //console.log("DELETE CLICK", msg.id);
 
     div.appendChild(trash);
   }
-
+   
   box.appendChild(div);
 });
 
@@ -331,7 +328,7 @@ function updateMessage() {
   })
   .then(res => res.json())
   .then(data => {
-     console.log("BOARD RESPONSE:", data);
+     
     if (!data.success) return alert(data.boardMessage);
 
     messageEl.value = "";
@@ -364,6 +361,10 @@ function loginBoard() {
     localStorage.setItem("boardPassword", boardPassword);
     localStorage.setItem("boardUsername", boardUsername);
     localStorage.setItem("loggedIn", "true");
+
+    console.log("joopajoo");
+     
+    sendVisitPing(); // kerran
 
     window.location.href = "board.html";
     
@@ -490,11 +491,6 @@ function logout() {
   window.location.href = "index.html";
 }
 
-document.addEventListener("visibilitychange", () => {
-  if (!document.hidden) {
-    loadMessage(false);
-  }
-});
 
 /*
 function handleEditClick() {
@@ -514,7 +510,7 @@ function handleEditClick() {
 function handleSaveClick() {
 
   if (editingIndex === null) {
-    alert("Valitse ensin tila");
+    alert("Valitse ensin Edit-moodi");
     return;
   }
 
@@ -601,6 +597,37 @@ function deleteMessage(id) {
   });
 }
 
-document.getElementById("editMode")?.addEventListener("change", () => {
-  loadMessage(true);
-});
+function renderVisitedUsers(users) {
+  const el = document.getElementById("visitedUsers");
+  if (!el) return;
+
+  const sorted = (users || [])
+  .sort((a, b) => b.lastSeen - a.lastSeen)
+  .slice(0, 5);
+
+  el.innerText = "🟢 Viimeksi paikalla: " +
+  sorted.map(u => u.name).join(", ");
+}
+
+function sendVisitPing() {
+
+  console.trace("VISIT CALLED FROM");
+  
+  const boardName = localStorage.getItem("boardName");
+  const boardUsername = localStorage.getItem("boardUsername");
+
+  if (!boardName || !boardUsername) return;
+
+  fetch("http://localhost:3000/visit", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      boardName,
+      boardUsername
+    })
+  }).catch(console.error);
+}
+
+
+
+
