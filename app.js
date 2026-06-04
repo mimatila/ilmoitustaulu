@@ -182,8 +182,6 @@ function initBoard() {
 console.log("BOARD INIT ONCE");
   const boardName = getBoardName();
 
-  //sendVisitPing(); // kerran
-
   loadMessage(true); // heti päivitys
 
   const boardNameEl = document.getElementById("boardTitle");
@@ -342,10 +340,6 @@ function updateMessage() {
 // =====================
 
 function loginBoard() {
-
-  console.log("joopajoo76");
-  alert("joopajoo");
-
   const boardName = document.getElementById("boardName").value;
   const boardPassword = document.getElementById("boardPassword").value;
   const boardUsername = document.getElementById("boardUsername").value;
@@ -356,8 +350,7 @@ function loginBoard() {
     body: JSON.stringify({ boardName, boardPassword, boardUsername })
   })
   .then(res => res.json())
-  .then(data => {
-
+  .then(async data => {
     if (!data.success) return alert(data.message);
 
     localStorage.setItem("boardName", boardName);
@@ -365,15 +358,13 @@ function loginBoard() {
     localStorage.setItem("boardUsername", boardUsername);
     localStorage.setItem("loggedIn", "true");
 
-    console.log("joopajoo");
-     
-    sendVisitPing(); // kerran
+    await fetch("http://localhost:3000/visit", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ boardName, boardUsername })
+    });
 
     window.location.href = "board.html";
-    
-    //window.open('board.html','_blank');
-    //window.open('board.html');
-    
   });
 }
 
@@ -615,24 +606,9 @@ function renderVisitedUsers(users) {
   sorted.map(u => u.name).join(", ");
 }
 
-function sendVisitPing() {
-
-  console.trace("VISIT CALLED FROM");
-  
-  const boardName = localStorage.getItem("boardName");
-  const boardUsername = localStorage.getItem("boardUsername");
-
-  if (!boardName || !boardUsername) return;
-
-  fetch("http://localhost:3000/visit", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      boardName,
-      boardUsername
-    })
-  }).catch(console.error);
-}
+document.getElementById("editMode")?.addEventListener("change", () => {
+  loadMessage(false);
+});
 
 
 

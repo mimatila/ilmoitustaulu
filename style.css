@@ -174,5 +174,6 @@ button {
   color: #444;
   border-bottom: 1px solid #ddd;
   margin-bottom: 8px;
+  /*border-bottom: none;*/ 
 }
 
