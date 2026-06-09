@@ -11,6 +11,10 @@
 <!-- 🟢 viimeksi paikalla -->
 <div id="visitedUsers" class="visited-users"></div>
 
+<div class="board-actions">
+  <button onclick="clearTable()">Clear</button>
+</div>
+
 <!-- viestit -->
 <div class="board">
   <div id="boardMessagesDiv"></div>
@@ -32,15 +36,19 @@
 </button>
 </div>
 
-<!-- kontrollit -->
-<div class="button-row">
+<div class="top-nav">
   <button onclick="koti()">Koti</button>
   <button onclick="logout()">Logout</button>
-  <button onclick="clearTable()">Clear</button>
+</div>
+
+<!-- kontrollit -->
+<div class="button-row">
+
   <label>
     <input type="checkbox" id="todayMode">
     Tänään-moodi
   </label>
+
   <label>
     <input type="checkbox" id="editMode">
     Edit-moodi
