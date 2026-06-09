@@ -468,10 +468,136 @@
         "author": "Teemu",
         "time": "2026-06-09T17:49:08.721Z",
         "text": "Myöhässä"
+      },
+      {
+        "id": "84de40f8-6ae5-4ad9-9bf7-216d0ae40512",
+        "author": "Teemu",
+        "time": "2026-06-09T18:19:04.704Z",
+        "text": "Kaupassa"
+      },
+      {
+        "id": "a2d2267c-ab74-4027-8ab1-3946efc77e7e",
+        "author": "Teemu",
+        "time": "2026-06-09T18:19:12.501Z",
+        "text": "Myöhässä"
+      },
+      {
+        "id": "b5f37332-27d8-4736-9d05-9acd3ebfe946",
+        "author": "Teemu",
+        "time": "2026-06-09T18:25:02.598Z",
+        "text": "Kaupassa"
+      },
+      {
+        "id": "49dfefaa-d105-4d29-bddb-78530e96c681",
+        "author": "Teemu",
+        "time": "2026-06-09T18:29:33.137Z",
+        "text": "Kaupassa"
+      },
+      {
+        "id": "0edd07ac-af1d-46b2-9f60-87945c89e42f",
+        "author": "Teemu",
+        "time": "2026-06-09T18:29:34.685Z",
+        "text": "Töissä"
+      },
+      {
+        "id": "35b8a2e3-ec59-44df-b7c3-8d378c161ce9",
+        "author": "Teemu",
+        "time": "2026-06-09T18:39:58.276Z",
+        "text": "Kaupassako"
+      },
+      {
+        "id": "0acabfbb-d611-4eef-9d51-98fd001dac99",
+        "author": "Teemu",
+        "time": "2026-06-09T18:41:54.975Z",
+        "text": "Kaupassako"
+      },
+      {
+        "id": "e65995f2-9e7f-48ce-89ac-0f419be8f7da",
+        "author": "Teemu",
+        "time": "2026-06-09T18:57:27.030Z",
+        "text": "Tauolla"
+      },
+      {
+        "id": "052c329a-6c9f-429a-94dc-ff4af1293347",
+        "author": "Teemu",
+        "time": "2026-06-09T18:59:26.809Z",
+        "text": "Tulossa"
+      },
+      {
+        "id": "34f7a8e7-3f1b-4ed2-bb78-69afab65190b",
+        "author": "Teemu",
+        "time": "2026-06-09T18:59:29.418Z",
+        "text": "hey"
+      },
+      {
+        "id": "011a20cb-88a3-43cf-b25e-48d3edad8784",
+        "author": "Teemu",
+        "time": "2026-06-09T19:10:05.507Z",
+        "text": "Kaupassako"
+      },
+      {
+        "id": "5410e64d-f614-4df3-a54c-f2095685620a",
+        "author": "Teemu",
+        "time": "2026-06-09T19:12:44.239Z",
+        "text": "Kaupassako"
+      },
+      {
+        "id": "feac4705-c438-4d3a-b5f8-cbc1a080b4dc",
+        "author": "Opa",
+        "time": "2026-06-09T19:15:21.207Z",
+        "text": "Myöhässä"
+      },
+      {
+        "id": "b6ae5b20-2dac-4e8f-8edc-7dc0ab279054",
+        "author": "Opa",
+        "time": "2026-06-09T19:20:41.123Z",
+        "text": "Myöhässä"
+      },
+      {
+        "id": "3320027d-5959-47fd-9a7d-a059e04fdde5",
+        "author": "Opa",
+        "time": "2026-06-09T19:24:50.727Z",
+        "text": "Tauolla"
+      },
+      {
+        "id": "b2fd1206-f9d1-4497-8c3d-fa80f3c04726",
+        "author": "Opa",
+        "time": "2026-06-09T19:24:59.673Z",
+        "text": "Kaupassako"
+      },
+      {
+        "id": "793b6fb8-b8b0-4e95-a857-a59956e3b77c",
+        "author": "Opa",
+        "time": "2026-06-09T19:25:03.617Z",
+        "text": "hey"
+      },
+      {
+        "id": "06caa014-9b7b-409a-99ba-d1473e9bac1b",
+        "author": "Opa",
+        "time": "2026-06-09T19:25:06.303Z",
+        "text": "Sairas"
+      },
+      {
+        "id": "a10d6bcf-c28f-4528-9efc-eb699e902329",
+        "author": "Teemu",
+        "time": "2026-06-09T19:25:24.977Z",
+        "text": "Tauolla"
+      },
+      {
+        "id": "6dbaad69-4f5f-4c94-908b-90f95bc53720",
+        "author": "Teemu",
+        "time": "2026-06-09T19:26:20.253Z",
+        "text": "Tauolla"
+      },
+      {
+        "id": "a3ca5f49-9302-4a77-a6ed-2d77fa180746",
+        "author": "Teemu",
+        "time": "2026-06-09T19:26:35.129Z",
+        "text": "Tauolla 10 päivää"
       }
     ],
     "quickButtons": [
-      "Kaupassa",
+      "Kaupassako",
       "Töissä",
       "Kotona",
       "Nukkumassa",
@@ -479,13 +605,17 @@
       "Tulossa",
       "Myöhässä",
       "Sairas",
-      "Tauolla",
-      "Kuntosalillamol"
+      "Tauolla 10 päivää",
+      "Kuntosalillamola"
     ],
     "visitedUsers": [
       {
         "name": "Teemu",
-        "lastSeen": 1780571349050
+        "lastSeen": 1781033116076
+      },
+      {
+        "name": "Opa",
+        "lastSeen": 1781032466192
       },
       {
         "name": "eino",
@@ -498,10 +628,6 @@
       {
         "name": "Mika",
         "lastSeen": 1780571006662
-      },
-      {
-        "name": "erkki",
-        "lastSeen": 1780570857325
       }
     ]
   }

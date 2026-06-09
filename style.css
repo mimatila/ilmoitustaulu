@@ -1,3 +1,8 @@
+:root {
+  --content-width: 550px;
+  --meta-width: 180px; /* date + user */
+}
+
 body {
   font-family: Arial;
   text-align: center;
@@ -39,7 +44,7 @@ button {
 
 #boardMessagesDiv {
   height: 200px;
-  max-width: 550px;
+  max-width: var(--content-width);
   width: 100%;
   box-sizing: border-box;
   margin: 0 auto;
@@ -74,6 +79,7 @@ button {
   align-items: center;
   max-width: 500px;
   margin: 0 auto;   /* 🔥 keskittää vaakasuunnassa */
+  
 }
 
 .quick-row {
@@ -93,9 +99,7 @@ button {
   width: 120px;
 }
 
-#quickEditor {
-  display: none;
-}
+
 
 #quickSelect {
   width: 100%;
@@ -152,10 +156,12 @@ button {
 }
 
 #quickButtons {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 8px;
+  max-width: var(--content-width);
+  margin: 10px auto;
+
+  display: grid;
+  grid-template-columns: 1fr; /* 1 per rivi */
+  gap: 6px;
 }
 
 .button-row label {
@@ -166,8 +172,22 @@ button {
 }
 
 #quickButtons button {
-  padding: 6px 12px;
-  border-radius: 20px;
+  width: 100%;
+  height: 34px;
+
+  font-size: 13px;
+  border-radius: 8px;
+
+  text-align: left;
+  padding-left: 10px;
+}
+
+#quickButtons button:hover {
+  background: #f0f0f0;
+}
+
+#quickButtons button {
+  transition: 0.1s;
 }
 
 #quickButtons button:hover {

@@ -232,12 +232,15 @@ function loadMessage(forceScroll = false) {
   .then(res => res.json())
   .then(data => {
 
+    //renderQuickButtons(currentButtonsCache);
     currentButtonsCache = data.quickButtons ?? [];
 
     console.log("RENDER QUICK SELECT");
 
-    renderQuickSelect(currentButtonsCache);
-    renderVisitedUsers(data.visitedUsers);
+    //renderQuickSelect(currentButtonsCache);
+    //renderVisitedUsers(data.visitedUsers);
+
+    updateQuickUI(data);
 
     const isAtBottom =
       box.scrollTop + box.clientHeight >= box.scrollHeight - 10;
@@ -604,6 +607,32 @@ function renderVisitedUsers(users) {
 
   el.innerText = "🟢 Viimeksi paikalla: " +
   sorted.map(u => u.name).join(", ");
+}
+
+/*
+function renderQuickButtons(buttons) {
+  const container = document.getElementById("quickButtons");
+  if (!container) return;
+
+  container.innerHTML = "";
+
+  buttons.forEach(text => {
+    const btn = document.createElement("button");
+    btn.innerText = text;
+
+    btn.onclick = () => sendQuick(text);
+
+    container.appendChild(btn);
+  });
+}*/
+
+function updateQuickUI(data) {
+  currentButtonsCache = data.quickButtons ?? [];
+
+  //renderQuickButtons(currentButtonsCache);
+  renderVisitedUsers(data.visitedUsers);
+  renderQuickSelect(currentButtonsCache);
+
 }
 
 document.getElementById("editMode")?.addEventListener("change", () => {
