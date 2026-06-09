@@ -594,6 +594,18 @@
         "author": "Teemu",
         "time": "2026-06-09T19:26:35.129Z",
         "text": "Tauolla 10 päivää"
+      },
+      {
+        "id": "91c4aa39-4480-496b-8b04-4aa7095d6d5c",
+        "author": "Teemu",
+        "time": "2026-06-09T19:32:06.774Z",
+        "text": "Tulossa"
+      },
+      {
+        "id": "27c26901-69f4-4538-b2cb-14812040ad8a",
+        "author": "Teemu",
+        "time": "2026-06-09T19:32:34.860Z",
+        "text": "Raahautumassa jääkaapille!"
       }
     ],
     "quickButtons": [
@@ -601,7 +613,7 @@
       "Töissä",
       "Kotona",
       "Nukkumassa",
-      "Syömässä",
+      "Raahautumassa jääkaapille!",
       "Tulossa",
       "Myöhässä",
       "Sairas",

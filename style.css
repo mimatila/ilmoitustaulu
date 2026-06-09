@@ -139,11 +139,40 @@ button {
 }
 
 .board-actions {
+  position: relative;
   max-width: 600px;
-  margin: 0 auto 10px auto;
+  margin: 10px auto;
+}
 
+.actions-center {
   display: flex;
-  justify-content: flex-end;
+  flex-direction: row;   /* 🔥 tärkein */
+  justify-content: center;
+  gap: 20px;
+  align-items: center;
+}
+
+.actions-center label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+/*
+.clear-btn {
+  margin-left: auto;
+}*/
+
+.clear-btn {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.board-actions label {
+  font-size: 13px;
+  cursor: pointer;
 }
 
 .board-actions button {
