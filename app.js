@@ -423,6 +423,9 @@ function createBoard() {
 function deleteBoard() {
 
   const boardName = localStorage.getItem("boardName");
+
+  const boardUsername = getCurrentUsername();
+
   const ownerPassword = prompt("Anna owner-salasana:");
 
   if (!confirm("Haluatko varmasti poistaa taulun?")) return;
@@ -430,11 +433,13 @@ function deleteBoard() {
   fetch(`http://localhost:3000/delete/${boardName}`, {
     method: "DELETE",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ ownerPassword })
+    body: JSON.stringify({
+      ownerPassword,
+      boardUsername
+    })
   })
   .then(res => res.json())
   .then(data => {
-
     alert(data.message);
 
     if (data.success) {
@@ -555,7 +560,7 @@ function formatMessage(msg) {
   const todayMode = document.getElementById("todayMode")?.checked;
 
   if (todayMode && isToday) {
-    return `Tänään: ${msg.author}: ${msg.text}`;
+    return `Tänään - ${msg.author}: ${msg.text}`;
   }
 
   return `${date.toLocaleString()} - ${msg.author}: ${msg.text}`;
@@ -633,6 +638,74 @@ function updateQuickUI(data) {
   renderVisitedUsers(data.visitedUsers);
   renderQuickSelect(currentButtonsCache);
 
+}
+
+function openSettings() {
+
+  const boardName =
+    localStorage.getItem("boardName");
+
+  fetch(`http://localhost:3000/board/${boardName}`)
+    .then(res => res.json())
+    .then(board => {
+
+      document.getElementById(
+        "autoDeleteDays"
+      ).value =
+        board.autoDeleteDays ?? 10;
+
+      document.getElementById(
+        "settingsPopup"
+      ).style.display = "block";
+    });
+}
+
+function closeSettings() {
+
+  document.getElementById(
+    "settingsPopup"
+  ).style.display = "none";
+}
+
+function saveSettings() {
+
+  const boardName =
+    localStorage.getItem("boardName");
+
+  const boardPassword =
+    localStorage.getItem("boardPassword");
+
+  const autoDeleteDays =
+    Number(
+      document.getElementById(
+        "autoDeleteDays"
+      ).value
+    );
+
+  fetch("http://localhost:3000/settings", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      boardName,
+      boardPassword,
+      autoDeleteDays
+    })
+  })
+  .then(res => res.json())
+  .then(data => {
+
+    if (data.success) {
+      alert("Tallennettu");
+      closeSettings();
+    }
+  });
+}
+
+function getCurrentUsername() {
+  return document.getElementById("boardUsername")?.value
+    || localStorage.getItem("boardUsername");
 }
 
 document.getElementById("editMode")?.addEventListener("change", () => {

@@ -159,6 +159,21 @@ button {
   cursor: pointer;
 }
 
+.popup {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.5);
+}
+
+.popup-content {
+  background: white;
+  padding: 20px;
+  width: 300px;
+  margin: 100px auto;
+  border-radius: 10px;
+}
+
 /*
 .clear-btn {
   margin-left: auto;

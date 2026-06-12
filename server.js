@@ -1,8 +1,8 @@
 const express = require("express");
 const fs = require("fs");
 const cors = require("cors");
-
 const app = express();
+//const board = data[boardName];
 
 // 🔥 CORS ENSIN
 app.use(cors());
@@ -84,6 +84,7 @@ data[boardName] = {
   ownerPassword,
   members: [boardUsername],
   boardMessages: [],
+  autoDeleteDays: 10,
   quickButtons: [
     "Kaupassa",
     "Töissä",
@@ -113,7 +114,7 @@ app.delete("/delete/:boardName", (req, res) => {
 
   const boardName = req.params.boardName;
   console.log("hep: ", boardName);
-  const { ownerPassword } = req.body;
+  const { ownerPassword, boardUsername } = req.body;
 
   const data = JSON.parse(
     fs.readFileSync(FILE, "utf8")
@@ -127,12 +128,17 @@ app.delete("/delete/:boardName", (req, res) => {
   });
   }
 
-  // tarkista salasana
-  if (data[boardName].ownerPassword !== ownerPassword) {
-    return res.status(401).json({
-    success: false,
-    message: "Väärä salasana"
-  });
+  const board = data[req.params.boardName];
+// 🔥 TÄRKEIN TARKISTUS
+console.log("hei vaan heu: ", board);
+  if (
+  board.owner !== boardUsername ||
+  board.ownerPassword !== ownerPassword
+) {
+    return res.status(403).json({
+      success: false,
+      message: "Ei oikeuksia (ei owner)"
+    });
   }
 
   delete data[boardName];
@@ -170,6 +176,7 @@ app.post("/boardMessage", (req, res) => {
 
   // 🔥 TÄMÄ PITÄÄ OLLA ENNEN RESPONSEA
   //data[boardName].messages.push(message);
+  cleanup(data[boardName]); // 👈 aina ennen muutosta
 
   data[boardName].boardMessages.push({
   id: crypto.randomUUID(),
@@ -205,6 +212,8 @@ app.get("/board/:boardName", (req, res) => {
     });
   }
 
+  cleanup(board);
+  //saveData(data);
 
   res.json(board);
 });
@@ -329,6 +338,16 @@ function saveData(data) {
   fs.writeFileSync(FILE, JSON.stringify(data, null, 2));
 }
 
+function cleanup(board) {
+  const days = board.autoDeleteDays ?? 10;
+  const cutoff = Date.now() - days * 86400000;
+
+  board.boardMessages =
+    board.boardMessages.filter(m =>
+      new Date(m.time).getTime() > cutoff
+    );
+}
+
 app.delete("/message/:boardName/:id", (req, res) => {
   const { boardName, id } = req.params;
   const { boardPassword } = req.body;
@@ -383,6 +402,39 @@ app.post("/visit", (req, res) => {
   fs.writeFileSync(FILE, JSON.stringify(data, null, 2));
 
   res.json({ success: true });
+});
+
+app.post("/settings", (req, res) => {
+
+  const {
+    boardName,
+    boardPassword,
+    autoDeleteDays
+  } = req.body;
+
+  const data = loadData();
+
+  const board = data[boardName];
+
+  if (!board) {
+    return res.status(404).json({
+      success: false
+    });
+  }
+
+  if (board.boardPassword !== boardPassword) {
+    return res.status(401).json({
+      success: false
+    });
+  }
+
+  board.autoDeleteDays = Number(autoDeleteDays);
+
+  saveData(data);
+
+  res.json({
+    success: true
+  });
 });
 
 app.listen(3000, () => {

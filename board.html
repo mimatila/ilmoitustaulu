@@ -51,8 +51,52 @@
 </div>
 
 <div class="top-nav">
-  <button onclick="koti()">Koti</button>
-  <button onclick="logout()">Logout</button>
+
+  <button onclick="openSettings()">
+    Settings
+  </button>
+
+  <button onclick="koti()">
+    Koti
+  </button>
+
+  <button onclick="logout()">
+    Logout
+  </button>
+
+</div>
+
+<div id="settingsPopup" class="popup">
+
+  <div class="popup-content">
+
+    <h3>Asetukset</h3>
+
+    <label>
+      Poista viestit vanhempina kuin
+    </label>
+
+    <input
+      id="autoDeleteDays"
+      type="number"
+      min="1"
+      max="365"
+    >
+
+    <span>päivää</span>
+
+    <br><br>
+
+    <button onclick="saveSettings()">
+      Tallenna
+    </button>
+
+    <button onclick="closeSettings()">
+      Sulje
+    </button>
+
+  </div>
+
 </div>
 
 <script src="app.js"></script>
