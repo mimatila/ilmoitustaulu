@@ -174,6 +174,15 @@ button {
   border-radius: 10px;
 }
 
+
+.msg-row.important-msg {
+  border: 2px solid red !important;
+}
+
+.msg-row.info-msg {
+  border: 2px solid blue !important;
+}
+
 /*
 .clear-btn {
   margin-left: auto;
@@ -246,10 +255,11 @@ button {
 }
 
 .msg-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 10px;
+  margin: 6px 0;
+  padding: 8px 10px;
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
 }
 
 .trash-btn {

@@ -4,36 +4,24 @@
     "owner": "Opa",
     "ownerPassword": "2",
     "members": [
-      "Opa",
-      "Teemu"
+      "Opa"
     ],
     "boardMessages": [
       {
-        "id": "70206d0c-7962-48e2-828c-6689e9eea4eb",
-        "author": "Teemu",
-        "time": "2026-06-12T08:13:43.107Z",
-        "text": "hey"
+        "id": "8871e165-1e11-471f-a892-4cc915cc5d02",
+        "author": "Opa",
+        "time": "2026-06-18T16:22:37.332Z",
+        "text": "hey",
+        "type": "normal"
       },
       {
-        "id": "409e89de-e00e-4422-92e6-043364880e46",
+        "id": "feff0c1b-9cdd-4aad-9934-cb40842ea611",
         "author": "Opa",
-        "time": "2026-06-12T08:14:11.810Z",
-        "text": "Myöhässä"
-      },
-      {
-        "id": "3937e65b-2b1b-431a-a2e5-2886a26ddce2",
-        "author": "Opa",
-        "time": "2026-06-12T08:14:32.683Z",
-        "text": "Kuntosalilla taas"
-      },
-      {
-        "id": "ca7974ea-ddc8-4539-8d26-685ec93b3b5b",
-        "author": "Opa",
-        "time": "2026-06-12T08:31:51.114Z",
+        "time": "2026-06-18T16:22:42.351Z",
         "text": "Tauolla"
       }
     ],
-    "autoDeleteDays": 5,
+    "autoDeleteDays": 10,
     "quickButtons": [
       "Kaupassa",
       "Töissä",
@@ -44,16 +32,12 @@
       "Myöhässä",
       "Sairas",
       "Tauolla",
-      "Kuntosalilla taas"
+      "Kuntosalilla"
     ],
     "visitedUsers": [
       {
         "name": "Opa",
-        "lastSeen": 1781253033724
-      },
-      {
-        "name": "Teemu",
-        "lastSeen": 1781252019575
+        "lastSeen": 1781796889851
       }
     ]
   }

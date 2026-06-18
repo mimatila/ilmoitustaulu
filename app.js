@@ -258,10 +258,23 @@ function loadMessage(forceScroll = false) {
     });*/
 
     data.boardMessages.forEach(msg => {
+
+  console.log("TYPE:", msg.type);
   const div = document.createElement("div");
   div.className = "msg-row";
 
+ if (msg.type === "important") {
+  div.classList.add("important-msg");
+}
+
+if (msg.type === "info") {
+  div.classList.add("info-msg");
+}
+
+console.log(div.className);
+
   const text = document.createElement("span");
+
   text.innerText = formatMessage(msg);
 
   div.appendChild(text);
@@ -275,6 +288,7 @@ function loadMessage(forceScroll = false) {
   const showTrash =
     (editMode && msg.author === username) || owner;
   */
+
   const showTrash =
   editMode && (owner || msg.author === username);
 
@@ -321,11 +335,21 @@ function updateMessage() {
   const boardName = localStorage.getItem("boardName");
   const boardPassword = localStorage.getItem("boardPassword");
   const boardUsername = localStorage.getItem("boardUsername") || boardName;
+  let type="normal";
+
+
+  if (document.getElementById("importantMode").checked) {
+  type = "important";
+}
+
+  if (document.getElementById("infoMode").checked) { 
+    type="info";
+  }
 
   fetch("http://localhost:3000/boardMessage", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ boardName, boardPassword, boardMessage, boardUsername })
+    body: JSON.stringify({ boardName, boardPassword, boardMessage, boardUsername, type })
   })
   .then(res => res.json())
   .then(data => {
@@ -334,7 +358,12 @@ function updateMessage() {
 
     messageEl.value = "";
     loadMessage(true);
+
+    document.getElementById("importantMode").checked = false;
+    document.getElementById("infoMode").checked = false;
+    type="normal";
   });
+  
 }
 
 
@@ -560,7 +589,7 @@ function formatMessage(msg) {
   const todayMode = document.getElementById("todayMode")?.checked;
 
   if (todayMode && isToday) {
-    return `Tänään - ${msg.author}: ${msg.text}`;
+    return `Today - ${msg.author}: ${msg.text}`;
   }
 
   return `${date.toLocaleString()} - ${msg.author}: ${msg.text}`;
@@ -710,6 +739,22 @@ function getCurrentUsername() {
 
 document.getElementById("editMode")?.addEventListener("change", () => {
   loadMessage(false);
+});
+
+document.getElementById("importantMode")
+  .addEventListener("change", function () {
+
+    if (this.checked) {
+      document.getElementById("infoMode").checked = false;
+    }
+});
+
+document.getElementById("infoMode")
+  .addEventListener("change", function () {
+
+    if (this.checked) {
+      document.getElementById("importantMode").checked = false;
+    }
 });
 
 

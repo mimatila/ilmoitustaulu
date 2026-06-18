@@ -154,7 +154,7 @@ console.log("hei vaan heu: ", board);
 
 app.post("/boardMessage", (req, res) => {
   
-  const { boardName, boardPassword, boardMessage, boardUsername } = req.body;
+  const { boardName, boardPassword, boardMessage, boardUsername,type } = req.body;
 
   const data = JSON.parse(
     fs.readFileSync(FILE, "utf8")
@@ -182,7 +182,8 @@ app.post("/boardMessage", (req, res) => {
   id: crypto.randomUUID(),
   author: boardUsername,
   time: new Date().toISOString(),
-  text: boardMessage
+  text: boardMessage,
+  type: type
   });
 
   fs.writeFileSync(
