@@ -10,6 +10,18 @@ function sendQuick(text) {
   const boardPassword = localStorage.getItem("boardPassword");
   const boardUsername = localStorage.getItem("boardUsername") || boardName;
 
+   let type="normal";
+
+
+  if (document.getElementById("importantMode").checked) {
+    type = "important";
+  }
+
+  if (document.getElementById("infoMode").checked) { 
+    type="info";
+  }
+
+
   fetch("http://localhost:3000/boardMessage", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -17,7 +29,8 @@ function sendQuick(text) {
       boardName,
       boardPassword,
       boardMessage: text,
-      boardUsername
+      boardUsername,
+      type
     })
   })
   .then(res => res.json())
@@ -28,6 +41,10 @@ function sendQuick(text) {
   if (input) input.value = "";   // 👈 TÄRKEÄ
 
   loadMessage(true);
+  
+  document.getElementById("importantMode").checked = false;
+  document.getElementById("infoMode").checked = false;
+  type="normal";
 });
 }
 

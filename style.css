@@ -61,17 +61,7 @@ button {
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
-#boardMessagesDiv div {
-  margin: 6px 0;
-  padding: 8px 10px;
-  white-space: normal;
-  overflow-wrap: break-word;
-  background: #ffffff;
-  border-radius: 10px;
-  border: 1px solid #e0e0e0;
-  max-width: 90%;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
-}
+
 
 .input-row {
   display: flex;
@@ -176,11 +166,13 @@ button {
 
 
 .msg-row.important-msg {
-  border: 2px solid red !important;
+  border-color: red;
+  background: #ffeaea;
 }
 
 .msg-row.info-msg {
-  border: 2px solid blue !important;
+  border-color: blue;
+  background: #eaf2ff;
 }
 
 /*
@@ -254,11 +246,20 @@ button {
   box-sizing: border-box;
 }
 
+/*
 .msg-row {
   margin: 6px 0;
   padding: 8px 10px;
   background: #ffffff;
   border: 1px solid #e0e0e0;
+  border-radius: 10px;
+}*/
+
+.msg-row {
+  margin: 6px 0;
+  padding: 8px 10px;
+  background: #fff9d6;
+  border: 1px solid #e6dca0;
   border-radius: 10px;
 }
 

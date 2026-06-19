@@ -19,6 +19,150 @@
         "author": "Opa",
         "time": "2026-06-18T16:22:42.351Z",
         "text": "Tauolla"
+      },
+      {
+        "id": "ee1abf8b-9420-46b2-8910-3778916763ee",
+        "author": "Opa",
+        "time": "2026-06-19T14:38:31.211Z",
+        "text": "hey",
+        "type": "important"
+      },
+      {
+        "id": "e6e508de-9c6c-419a-b292-cad1a08746ff",
+        "author": "Opa",
+        "time": "2026-06-19T14:39:49.941Z",
+        "text": "hep",
+        "type": "important"
+      },
+      {
+        "id": "5c4653ab-f42b-455b-809a-599ec4576a11",
+        "author": "Opa",
+        "time": "2026-06-19T14:40:16.842Z",
+        "text": "jes",
+        "type": "info"
+      },
+      {
+        "id": "163a1b7e-74f3-4081-95bc-6e5212db4dc3",
+        "author": "Opa",
+        "time": "2026-06-19T14:40:25.408Z",
+        "text": "mitä kuuluu",
+        "type": "normal"
+      },
+      {
+        "id": "cbf23ad4-dffb-45d3-bcc1-300f00cb7a4d",
+        "author": "Opa",
+        "time": "2026-06-19T14:43:27.139Z",
+        "text": "Nukkumassa"
+      },
+      {
+        "id": "737c9534-588a-489b-9f82-ccfdec2b1a43",
+        "author": "Opa",
+        "time": "2026-06-19T14:44:09.242Z",
+        "text": "Kotona"
+      },
+      {
+        "id": "a87c28fc-4618-4c6b-a9d5-0491f4b50209",
+        "author": "Opa",
+        "time": "2026-06-19T14:44:13.289Z",
+        "text": "Myöhässä"
+      },
+      {
+        "id": "f9801302-f8e8-4f91-a009-28efb6dc158e",
+        "author": "Opa",
+        "time": "2026-06-19T14:50:00.952Z",
+        "text": "Tauolla",
+        "type": "important"
+      },
+      {
+        "id": "2dfc2f91-fce9-4387-b853-bee4e410bae8",
+        "author": "Opa",
+        "time": "2026-06-19T14:51:41.818Z",
+        "text": "Tauolla",
+        "type": "info"
+      },
+      {
+        "id": "62b2f4a9-4e5a-4e2b-b7ae-75ec77edc24c",
+        "author": "Opa",
+        "time": "2026-06-19T14:51:45.491Z",
+        "text": "Sairas",
+        "type": "normal"
+      },
+      {
+        "id": "0bc9f01c-5425-46dc-a7b5-46be2e45af2f",
+        "author": "Opa",
+        "time": "2026-06-19T15:04:48.485Z",
+        "text": "he",
+        "type": "normal"
+      },
+      {
+        "id": "6bd7a80d-1676-41ab-b089-f08a37fc6b5d",
+        "author": "Opa",
+        "time": "2026-06-19T15:05:11.016Z",
+        "text": "Tauolla",
+        "type": "normal"
+      },
+      {
+        "id": "c736c276-e98a-4fd8-a913-45d71705ff89",
+        "author": "Opa",
+        "time": "2026-06-19T15:05:47.310Z",
+        "text": "hey",
+        "type": "important"
+      },
+      {
+        "id": "1801d0e2-c4c1-4d22-bcfc-1d0ce82449e7",
+        "author": "Opa",
+        "time": "2026-06-19T15:06:32.749Z",
+        "text": "hey",
+        "type": "normal"
+      },
+      {
+        "id": "1e08bd48-f7c5-4982-8b67-369f427b0609",
+        "author": "Opa",
+        "time": "2026-06-19T15:06:41.315Z",
+        "text": "Tauolla",
+        "type": "info"
+      },
+      {
+        "id": "7f158350-9925-47e1-857b-8f3f1fa45bff",
+        "author": "Opa",
+        "time": "2026-06-19T15:06:47.046Z",
+        "text": "Sairas",
+        "type": "important"
+      },
+      {
+        "id": "997dbf6e-df47-4241-8e17-218a346dbc98",
+        "author": "Opa",
+        "time": "2026-06-19T15:06:49.936Z",
+        "text": "hey",
+        "type": "normal"
+      },
+      {
+        "id": "18b1dd85-122f-4a4d-bf25-d6cbc5fd0ee4",
+        "author": "Opa",
+        "time": "2026-06-19T15:09:07.204Z",
+        "text": "hey",
+        "type": "normal"
+      },
+      {
+        "id": "abfd53b1-06fd-4548-8cae-1c52523230cb",
+        "author": "Opa",
+        "time": "2026-06-19T15:11:15.067Z",
+        "text": "terve",
+        "type": "normal"
+      },
+      {
+        "id": "379b7c4e-5330-477e-8a5a-b34931b78ccb",
+        "author": "Opa",
+        "time": "2026-06-19T15:11:51.075Z",
+        "text": "miten teillä menee, mä olen täällä uimahallilla puntilla ja uimassa!",
+        "type": "normal"
+      },
+      {
+        "id": "56a384e3-5a27-4ebb-9ea5-27c4adb59cb8",
+        "author": "Opa",
+        "time": "2026-06-19T15:17:08.370Z",
+        "text": "hello",
+        "type": "important"
       }
     ],
     "autoDeleteDays": 10,
