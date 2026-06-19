@@ -41,7 +41,7 @@ function sendQuick(text) {
   if (input) input.value = "";   // 👈 TÄRKEÄ
 
   loadMessage(true);
-  
+
   document.getElementById("importantMode").checked = false;
   document.getElementById("infoMode").checked = false;
   type="normal";
@@ -274,37 +274,66 @@ function loadMessage(forceScroll = false) {
     box.appendChild(div);
     });*/
 
-    data.boardMessages.forEach(msg => {
+    const todayMode = document.getElementById("todayMode")?.checked;
+
+let messages = data.boardMessages;
+
+if (todayMode) {
+  const now = new Date();
+
+  messages = messages.filter(msg => {
+    const d = new Date(msg.time);
+
+    return (
+      d.getFullYear() === now.getFullYear() &&
+      d.getMonth() === now.getMonth() &&
+      d.getDate() === now.getDate()
+    );
+  });
+}
+
+messages.forEach(msg => {
+
+    /*data.boardMessages.forEach(msg => {*/
 
   console.log("TYPE:", msg.type);
   const div = document.createElement("div");
   div.className = "msg-row";
 
- if (msg.type === "important") {
-  div.classList.add("important-msg");
-}
+  if (msg.type === "important") {
+    div.classList.add("important-msg");
+  }
 
-if (msg.type === "info") {
-  div.classList.add("info-msg");
-}
+  if (msg.type === "info") {
+    div.classList.add("info-msg");
+  }
 
-console.log(div.className);
-
+  /*
   const text = document.createElement("span");
-
   text.innerText = formatMessage(msg);
+  div.appendChild(text);*/
 
-  div.appendChild(text);
+  const wrapper = document.createElement("div");
+wrapper.className = "msg-content";
+
+const text = document.createElement("div");
+text.className = "msg-text";
+text.innerText = `${msg.author}: ${msg.text}`;
+
+const time = document.createElement("div");
+time.className = "msg-time";
+time.innerText = new Date(msg.time).toLocaleString();
+
+wrapper.appendChild(text);
+wrapper.appendChild(time);
+
+div.appendChild(wrapper);
+
 
   const editMode = document.getElementById("editMode")?.checked;
   const username = localStorage.getItem("boardUsername");
   //const owner = localStorage.getItem("boardUsername") === boardName; // jos käytät owner-logiikkaa erikseen
   const owner = data.owner === username;
-
-  /*
-  const showTrash =
-    (editMode && msg.author === username) || owner;
-  */
 
   const showTrash =
   editMode && (owner || msg.author === username);
@@ -315,8 +344,6 @@ console.log(div.className);
     trash.className = "trash-btn";
 
     trash.onclick = () => deleteMessage(msg.id);
-
-    //console.log("DELETE CLICK", msg.id);
 
     div.appendChild(trash);
   }
@@ -590,10 +617,14 @@ function handleSaveClick() {
 
     editingIndex = null;
 
+    document.getElementById("editMode").checked = false;
+    document.getElementById("editMode").dispatchEvent(new Event("change"));
+
     loadMessage(true);
   });
 }
 
+/*
 function formatMessage(msg) {
   const date = new Date(msg.time);
   const now = new Date();
@@ -610,7 +641,7 @@ function formatMessage(msg) {
   }
 
   return `${date.toLocaleString()} - ${msg.author}: ${msg.text}`;
-}
+}*/
 
 function loadBoardCount() {
 
@@ -772,6 +803,21 @@ document.getElementById("infoMode")
     if (this.checked) {
       document.getElementById("importantMode").checked = false;
     }
+});
+
+document.getElementById("editMode")?.addEventListener("change", (e) => {
+  const saveBtn = document.getElementById("saveBtn");
+
+  if (!saveBtn) return;
+
+  if (e.target.checked) {
+    saveBtn.style.display = "inline-block";
+  } else {
+    saveBtn.style.display = "none";
+    editingIndex = null; // optional: reset edit state
+  }
+
+  loadMessage(false); // jo sulla on tämä idea käytössä
 });
 
 

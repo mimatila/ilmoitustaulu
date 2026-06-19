@@ -255,6 +255,27 @@ button {
   border-radius: 10px;
 }*/
 
+.msg-content {
+  position: relative;
+  padding: 6px 0 14px 0; /* tilaa alareunaan ajalle */
+}
+
+.msg-text {
+  font-size: 0.9rem;
+  line-height: 1.3;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+.msg-time {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  font-size: 0.7rem;
+  opacity: 0.4;
+  white-space: nowrap;
+}
+
 .msg-row {
   margin: 6px 0;
   padding: 8px 10px;

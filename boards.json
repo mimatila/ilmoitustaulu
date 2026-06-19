@@ -4,7 +4,8 @@
     "owner": "Opa",
     "ownerPassword": "2",
     "members": [
-      "Opa"
+      "Opa",
+      "Teppo"
     ],
     "boardMessages": [
       {
@@ -163,6 +164,153 @@
         "time": "2026-06-19T15:17:08.370Z",
         "text": "hello",
         "type": "important"
+      },
+      {
+        "id": "36c06861-ec94-4b52-a4e6-c29fe7024a4a",
+        "author": "Opa",
+        "time": "2026-06-19T15:21:17.047Z",
+        "text": "Tulossa",
+        "type": "normal"
+      },
+      {
+        "id": "6838f52a-33d2-4f15-81f4-3ccacda40c05",
+        "author": "Opa",
+        "time": "2026-06-19T15:21:39.298Z",
+        "text": "Tulossa ens viikolla",
+        "type": "normal"
+      },
+      {
+        "id": "ec750848-848b-48bf-ac29-710e6851c8ea",
+        "author": "Opa",
+        "time": "2026-06-19T15:32:23.623Z",
+        "text": "Tauolla taas",
+        "type": "normal"
+      },
+      {
+        "id": "2c806871-a82e-4e8f-9b5e-01d95deb7e04",
+        "author": "Opa",
+        "time": "2026-06-19T15:33:23.328Z",
+        "text": "Tauolla taas 10min",
+        "type": "normal"
+      },
+      {
+        "id": "a959ca17-46fc-44b3-831f-0a865761f9da",
+        "author": "Opa",
+        "time": "2026-06-19T15:33:58.637Z",
+        "text": "Sairas",
+        "type": "important"
+      },
+      {
+        "id": "80817b60-86cc-4b78-8180-3418760b27df",
+        "author": "Opa",
+        "time": "2026-06-19T15:48:07.066Z",
+        "text": "hey",
+        "type": "normal"
+      },
+      {
+        "id": "37d8e28f-f5c2-4135-a142-7500d9301b65",
+        "author": "Opa",
+        "time": "2026-06-19T15:49:51.235Z",
+        "text": "hey",
+        "type": "normal"
+      },
+      {
+        "id": "12e9d5ad-e3f3-454d-b702-cf0a51a21b15",
+        "author": "Opa",
+        "time": "2026-06-19T15:53:31.959Z",
+        "text": "mitä kuuluu sinne tänään",
+        "type": "normal"
+      },
+      {
+        "id": "84e221d2-de62-4b0d-aca8-68c4e6b03a1e",
+        "author": "Opa",
+        "time": "2026-06-19T16:04:40.114Z",
+        "text": "miten menee siellä nykyään kun testaan tätä softaa",
+        "type": "normal"
+      },
+      {
+        "id": "fbcf29de-cfa5-4921-8192-2505bcec95b2",
+        "author": "Opa",
+        "time": "2026-06-19T16:06:40.856Z",
+        "text": "toimiiko tää paremmin nyt vai ei toimi. katsotaan",
+        "type": "normal"
+      },
+      {
+        "id": "87bb5347-4138-415c-be02-587eace8c571",
+        "author": "Opa",
+        "time": "2026-06-19T16:10:53.794Z",
+        "text": "mitä kuuluu tänään miten menee ja niin edelleen kuijala",
+        "type": "normal"
+      },
+      {
+        "id": "4580fbc9-b601-418d-89bb-07fb866eaf2f",
+        "author": "Opa",
+        "time": "2026-06-19T16:11:07.091Z",
+        "text": "Tauolla taas 10min",
+        "type": "normal"
+      },
+      {
+        "id": "43f2bde6-9524-47b5-bafc-139668c7ffa0",
+        "author": "Teppo",
+        "time": "2026-06-19T16:14:16.776Z",
+        "text": "hey",
+        "type": "normal"
+      },
+      {
+        "id": "89f32e26-eac1-4dcf-a2fb-3f3ac3481760",
+        "author": "Teppo",
+        "time": "2026-06-19T16:15:58.152Z",
+        "text": "hy",
+        "type": "normal"
+      },
+      {
+        "id": "40abc17e-a38d-4b5b-87ef-8534943c7619",
+        "author": "Teppo",
+        "time": "2026-06-19T16:16:05.556Z",
+        "text": "Tauolla taas 10min",
+        "type": "normal"
+      },
+      {
+        "id": "94029e18-f20a-40c2-8fe1-bc33de09b8d2",
+        "author": "Teppo",
+        "time": "2026-06-19T16:18:03.105Z",
+        "text": "Tauolla taas 10min",
+        "type": "important"
+      },
+      {
+        "id": "d05aafb8-9f78-40c8-8730-82bdcac8d6d9",
+        "author": "Teppo",
+        "time": "2026-06-19T16:23:01.701Z",
+        "text": "Tauolla taas 10min vielä",
+        "type": "normal"
+      },
+      {
+        "id": "9cf90095-7ca8-4808-94f7-4f5031227933",
+        "author": "Teppo",
+        "time": "2026-06-19T16:27:08.187Z",
+        "text": "hello",
+        "type": "normal"
+      },
+      {
+        "id": "4b6ca052-6c46-424d-b2fb-ee11de388880",
+        "author": "Teppo",
+        "time": "2026-06-19T16:27:11.354Z",
+        "text": "Sairas",
+        "type": "normal"
+      },
+      {
+        "id": "a1bed30e-c2b7-49ef-a33e-bb625f792f13",
+        "author": "Teppo",
+        "time": "2026-06-19T16:27:16.580Z",
+        "text": "hey",
+        "type": "important"
+      },
+      {
+        "id": "cffaf4f8-ab1d-45af-9209-8c6a5f2bb507",
+        "author": "Teppo",
+        "time": "2026-06-19T16:29:37.339Z",
+        "text": "hep",
+        "type": "normal"
       }
     ],
     "autoDeleteDays": 10,
@@ -172,13 +320,17 @@
       "Kotona",
       "Nukkumassa",
       "Syömässä",
-      "Tulossa",
-      "Myöhässä",
+      "Tulossa ens viikolla",
+      "Myöhässä taas",
       "Sairas",
-      "Tauolla",
+      "Tauolla taas 10min vielä",
       "Kuntosalilla"
     ],
     "visitedUsers": [
+      {
+        "name": "Teppo",
+        "lastSeen": 1781885650541
+      },
       {
         "name": "Opa",
         "lastSeen": 1781796889851
