@@ -55,15 +55,28 @@ function renderQuickSelect(buttons) {
 
   const empty = document.createElement("option");
   empty.value = "";
-  empty.innerText = "Valitse tila...";
+  empty.innerText = "Pikavalinta viestit...";
   select.appendChild(empty);
 
+  /*
   buttons.forEach((text, index) => {
     const opt = document.createElement("option");
     opt.value = String(index);
     opt.innerText = text;
     select.appendChild(opt);
-  });
+  });*/
+
+  buttons.forEach((text, index) => {
+  const opt = document.createElement("option");
+  opt.value = String(index);
+
+  opt.innerText =
+    text.length > 64
+      ? text.substring(0, 64) + "..."
+      : text;
+
+  select.appendChild(opt);
+});
 
   select.selectedIndex = 0;
 }
@@ -267,13 +280,6 @@ function loadMessage(forceScroll = false) {
 
     console.log("MESSAGES:", data.boardMessages);
 
-    /*
-    (data.boardMessages || []).forEach(msg => {
-    const div = document.createElement("div");
-    div.innerText = formatMessage(msg);
-    box.appendChild(div);
-    });*/
-
     const todayMode = document.getElementById("todayMode")?.checked;
 
 let messages = data.boardMessages;
@@ -322,7 +328,25 @@ text.innerText = `${msg.author}: ${msg.text}`;
 
 const time = document.createElement("div");
 time.className = "msg-time";
-time.innerText = new Date(msg.time).toLocaleString();
+
+const date = new Date(msg.time);
+
+if (todayMode) {
+  time.innerText = date.toLocaleTimeString("fi-FI", {
+  hour: "2-digit",
+  minute: "2-digit",
+  hour12: false
+});
+} else {
+  time.innerText = date.toLocaleString("fi-FI", {
+  day: "2-digit",
+  month: "2-digit",
+  year: "numeric",
+  hour: "2-digit",
+  minute: "2-digit",
+  hour12: false
+});
+}
 
 wrapper.appendChild(text);
 wrapper.appendChild(time);
@@ -623,25 +647,6 @@ function handleSaveClick() {
     loadMessage(true);
   });
 }
-
-/*
-function formatMessage(msg) {
-  const date = new Date(msg.time);
-  const now = new Date();
-
-  const isToday =
-    date.getDate() === now.getDate() &&
-    date.getMonth() === now.getMonth() &&
-    date.getFullYear() === now.getFullYear();
-
-  const todayMode = document.getElementById("todayMode")?.checked;
-
-  if (todayMode && isToday) {
-    return `Today - ${msg.author}: ${msg.text}`;
-  }
-
-  return `${date.toLocaleString()} - ${msg.author}: ${msg.text}`;
-}*/
 
 function loadBoardCount() {
 

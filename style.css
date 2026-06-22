@@ -261,17 +261,21 @@ button {
 }
 
 .msg-text {
-  font-size: 0.9rem;
-  line-height: 1.3;
+  font-size: 0.8rem;
+  line-height: 1.0;
   white-space: normal;
   overflow-wrap: anywhere;
+}
+
+#quickSelect {
+  max-width: 370px;
 }
 
 .msg-time {
   position: absolute;
   right: 0;
   bottom: 0;
-  font-size: 0.7rem;
+  font-size: 0.6rem;
   opacity: 0.4;
   white-space: nowrap;
 }
