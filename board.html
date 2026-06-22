@@ -62,18 +62,33 @@
 
 <div class="top-nav">
 
+  <button onclick="showMembers()">
+    Members
+  </button>
+
   <button onclick="openSettings()">
     Settings
   </button>
 
   <button onclick="koti()">
-    Koti
+    Home
   </button>
 
   <button onclick="logout()">
     Logout
   </button>
 
+</div>
+
+<div id="membersPopup" class="popup">
+  <div class="popup-content">
+    <h3>Members:</h3>
+
+    <div id="membersList"></div>
+
+    <br>
+    <button onclick="closeMembers()">Sulje</button>
+  </div>
 </div>
 
 <div id="settingsPopup" class="popup">

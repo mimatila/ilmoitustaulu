@@ -149,11 +149,28 @@ button {
   cursor: pointer;
 }
 
+/*
 .popup {
   display: none;
   position: fixed;
   inset: 0;
   background: rgba(0,0,0,.5);
+}*/
+
+.msg-author {
+  font-weight: bold;
+  margin-right: 4px;
+}
+
+.popup {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.5); /* 🔥 tämä puuttui */
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  cursor: default;
 }
 
 .popup-content {
@@ -162,6 +179,13 @@ button {
   width: 300px;
   margin: 100px auto;
   border-radius: 10px;
+}
+
+#settingsPopup .popup-content {
+  background: #2b6cb0;
+  color: white;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
 }
 
 
@@ -198,6 +222,7 @@ button {
 
 #boardNewMsg {
   flex: 1;
+  font-size: 0.9rem;
 }
 
 #quickButtons {
@@ -261,8 +286,8 @@ button {
 }
 
 .msg-text {
-  font-size: 0.8rem;
-  line-height: 1.0;
+  font-size: 0.9rem;
+  line-height: 1.1;
   white-space: normal;
   overflow-wrap: anywhere;
 }
@@ -303,5 +328,23 @@ button {
   border-bottom: 1px solid #ddd;
   margin-bottom: 8px;
   /*border-bottom: none;*/ 
+}
+
+.member-row {
+  display: flex;
+  align-items: center;
+  padding: 3px 0;
+  /*border-bottom: 1px solid rgba(255,255,255,0.15);*/
+}
+
+.member-name {
+  flex: 1;
+}
+
+#membersPopup .popup-content {
+  background: #2b6cb0;
+color: white;
+border-radius: 10px;
+box-shadow: 0 8px 20px rgba(0,0,0,0.3);
 }
 

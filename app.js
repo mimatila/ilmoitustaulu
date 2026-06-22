@@ -128,6 +128,9 @@ document.addEventListener("DOMContentLoaded", () => {
 // =====================
 
 function initApp() {
+
+  console.log("INITAPP CALLED");
+  console.trace();
   bindUI();  
   autoLoginFill();
   if (document.getElementById("boardMessagesDiv")) {
@@ -208,6 +211,9 @@ function autoLoginFill() {
 
 
 function initBoard() {
+
+  console.log("INITBOARD CALLED");
+  console.trace();
 
 console.log("BOARD INIT ONCE");
   const boardName = getBoardName();
@@ -319,12 +325,27 @@ messages.forEach(msg => {
   text.innerText = formatMessage(msg);
   div.appendChild(text);*/
 
+  
   const wrapper = document.createElement("div");
-wrapper.className = "msg-content";
-
-const text = document.createElement("div");
+  wrapper.className = "msg-content";
+/*
+  const text = document.createElement("div");
+  text.className = "msg-text";
+  text.innerText = `${msg.author}: ${msg.text}`;
+*/
+  const text = document.createElement("div");
 text.className = "msg-text";
-text.innerText = `${msg.author}: ${msg.text}`;
+
+const author = document.createElement("span");
+author.className = "msg-author";
+author.innerText = `${msg.author}: `;
+
+const body = document.createElement("span");
+body.innerText = msg.text;
+
+text.appendChild(author);
+text.appendChild(body);
+
 
 const time = document.createElement("div");
 time.className = "msg-time";
@@ -723,6 +744,8 @@ function updateQuickUI(data) {
 }
 
 function openSettings() {
+  console.log("OPEN SETTINGS TRIGGERED BY CLICK");
+  console.trace();
 
   const boardName =
     localStorage.getItem("boardName");
@@ -790,10 +813,6 @@ function getCurrentUsername() {
     || localStorage.getItem("boardUsername");
 }
 
-document.getElementById("editMode")?.addEventListener("change", () => {
-  loadMessage(false);
-});
-
 document.getElementById("importantMode")
   .addEventListener("change", function () {
 
@@ -823,6 +842,48 @@ document.getElementById("editMode")?.addEventListener("change", (e) => {
   }
 
   loadMessage(false); // jo sulla on tämä idea käytössä
+});
+
+document.getElementById("membersPopup").addEventListener("click", (e) => {
+  if (e.target.id === "membersPopup") closeMembers();
+});
+
+document.getElementById("settingsPopup").addEventListener("click", (e) => {
+  if (e.target.id === "settingsPopup") closeSettings();
+});
+
+function showMembers() {
+   console.log("SHOW MEMBERS TRIGGERED BY CLICK");
+  console.trace();
+  const boardName = localStorage.getItem("boardName");
+
+  fetch(`http://localhost:3000/board/${boardName}`)
+    .then(res => res.json())
+    .then(board => {
+
+      const el = document.getElementById("membersList");
+      const popup = document.getElementById("membersPopup");
+
+      if (!el || !popup) return;
+
+      const members = board.members || [];
+
+      el.innerHTML = members.map(m => `
+  <div class="member-row">
+    <div class="member-name">${m}</div>
+  </div>
+`).join("");
+
+      popup.style.display = "block";
+    });
+}
+
+function closeMembers() {
+  document.getElementById("membersPopup").style.display = "none";
+}
+
+document.addEventListener("click", (e) => {
+  console.log("CLICK:", e.target);
 });
 
 
