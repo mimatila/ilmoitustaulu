@@ -6,15 +6,18 @@
 </head>
 <body>
 
-<div id="boardCount">Tauluja: ...</div>
+<div id="boardCount">Boards: ...</div>
 <div class="login-box">
-  <h2>Ilmoitustaulu Login</h2>
-  <input id="boardName" placeholder="Taulun nimi">
-  <input id="boardPassword" type="password" placeholder="Salasana">
-  <input id="boardUsername" placeholder="Käyttäjänimi">
-  <button onclick="loginBoard()">Ilmoitustaululle</button>
-  <button onclick="createBoard()">Luo Uusi</button>
-  <button onclick="deleteBoard()">Poista</button>
+  <h2>Board Login</h2>
+  <label>Board Name:</label>
+  <input id="boardName">
+  <label>Board Password:</label>
+  <input id="boardPassword" type="password">
+   <label>Username”:</label>
+  <input id="boardUsername">
+  <button onclick="loginBoard()">Open Board</button>
+  <button onclick="createBoard()">Create Board</button>
+  <button onclick="deleteBoard()">Delete Board</button>
 </div>
 
 <script src="app.js"></script>

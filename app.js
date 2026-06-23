@@ -55,7 +55,7 @@ function renderQuickSelect(buttons) {
 
   const empty = document.createElement("option");
   empty.value = "";
-  empty.innerText = "Pikavalinta viestit...";
+  empty.innerText = "Quick messages...";
   select.appendChild(empty);
 
   /*
@@ -679,10 +679,10 @@ function loadBoardCount() {
   fetch("http://localhost:3000/boards/count")
     .then(res => res.json())
     .then(data => {
-      el.innerText = `Tauluja: ${data.count ?? 0}`;
+      el.innerText = `Boards: ${data.count ?? 0}`;
     })
     .catch(() => {
-      el.innerText = "Tauluja ei saatu";
+      el.innerText = "Cannot get Boards";
     });
 }
 
@@ -713,7 +713,7 @@ function renderVisitedUsers(users) {
   .sort((a, b) => b.lastSeen - a.lastSeen)
   .slice(0, 5);
 
-  el.innerText = "🟢 Viimeksi paikalla: " +
+  el.innerText = "🟢 Last visited: " +
   sorted.map(u => u.name).join(", ");
 }
 

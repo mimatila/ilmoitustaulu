@@ -425,7 +425,7 @@
     "visitedUsers": [
       {
         "name": "Opa",
-        "lastSeen": 1782162449294
+        "lastSeen": 1782247775344
       },
       {
         "name": "Ilmari",
@@ -434,6 +434,62 @@
       {
         "name": "Teppo",
         "lastSeen": 1781885650541
+      }
+    ]
+  },
+  "Jari Kurri": {
+    "boardPassword": "1",
+    "owner": "Jartsa",
+    "ownerPassword": "2",
+    "members": [
+      "Jartsa"
+    ],
+    "boardMessages": [],
+    "autoDeleteDays": 10,
+    "quickButtons": [
+      "Kaupassa",
+      "Töissä",
+      "Kotona",
+      "Nukkumassa",
+      "Syömässä",
+      "Tulossa",
+      "Myöhässä",
+      "Sairas",
+      "Tauolla",
+      "Kuntosalilla"
+    ],
+    "visitedUsers": [
+      {
+        "name": "Jartsa",
+        "lastSeen": 1782249176175
+      }
+    ]
+  },
+  "Kurrit": {
+    "boardPassword": "1",
+    "owner": "Jartsa",
+    "ownerPassword": "3",
+    "members": [
+      "Jartsa"
+    ],
+    "boardMessages": [],
+    "autoDeleteDays": 10,
+    "quickButtons": [
+      "Kaupassa",
+      "Töissä",
+      "Kotona",
+      "Nukkumassa",
+      "Syömässä",
+      "Tulossa",
+      "Myöhässä",
+      "Sairas",
+      "Tauolla",
+      "Kuntosalilla"
+    ],
+    "visitedUsers": [
+      {
+        "name": "Jartsa",
+        "lastSeen": 1782249243957
       }
     ]
   }
