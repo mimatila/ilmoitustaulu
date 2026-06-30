@@ -23,16 +23,6 @@
     <input type="checkbox" id="todayMode">
     Today
   </label>
-
-  <label>
-    <input type="checkbox" id="importantMode">
-    Important
-  </label>
-
-  <label>
-    <input type="checkbox" id="infoMode">
-    Info
-  </label>
 </div>
 
   <button class="clear-btn" onclick="clearTable()">Clear</button>
@@ -44,8 +34,23 @@
   <div id="boardMessagesDiv"></div>
 </div>
 
+ <div class="message-options">
+
+  <label>
+    <input type="checkbox" id="importantMode">
+    Important
+  </label>
+
+  <label>
+    <input type="checkbox" id="infoMode">
+    Info
+  </label>
+
+</div>
+
 <!-- viesti -->
 <div class="input-row">
+  
   <input id="boardNewMsg" placeholder="Kirjoita viesti">
   <button onclick="updateMessage()">Send</button>
 </div>

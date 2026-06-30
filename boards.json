@@ -470,9 +470,60 @@
     "owner": "Jartsa",
     "ownerPassword": "3",
     "members": [
-      "Jartsa"
+      "Jartsa",
+      "Mika"
     ],
-    "boardMessages": [],
+    "boardMessages": [
+      {
+        "id": "59ae01dc-79dc-401a-99fa-f757a4a59b16",
+        "author": "Jartsa",
+        "time": "2026-06-30T16:15:31.148Z",
+        "text": "heyppa",
+        "type": "normal"
+      },
+      {
+        "id": "32968352-a5d7-4f00-ac81-ee4d1224ee5c",
+        "author": "Jartsa",
+        "time": "2026-06-30T16:17:45.802Z",
+        "text": "hey",
+        "type": "important"
+      },
+      {
+        "id": "180c1adc-4992-4148-abd9-cc4eb3327fd8",
+        "author": "Jartsa",
+        "time": "2026-06-30T16:17:49.744Z",
+        "text": "mitä",
+        "type": "normal"
+      },
+      {
+        "id": "fa691778-0242-4590-a3b7-f38c986c6067",
+        "author": "Jartsa",
+        "time": "2026-06-30T16:18:35.223Z",
+        "text": "Tauolla",
+        "type": "normal"
+      },
+      {
+        "id": "5e35634c-439b-499f-bfaf-29fd3db6b211",
+        "author": "Jartsa",
+        "time": "2026-06-30T16:18:39.090Z",
+        "text": "Nukkumassa",
+        "type": "normal"
+      },
+      {
+        "id": "de8ad833-eb7e-4dd7-9905-bca8ae33f4d3",
+        "author": "Mika",
+        "time": "2026-06-30T16:19:19.474Z",
+        "text": "hep",
+        "type": "normal"
+      },
+      {
+        "id": "e21cb698-ce73-4b7d-adb2-97f8846f2a18",
+        "author": "Mika",
+        "time": "2026-06-30T16:34:16.104Z",
+        "text": "hep",
+        "type": "important"
+      }
+    ],
     "autoDeleteDays": 10,
     "quickButtons": [
       "Kaupassa",
@@ -488,8 +539,12 @@
     ],
     "visitedUsers": [
       {
+        "name": "Mika",
+        "lastSeen": 1782836354616
+      },
+      {
         "name": "Jartsa",
-        "lastSeen": 1782249243957
+        "lastSeen": 1782836124998
       }
     ]
   }
