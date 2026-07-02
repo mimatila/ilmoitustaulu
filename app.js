@@ -540,7 +540,8 @@ function createBoard() {
 
 function deleteBoard() {
 
-  const boardName = localStorage.getItem("boardName");
+  //const boardName = localStorage.getItem("boardName");
+  const boardName = document.getElementById("boardName").value.trim();
 
   const boardUsername = getCurrentUsername();
 
@@ -880,6 +881,42 @@ function showMembers() {
 
 function closeMembers() {
   document.getElementById("membersPopup").style.display = "none";
+}
+
+function openJoinBoard() {
+
+  document.getElementById("joinBoardPopup").style.display = "flex";
+
+}
+
+function closeJoinBoard() {
+
+  document.getElementById("joinBoardPopup").style.display = "none";
+
+}
+
+function sendJoinRequest() {
+
+  const boardName = document.getElementById("joinBoardName").value;
+  const username = document.getElementById("joinUsername").value;
+  const email = document.getElementById("joinEmail").value;
+
+  console.log(boardName, username, email);
+
+ 
+
+  fetch("http://localhost:3000/joinRequest", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({
+    boardName,
+    username,
+    email
+  })
+});
+
 }
 
 document.addEventListener("click", (e) => {

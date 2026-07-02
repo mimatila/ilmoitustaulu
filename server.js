@@ -84,6 +84,7 @@ data[boardName] = {
   ownerPassword,
   members: [boardUsername],
   boardMessages: [],
+  pendingRequests: [],
   autoDeleteDays: 10,
   quickButtons: [
     "Kaupassa",
@@ -436,6 +437,54 @@ app.post("/settings", (req, res) => {
   res.json({
     success: true
   });
+});
+
+app.post("/joinRequest", (req, res) => {
+
+  const { boardName, username, email } = req.body;
+
+  const data = loadData();
+
+  const board = data[boardName];
+
+  if (!board) {
+    return res.status(404).json({
+      success: false,
+      message: "Board not found"
+    });
+  }
+
+  if (!board.pendingRequests) {
+    board.pendingRequests = [];
+  }
+
+  // 👇 Tarkista onko jo olemassa
+  const exists = board.pendingRequests.some(
+    r => r.username === username || r.email === email
+  );
+
+  if (exists) {
+    return res.json({
+      success: false,
+      message: "Request already pending"
+    });
+  }
+
+  // 👇 Lisätään uusi pyyntö
+  board.pendingRequests.push({
+  id: crypto.randomUUID(),
+  username,
+  email,
+  time: new Date().toISOString()
+});
+
+  saveData(data);
+
+  res.json({
+    success: true,
+    message: "Request sent"
+  });
+
 });
 
 app.listen(3000, () => {

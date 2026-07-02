@@ -6,6 +6,14 @@
 </head>
 <body>
 
+<div class="top-nav">
+
+  <button onclick="openJoinBoard()">
+    Join Board
+  </button>
+
+</div>
+
 <div id="boardCount">Boards: ...</div>
 <div class="login-box">
   <h2>Board Login</h2>
@@ -18,6 +26,35 @@
   <button onclick="loginBoard()">Open Board</button>
   <button onclick="createBoard()">Create Board</button>
   <button onclick="deleteBoard()">Delete Board</button>
+</div>
+
+<div id="joinBoardPopup" class="popup">
+
+  <div class="popup-content">
+
+    <h3>Join Board</h3>
+
+    <label>Board Name</label>
+    <input id="joinBoardName">
+
+    <label>Username</label>
+    <input id="joinUsername">
+
+    <label>Email</label>
+    <input id="joinEmail">
+
+    <br>
+
+    <button onclick="sendJoinRequest()">
+      Send Request
+    </button>
+
+    <button onclick="closeJoinBoard()">
+      Cancel
+    </button>
+
+  </div>
+
 </div>
 
 <script src="app.js"></script>

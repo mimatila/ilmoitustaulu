@@ -4,447 +4,54 @@
     "owner": "Opa",
     "ownerPassword": "2",
     "members": [
-      "Opa",
-      "Teppo",
-      "Ilmari"
+      "Opa"
     ],
     "boardMessages": [
       {
-        "id": "fbec5210-9d9e-4f3c-8828-01257eb1bd21",
-        "author": "Teppo",
-        "time": "2026-06-22T17:33:22.890Z",
-        "text": "hey",
-        "type": "normal"
-      },
-      {
-        "id": "d494f8b7-5378-417a-806a-a6a20a84a3a8",
-        "author": "Teppo",
-        "time": "2026-06-22T17:36:54.420Z",
-        "text": "Tauolla taas 10min vielä",
-        "type": "important"
-      },
-      {
-        "id": "4a5c8261-dfb7-4ed2-8761-cc2b97b95353",
-        "author": "Teppo",
-        "time": "2026-06-22T17:39:38.466Z",
-        "text": "Sairas",
-        "type": "info"
-      },
-      {
-        "id": "180b2e95-2fbb-4f7f-aaee-b9098a1296bd",
-        "author": "Ilmari",
-        "time": "2026-06-22T17:41:16.080Z",
-        "text": "mitäs tänne",
-        "type": "normal"
-      },
-      {
-        "id": "e2956d21-30a4-4b90-b204-51aaead25dc8",
-        "author": "Ilmari",
-        "time": "2026-06-22T17:46:58.872Z",
-        "text": "hey",
-        "type": "normal"
-      },
-      {
-        "id": "4973f491-2e50-4780-a565-491387fb130d",
-        "author": "Ilmari",
-        "time": "2026-06-22T17:47:44.117Z",
-        "text": "Myöhässä taas",
-        "type": "normal"
-      },
-      {
-        "id": "b53a3a35-472b-47a6-9665-ed653e146955",
-        "author": "Ilmari",
-        "time": "2026-06-22T17:54:20.664Z",
-        "text": "miten täällä menee, hyvin tuntuu menevän että mitäs huomenna tehdään...",
-        "type": "normal"
-      },
-      {
-        "id": "08e8363f-d750-42f1-b9e2-8e4bc09faf30",
-        "author": "Ilmari",
-        "time": "2026-06-22T17:55:44.208Z",
-        "text": "Syömässä pitseriassa ja ottamassa pari olutta. Tuolkaa kaikki tänne?",
-        "type": "normal"
-      },
-      {
-        "id": "59551912-e7cd-4d20-85ce-609a37b47604",
-        "author": "Ilmari",
-        "time": "2026-06-22T17:56:24.790Z",
-        "text": "Syömässä pitseriassa ja ottamassa pari olutta. Tuolkaa kaikki tänne? Mitäs huomenna on agendana? Miltähän tää näyttää valikossa?",
-        "type": "normal"
-      },
-      {
-        "id": "f2d02fae-07e4-4bd5-826b-7bb4e142ff5a",
-        "author": "Ilmari",
-        "time": "2026-06-22T17:56:33.588Z",
-        "text": "Kaupassa",
-        "type": "normal"
-      },
-      {
-        "id": "6325cb48-3e03-474b-9b75-9f71ef09ee99",
-        "author": "Ilmari",
-        "time": "2026-06-22T17:58:39.227Z",
-        "text": "Kaupassa",
-        "type": "normal"
-      },
-      {
-        "id": "4479851c-3255-4f4a-a943-ec00c72b97fa",
-        "author": "Ilmari",
-        "time": "2026-06-22T18:01:49.436Z",
-        "text": "Kaupassa",
-        "type": "normal"
-      },
-      {
-        "id": "e21a1c01-f1f7-4c09-b9da-2d0723f863bd",
-        "author": "Ilmari",
-        "time": "2026-06-22T18:02:50.739Z",
-        "text": "Kaupassa",
-        "type": "normal"
-      },
-      {
-        "id": "5efc01ad-637c-4617-afb6-6fa51cd37918",
-        "author": "Ilmari",
-        "time": "2026-06-22T18:03:10.453Z",
-        "text": "Kaupassa",
-        "type": "normal"
-      },
-      {
-        "id": "08d0134a-0f50-4dde-9d70-d6a18183ed88",
-        "author": "Ilmari",
-        "time": "2026-06-22T18:03:45.575Z",
-        "text": "Syömässä pitseriassa ja ottamassa pari olutta. tuletteko seuraan?",
-        "type": "normal"
-      },
-      {
-        "id": "130678be-3961-4be8-a861-1e4865d6f4aa",
-        "author": "Ilmari",
-        "time": "2026-06-22T18:04:06.309Z",
-        "text": "Syömässä pitseriassa ja ottamassa pari olutta. tuletteko seuraan?",
-        "type": "normal"
-      },
-      {
-        "id": "cb8a6033-ab6a-489b-aec5-4de8cd0996f5",
-        "author": "Ilmari",
-        "time": "2026-06-22T18:04:20.650Z",
-        "text": "Kaupassa",
-        "type": "normal"
-      },
-      {
-        "id": "c7609d48-66b9-49f0-8848-66f21bb2ff48",
-        "author": "Ilmari",
-        "time": "2026-06-22T18:04:40.173Z",
-        "text": "Kaupassa",
-        "type": "normal"
-      },
-      {
-        "id": "38c4a979-6433-4ed7-b316-213cf97ea4dd",
-        "author": "Ilmari",
-        "time": "2026-06-22T18:04:56.696Z",
-        "text": "Kaupassa",
-        "type": "normal"
-      },
-      {
-        "id": "9b9b4a79-47d6-4dd0-84fa-28265462caeb",
-        "author": "Ilmari",
-        "time": "2026-06-22T18:05:02.362Z",
-        "text": "Kaupassa",
-        "type": "normal"
-      },
-      {
-        "id": "d78f8b37-cd3a-479a-a15c-af7a2cd7d4b4",
-        "author": "Ilmari",
-        "time": "2026-06-22T18:05:23.620Z",
-        "text": "Syömässä pitseriassa ja ottamassa pari olutta. tuletteko seuraan?",
-        "type": "normal"
-      },
-      {
-        "id": "ac23143c-4b2a-4c74-99e6-4b9f8e1bc4d5",
-        "author": "Ilmari",
-        "time": "2026-06-22T18:06:17.195Z",
-        "text": "Kaupassa",
-        "type": "normal"
-      },
-      {
-        "id": "71b25cd5-ad97-4545-b5ec-d5842099d3d3",
-        "author": "Ilmari",
-        "time": "2026-06-22T18:06:32.116Z",
-        "text": "Kaupassa",
-        "type": "normal"
-      },
-      {
-        "id": "ac0b7ce6-2768-49e6-bcca-dbbfc04f226f",
-        "author": "Ilmari",
-        "time": "2026-06-22T18:06:37.407Z",
-        "text": "Syömässä pitseriassa ja ottamassa pari olutta. tuletteko seuraan?",
-        "type": "normal"
-      },
-      {
-        "id": "798fdfa4-dd8f-4cfb-b7ec-9e6581e65c96",
-        "author": "Ilmari",
-        "time": "2026-06-22T18:07:03.803Z",
-        "text": "Syömässä pitseriassa ja ottamassa pari olutta. tuletteko seuraan? huomenna sitten golffamaan?",
-        "type": "normal"
-      },
-      {
-        "id": "74b9bc22-bd1f-4eff-a046-2ef1b25e20cc",
-        "author": "Ilmari",
-        "time": "2026-06-22T18:07:47.786Z",
-        "text": "Kaupassa",
-        "type": "normal"
-      },
-      {
-        "id": "f98c0c2a-0f91-4303-9107-3561cee4e169",
+        "id": "d8e105ce-0f73-4697-89cb-3563a933bef3",
         "author": "Opa",
-        "time": "2026-06-22T19:40:50.675Z",
-        "text": "täällä taas",
-        "type": "normal"
-      },
-      {
-        "id": "0c396f9d-a4a0-4e61-b506-f00922c51591",
-        "author": "Opa",
-        "time": "2026-06-22T20:17:22.919Z",
-        "text": "hey",
-        "type": "normal"
-      },
-      {
-        "id": "56f420e2-da46-4f32-845f-c6a39e0528ff",
-        "author": "Opa",
-        "time": "2026-06-22T20:18:21.159Z",
-        "text": "hey",
-        "type": "normal"
-      },
-      {
-        "id": "9103bd7f-8e2d-4f74-bf35-3f4af6353e37",
-        "author": "Opa",
-        "time": "2026-06-22T20:18:39.518Z",
-        "text": "Tauolla taas 10min vielä",
-        "type": "normal"
-      },
-      {
-        "id": "7990f23c-1e8d-4e1b-9c5d-56469447da0e",
-        "author": "Opa",
-        "time": "2026-06-22T20:18:45.469Z",
-        "text": "hey",
-        "type": "normal"
-      },
-      {
-        "id": "8018eddf-3706-45da-b71b-97ec7540f0b0",
-        "author": "Opa",
-        "time": "2026-06-22T20:19:15.643Z",
-        "text": "hey",
-        "type": "normal"
-      },
-      {
-        "id": "62b9e71d-5d78-4638-a1c2-e7044d06a4fc",
-        "author": "Opa",
-        "time": "2026-06-22T20:21:03.839Z",
-        "text": "katso",
-        "type": "normal"
-      },
-      {
-        "id": "1f597408-d04d-4cd9-b48c-6fd11083e881",
-        "author": "Opa",
-        "time": "2026-06-22T20:23:04.385Z",
-        "text": "Tauolla taas 10min vielä",
-        "type": "normal"
-      },
-      {
-        "id": "c749dcf0-b444-4228-b12f-8071847216e8",
-        "author": "Opa",
-        "time": "2026-06-22T20:25:47.549Z",
-        "text": "mit",
-        "type": "normal"
-      },
-      {
-        "id": "4568a241-e4b2-44cd-a27c-efd92a4302d5",
-        "author": "Opa",
-        "time": "2026-06-22T20:29:49.317Z",
-        "text": "hello",
-        "type": "normal"
-      },
-      {
-        "id": "a4f3e23f-bda3-47cb-84b7-79cfaf28c16a",
-        "author": "Opa",
-        "time": "2026-06-22T20:32:43.065Z",
-        "text": "hello",
-        "type": "normal"
-      },
-      {
-        "id": "436fb464-90ec-43e3-ab3e-ff29739a984f",
-        "author": "Opa",
-        "time": "2026-06-22T20:35:25.908Z",
-        "text": "hello vain",
-        "type": "normal"
-      },
-      {
-        "id": "e20b39c2-17ef-41b8-8255-9e13d822cfc8",
-        "author": "Opa",
-        "time": "2026-06-22T20:38:47.103Z",
-        "text": "hey",
-        "type": "normal"
-      },
-      {
-        "id": "80153f2e-d2b4-4ab0-ad08-8ef507f461ff",
-        "author": "Opa",
-        "time": "2026-06-22T20:47:48.249Z",
-        "text": "hey",
-        "type": "normal"
-      },
-      {
-        "id": "89c511f0-fe17-479a-9024-a626bd3fb835",
-        "author": "Opa",
-        "time": "2026-06-22T20:47:51.151Z",
-        "text": "Tauolla taas 10min vielä",
-        "type": "normal"
-      },
-      {
-        "id": "f8873821-ae5d-47f4-acb2-588afd757d84",
-        "author": "Opa",
-        "time": "2026-06-22T20:48:38.031Z",
-        "text": "hep",
-        "type": "normal"
-      },
-      {
-        "id": "8f7bb703-0b3f-4939-8fc1-00f97c7f1f8f",
-        "author": "Opa",
-        "time": "2026-06-22T20:48:40.764Z",
-        "text": "Myöhässä taas",
-        "type": "normal"
-      },
-      {
-        "id": "6c0a5a17-180a-4930-9e53-abeeb6c0a2f5",
-        "author": "Opa",
-        "time": "2026-06-22T20:49:47.771Z",
-        "text": "hep",
-        "type": "normal"
-      },
-      {
-        "id": "c45e6e15-0243-4c95-ad29-b7317a07afb7",
-        "author": "Opa",
-        "time": "2026-06-22T20:50:01.392Z",
-        "text": "hey",
-        "type": "normal"
-      },
-      {
-        "id": "641200f9-f815-45c6-becd-9394c428cd4f",
-        "author": "Opa",
-        "time": "2026-06-22T20:50:03.823Z",
-        "text": "Nukkumassa",
-        "type": "normal"
-      },
-      {
-        "id": "4f86041b-2305-4cec-8f53-42b1a42c46cf",
-        "author": "Opa",
-        "time": "2026-06-22T20:54:08.338Z",
-        "text": "trskkdkdk",
-        "type": "normal"
-      },
-      {
-        "id": "f56da4a9-fbc2-4770-864f-5aacc59f9a31",
-        "author": "Opa",
-        "time": "2026-06-22T20:54:10.677Z",
-        "text": "Sairas",
-        "type": "normal"
-      },
-      {
-        "id": "becdd72f-19be-4517-a197-066b1ee965bd",
-        "author": "Opa",
-        "time": "2026-06-22T20:54:19.048Z",
-        "text": "Nukkumassa",
-        "type": "normal"
-      },
-      {
-        "id": "809d228e-91c2-4ad0-841d-3f0415bff276",
-        "author": "Opa",
-        "time": "2026-06-22T20:57:30.036Z",
-        "text": "heiåppa",
-        "type": "normal"
-      },
-      {
-        "id": "0aa2d593-c303-4aca-8319-17051a9e26ec",
-        "author": "Opa",
-        "time": "2026-06-22T20:58:00.346Z",
-        "text": "mitä kuuluu",
-        "type": "normal"
-      },
-      {
-        "id": "5c549fb0-facb-4da0-adb0-6f6365e8198c",
-        "author": "Opa",
-        "time": "2026-06-22T20:58:03.736Z",
-        "text": "Myöhässä taas",
-        "type": "normal"
-      },
-      {
-        "id": "27c1ef1e-3bd5-4dca-b91e-3d4650576e04",
-        "author": "Opa",
-        "time": "2026-06-22T20:59:23.915Z",
-        "text": "joo",
-        "type": "normal"
-      },
-      {
-        "id": "d432c8e9-c8c6-4da6-89d1-815d8549a591",
-        "author": "Opa",
-        "time": "2026-06-22T20:59:35.362Z",
-        "text": "terve",
-        "type": "normal"
-      },
-      {
-        "id": "5abcb2a9-f980-4a03-9ec6-77c58372a7e0",
-        "author": "Opa",
-        "time": "2026-06-22T21:00:42.446Z",
-        "text": "joo",
-        "type": "normal"
-      },
-      {
-        "id": "9a14448d-916f-4240-88e2-6154e65eef2b",
-        "author": "Opa",
-        "time": "2026-06-22T21:01:49.714Z",
-        "text": "heymo",
-        "type": "normal"
-      },
-      {
-        "id": "12f4253f-f286-474b-8c79-c6e1b3661729",
-        "author": "Opa",
-        "time": "2026-06-22T21:03:40.468Z",
-        "text": "heimo",
+        "time": "2026-07-02T07:17:25.926Z",
+        "text": "Myöhässä",
         "type": "normal"
       }
     ],
-    "autoDeleteDays": 5,
+    "pendingRequests": [
+      {
+        "id": "b1a88c0b-e652-499f-91a6-c8c144e5de29",
+        "username": "Teppo",
+        "email": "teppo@gmail.com",
+        "time": "2026-07-02T07:15:15.041Z"
+      }
+    ],
+    "autoDeleteDays": 10,
     "quickButtons": [
       "Kaupassa",
       "Töissä",
       "Kotona",
       "Nukkumassa",
-      "Syömässä pitseriassa ja ottamassa pari olutta. tuletteko seuraan? huomenna sitten golffamaan?",
-      "Tulossa ens viikolla",
-      "Myöhässä taas",
+      "Syömässä",
+      "Tulossa",
+      "Myöhässä",
       "Sairas",
-      "Tauolla taas 10min vielä",
+      "Tauolla",
       "Kuntosalilla"
     ],
     "visitedUsers": [
       {
         "name": "Opa",
-        "lastSeen": 1782247775344
-      },
-      {
-        "name": "Ilmari",
-        "lastSeen": 1782150068120
-      },
-      {
-        "name": "Teppo",
-        "lastSeen": 1781885650541
+        "lastSeen": 1782976613147
       }
     ]
   },
-  "Jari Kurri": {
+  "Heppu": {
     "boardPassword": "1",
-    "owner": "Jartsa",
+    "owner": "Kalevi",
     "ownerPassword": "2",
     "members": [
-      "Jartsa"
+      "Kalevi"
     ],
     "boardMessages": [],
+    "pendingRequests": [],
     "autoDeleteDays": 10,
     "quickButtons": [
       "Kaupassa",
@@ -458,94 +65,6 @@
       "Tauolla",
       "Kuntosalilla"
     ],
-    "visitedUsers": [
-      {
-        "name": "Jartsa",
-        "lastSeen": 1782249176175
-      }
-    ]
-  },
-  "Kurrit": {
-    "boardPassword": "1",
-    "owner": "Jartsa",
-    "ownerPassword": "3",
-    "members": [
-      "Jartsa",
-      "Mika"
-    ],
-    "boardMessages": [
-      {
-        "id": "59ae01dc-79dc-401a-99fa-f757a4a59b16",
-        "author": "Jartsa",
-        "time": "2026-06-30T16:15:31.148Z",
-        "text": "heyppa",
-        "type": "normal"
-      },
-      {
-        "id": "32968352-a5d7-4f00-ac81-ee4d1224ee5c",
-        "author": "Jartsa",
-        "time": "2026-06-30T16:17:45.802Z",
-        "text": "hey",
-        "type": "important"
-      },
-      {
-        "id": "180c1adc-4992-4148-abd9-cc4eb3327fd8",
-        "author": "Jartsa",
-        "time": "2026-06-30T16:17:49.744Z",
-        "text": "mitä",
-        "type": "normal"
-      },
-      {
-        "id": "fa691778-0242-4590-a3b7-f38c986c6067",
-        "author": "Jartsa",
-        "time": "2026-06-30T16:18:35.223Z",
-        "text": "Tauolla",
-        "type": "normal"
-      },
-      {
-        "id": "5e35634c-439b-499f-bfaf-29fd3db6b211",
-        "author": "Jartsa",
-        "time": "2026-06-30T16:18:39.090Z",
-        "text": "Nukkumassa",
-        "type": "normal"
-      },
-      {
-        "id": "de8ad833-eb7e-4dd7-9905-bca8ae33f4d3",
-        "author": "Mika",
-        "time": "2026-06-30T16:19:19.474Z",
-        "text": "hep",
-        "type": "normal"
-      },
-      {
-        "id": "e21cb698-ce73-4b7d-adb2-97f8846f2a18",
-        "author": "Mika",
-        "time": "2026-06-30T16:34:16.104Z",
-        "text": "hep",
-        "type": "important"
-      }
-    ],
-    "autoDeleteDays": 10,
-    "quickButtons": [
-      "Kaupassa",
-      "Töissä",
-      "Kotona",
-      "Nukkumassa",
-      "Syömässä",
-      "Tulossa",
-      "Myöhässä",
-      "Sairas",
-      "Tauolla",
-      "Kuntosalilla"
-    ],
-    "visitedUsers": [
-      {
-        "name": "Mika",
-        "lastSeen": 1782836354616
-      },
-      {
-        "name": "Jartsa",
-        "lastSeen": 1782836124998
-      }
-    ]
+    "visitedUsers": []
   }
 }
