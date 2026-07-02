@@ -182,33 +182,57 @@ function getBoardName() {
 
 function autoLoginFill() {
 
+  if (!document.getElementById("boardName")) {
+    return;
+}
+
   const boardName = localStorage.getItem("boardName");
   const boardUsername = localStorage.getItem("boardUsername");
   const token = localStorage.getItem("token");
 
-  // Täytä kentät aina
-  const boardNameInput = document.getElementById("boardName");
-  const boardUsernameInput = document.getElementById("boardUsername");
 
-  if (boardNameInput) {
-    boardNameInput.value = boardName || "";
-  }
+  console.log("AutoLogin boardName:", boardName);
+console.log("AutoLogin boardUsername:", boardUsername);
 
-  if (boardUsernameInput) {
-    boardUsernameInput.value = boardUsername || "";
-  }
+  // täytä kentät
+const boardNameInput = document.getElementById("boardName");
+const boardUsernameInput = document.getElementById("boardUsername");
 
-  // Home -> älä tee autologinia
-  if (sessionStorage.getItem("skipAutoLogin")) {
-    sessionStorage.removeItem("skipAutoLogin");
-    return;
-  }
+boardNameInput && (boardNameInput.value = boardName || "");
+boardUsernameInput && (boardUsernameInput.value = boardUsername || "");
 
+// Home-painikkeella tullessa ohita autologin kerran
+if (sessionStorage.getItem("skipAutoLogin")) {
+  sessionStorage.removeItem("skipAutoLogin");
+  return;
+}
+
+  // ei tokenia -> ei autologinia
   if (!boardName || !token) {
     return;
   }
 
-  // authCheck...
+  fetch("http://localhost:3000/authCheck", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": token
+    },
+    body: JSON.stringify({
+      boardName
+    })
+  })
+  .then(r => r.json())
+  .then(data => {
+
+    if (!data.success) {
+      localStorage.removeItem("token");
+      return;
+    }
+
+    window.location.href = "board.html";
+  });
+
 }
 
 
@@ -479,14 +503,51 @@ function updateMessage() {
 function loginBoard() {
 
   const boardName = document.getElementById("boardName").value;
+  const token = localStorage.getItem("token");
+
+  if (token) {
+
+    fetch("http://localhost:3000/authCheck", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": token
+      },
+      body: JSON.stringify({
+        boardName
+      })
+    })
+    .then(r => r.json())
+    .then(data => {
+
+      if (data.success) {
+        window.location.href = "board.html";
+        return;
+      }
+
+      // token ei enää kelpaa
+      localStorage.removeItem("token");
+
+      // kirjaudu salasanalla
+      loginWithPassword();
+    });
+
+    return;
+  }
+
+  // 👇 jos tokenia ei ole
+  loginWithPassword();
+}
+
+function loginWithPassword() {
+ const boardName = document.getElementById("boardName").value;
   const boardPassword = document.getElementById("boardPassword").value;
   const boardUsername = document.getElementById("boardUsername").value;
 
   fetch("http://localhost:3000/login", {
     method: "POST",
     headers: {
-  "Content-Type": "application/json",
-  "Authorization": localStorage.getItem("token")
+  "Content-Type": "application/json"
 },
     body: JSON.stringify({
   boardName,
@@ -520,7 +581,7 @@ function loginBoard() {
 
     window.location.href = "board.html";
   });
-}
+} 
 
 
 // =====================
@@ -840,21 +901,30 @@ function getCurrentUsername() {
     || localStorage.getItem("boardUsername");
 }
 
-document.getElementById("importantMode")
-  .addEventListener("change", function () {
+const importantMode = document.getElementById("importantMode");
+
+if (importantMode) {
+  importantMode.addEventListener("change", function () {
 
     if (this.checked) {
       document.getElementById("infoMode").checked = false;
     }
-});
 
-document.getElementById("infoMode")
-  .addEventListener("change", function () {
+  });
+}
+
+
+const infoMode = document.getElementById("infoMode");
+
+if (infoMode) {
+  infoMode.addEventListener("change", function () {
 
     if (this.checked) {
       document.getElementById("importantMode").checked = false;
     }
-});
+
+  });
+}
 
 document.getElementById("editMode")?.addEventListener("change", (e) => {
   const saveBtn = document.getElementById("saveBtn");
@@ -871,13 +941,25 @@ document.getElementById("editMode")?.addEventListener("change", (e) => {
   loadMessage(false); // jo sulla on tämä idea käytössä
 });
 
-document.getElementById("membersPopup").addEventListener("click", (e) => {
-  if (e.target.id === "membersPopup") closeMembers();
-});
+const membersPopup = document.getElementById("membersPopup");
 
-document.getElementById("settingsPopup").addEventListener("click", (e) => {
-  if (e.target.id === "settingsPopup") closeSettings();
-});
+if (membersPopup) {
+  membersPopup.addEventListener("click", (e) => {
+    if (e.target.id === "membersPopup") {
+      closeMembers();
+    }
+  });
+}
+
+const settingsPopup = document.getElementById("settingsPopup");
+
+if (settingsPopup) {
+  settingsPopup.addEventListener("click", (e) => {
+    if (e.target.id === "settingsPopup") {
+      closeSettings();
+    }
+  });
+}
 
 function showMembers() {
    console.log("SHOW MEMBERS TRIGGERED BY CLICK");
@@ -977,7 +1059,6 @@ function closeCreatePopup() {
 function submitCreateBoard() {
 
   const boardName = document.getElementById("cp_boardName").value;
-  const boardPassword = document.getElementById("cp_boardPassword").value;
   const boardUsername = document.getElementById("cp_username").value;
   const ownerEmail = document.getElementById("cp_email").value;
   const ownerPassword = document.getElementById("cp_ownerPassword").value;
@@ -990,7 +1071,6 @@ function submitCreateBoard() {
 },
     body: JSON.stringify({
       boardName,
-      boardPassword,
       boardUsername,
       ownerEmail,
       ownerPassword

@@ -1,56 +1,55 @@
 {
   "Mika": {
-    "boardPassword": "1",
     "users": [
       {
         "username": "Opa",
-        "email": "heppposti",
+        "email": "mika@gmail.com",
         "role": "owner",
-        "password": "2",
-        "token": "4be97eff-1158-4381-b6b7-5ae5c1727a4e"
+        "password": "99",
+        "token": "6c297e70-1a66-41c0-9d8b-bd867814fa27"
       },
       {
-        "username": "einartri",
-        "email": "sdsss",
-        "password": "1",
+        "username": "Teppo",
+        "email": "teppo@gmail.com",
+        "password": "5",
         "role": "member",
-        "token": "f76d3174-0be7-442f-87e0-34c9066d52d5"
+        "token": "9cef2367-7805-47d7-a606-3b830fa5032f"
       }
     ],
     "boardMessages": [
       {
-        "id": "757aa43e-f574-4f2c-a349-970b265711c4",
+        "id": "bf8771e3-c8b5-4b41-8f65-071be1c5b664",
         "author": "Opa",
-        "time": "2026-07-02T13:25:20.973Z",
+        "time": "2026-07-02T18:12:25.105Z",
         "text": "hey",
         "type": "normal"
       },
       {
-        "id": "2ada2517-f52d-45dc-9ae9-7ff777497b43",
+        "id": "c4094ab2-0b11-4a91-9f24-cf0736b6e7d2",
         "author": "Opa",
-        "time": "2026-07-02T13:25:23.304Z",
+        "time": "2026-07-02T18:12:30.679Z",
         "text": "Myöhässä",
         "type": "normal"
       },
       {
-        "id": "8e2ee744-31f1-4099-9dc9-7ad0308aa979",
+        "id": "0b7f1878-8646-4c96-8e93-86a194adc8b0",
         "author": "Opa",
-        "time": "2026-07-02T13:42:10.539Z",
-        "text": "miksi",
-        "type": "normal"
+        "time": "2026-07-02T18:12:35.363Z",
+        "text": "Myöhässä",
+        "type": "important"
       },
       {
-        "id": "0b053766-146e-4a77-bdde-6369c652f7c9",
-        "author": "Opa",
-        "time": "2026-07-02T13:42:13.355Z",
-        "text": "Tauolla",
-        "type": "normal"
+        "id": "86705012-ac10-4aac-ad7c-98612f748c29",
+        "author": "Teppo",
+        "time": "2026-07-02T18:14:16.204Z",
+        "text": "terve mitäs tänne",
+        "type": "info"
       },
       {
-        "id": "f2f76b46-cb90-400b-baca-696d4a7ce0bf",
-        "author": "einartri",
-        "time": "2026-07-02T14:08:40.927Z",
-        "text": "hep",
+        "id": "e58ca7c7-aab3-44fd-b252-f276b974e63a",
+        "author": "Teppo",
+        "time": "2026-07-02T18:38:04.869Z",
+        "text": "hey",
         "type": "normal"
       }
     ],
@@ -70,41 +69,13 @@
     ],
     "visitedUsers": [
       {
-        "name": "einartri",
-        "lastSeen": 1783001310855
+        "name": "Teppo",
+        "lastSeen": 1783019908156
       },
       {
         "name": "Opa",
-        "lastSeen": 1783001265992
+        "lastSeen": 1783016006407
       }
     ]
-  },
-  "EIno": {
-    "boardPassword": "1",
-    "users": [
-      {
-        "username": "eikka",
-        "email": "jk",
-        "role": "owner",
-        "password": "5",
-        "token": null
-      }
-    ],
-    "boardMessages": [],
-    "pendingRequests": [],
-    "autoDeleteDays": 10,
-    "quickButtons": [
-      "Kaupassa",
-      "Töissä",
-      "Kotona",
-      "Nukkumassa",
-      "Syömässä",
-      "Tulossa",
-      "Myöhässä",
-      "Sairas",
-      "Tauolla",
-      "Kuntosalilla"
-    ],
-    "visitedUsers": []
   }
 }

@@ -53,7 +53,6 @@ app.post("/create", (req, res) => {
 
   const {
     boardName,
-    boardPassword,
     boardUsername,
     ownerPassword,
     ownerEmail   // 👈 LISÄÄ TÄMÄ
@@ -77,8 +76,6 @@ app.post("/create", (req, res) => {
   };*/
 
 data[boardName] = {
-  boardPassword,
-
   users: [
   {
     username: boardUsername,
@@ -611,7 +608,7 @@ app.post("/rejectRequest", (req, res) => {
 
 app.post("/authCheck", (req, res) => {
 
-  const { boardName, token } = req.body;
+  const { boardName } = req.body;
 
   const data = loadData();
   const board = data[boardName];
@@ -620,7 +617,7 @@ app.post("/authCheck", (req, res) => {
     return res.status(404).json({ success: false });
   }
 
-  const user = board.users.find(u => u.token === token);
+  const user = authUser(req, board);
 
   if (!user) {
     return res.status(401).json({ success: false });
