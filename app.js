@@ -625,7 +625,7 @@ function createBoard() {
 // =====================
 
 function deleteBoard() {
-  const boardName = document.getElementById("boardName").value.trim();
+  const boardName = localStorage.getItem("boardName");
   const token = localStorage.getItem("token");
 
   fetch(`http://localhost:3000/delete/${boardName}`, {
@@ -634,6 +634,14 @@ function deleteBoard() {
       "Authorization": token
     }
   })
+  .then(res => res.json())
+  .then(data => {
+    if (data.success) {
+      //localStorage.removeItem("boardName");
+      localStorage.clear();
+      window.location.href = "index.html"; // tai joku etusivu
+    }
+  });
 }
 
 
