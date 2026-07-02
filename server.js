@@ -132,12 +132,18 @@ app.delete("/delete/:boardName", (req, res) => {
 
   const user = authUser(req, board);
 
+  console.log("DELETE BOARD:", boardName);
+console.log("HEADER TOKEN:", req.headers.authorization);
+console.log("AUTH USER:", user);
+
   if (!user) {
     return res.status(401).json({
       success: false,
       message: "Kirjaudu uudelleen"
     });
   }
+
+  console.log("ROLE:", user.role);
 
   if (user.role !== "owner") {
     return res.status(403).json({
@@ -258,6 +264,8 @@ app.delete("/clear/:boardName", (req, res) => {
   }
 
   const user = authUser(req, board);
+
+  console.log(user);
 
   if (!user) {
     return res.status(401).json({

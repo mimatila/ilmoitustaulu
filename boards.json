@@ -3,53 +3,39 @@
     "users": [
       {
         "username": "Opa",
-        "email": "mika@gmail.com",
+        "email": "mika",
         "role": "owner",
         "password": "99",
-        "token": "6c297e70-1a66-41c0-9d8b-bd867814fa27"
+        "token": "48304c4a-ca87-4ab2-8e13-3d55afaa195b"
       },
       {
         "username": "Teppo",
-        "email": "teppo@gmail.com",
+        "email": "teppo",
         "password": "5",
         "role": "member",
-        "token": "9cef2367-7805-47d7-a606-3b830fa5032f"
+        "token": "d143da36-7d7f-46c9-bc37-2f24511659a6"
       }
     ],
     "boardMessages": [
       {
-        "id": "bf8771e3-c8b5-4b41-8f65-071be1c5b664",
+        "id": "f50d1ab4-0089-4594-b30d-cd3c068d395a",
         "author": "Opa",
-        "time": "2026-07-02T18:12:25.105Z",
+        "time": "2026-07-02T21:10:08.115Z",
         "text": "hey",
         "type": "normal"
       },
       {
-        "id": "c4094ab2-0b11-4a91-9f24-cf0736b6e7d2",
-        "author": "Opa",
-        "time": "2026-07-02T18:12:30.679Z",
-        "text": "Myöhässä",
+        "id": "cb30b864-05e8-47b8-8e99-855b22d6c456",
+        "author": "Teppo",
+        "time": "2026-07-02T21:11:37.105Z",
+        "text": "hey",
         "type": "normal"
       },
       {
-        "id": "0b7f1878-8646-4c96-8e93-86a194adc8b0",
-        "author": "Opa",
-        "time": "2026-07-02T18:12:35.363Z",
-        "text": "Myöhässä",
-        "type": "important"
-      },
-      {
-        "id": "86705012-ac10-4aac-ad7c-98612f748c29",
+        "id": "64461f4d-09d8-4107-9e19-517f5a4ed087",
         "author": "Teppo",
-        "time": "2026-07-02T18:14:16.204Z",
-        "text": "terve mitäs tänne",
-        "type": "info"
-      },
-      {
-        "id": "e58ca7c7-aab3-44fd-b252-f276b974e63a",
-        "author": "Teppo",
-        "time": "2026-07-02T18:38:04.869Z",
-        "text": "hey",
+        "time": "2026-07-02T21:21:55.051Z",
+        "text": "hep",
         "type": "normal"
       }
     ],
@@ -70,11 +56,11 @@
     "visitedUsers": [
       {
         "name": "Teppo",
-        "lastSeen": 1783019908156
+        "lastSeen": 1783027312006
       },
       {
         "name": "Opa",
-        "lastSeen": 1783016006407
+        "lastSeen": 1783027253203
       }
     ]
   }

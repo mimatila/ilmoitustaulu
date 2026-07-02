@@ -521,6 +521,7 @@ function loginBoard() {
     .then(data => {
 
       if (data.success) {
+        localStorage.setItem("boardUsername", data.username);
         window.location.href = "board.html";
         return;
       }
@@ -624,32 +625,15 @@ function createBoard() {
 // =====================
 
 function deleteBoard() {
-
-  //const boardName = localStorage.getItem("boardName");
   const boardName = document.getElementById("boardName").value.trim();
-
-  const boardUsername = getCurrentUsername();
-
-  const ownerPassword = prompt("Anna owner-salasana:");
-
-  if (!confirm("Haluatko varmasti poistaa taulun?")) return;
+  const token = localStorage.getItem("token");
 
   fetch(`http://localhost:3000/delete/${boardName}`, {
     method: "DELETE",
     headers: {
-  "Content-Type": "application/json",
-  "Authorization": localStorage.getItem("token")
-}
-  })
-  .then(res => res.json())
-  .then(data => {
-    alert(data.message);
-
-    if (data.success) {
-      localStorage.clear();
-      window.location.href = "index.html";
+      "Authorization": token
     }
-  });
+  })
 }
 
 
@@ -687,11 +671,6 @@ function clearTable() {
 // =====================
 // NAV
 // =====================
-
-function koti() {
-  sessionStorage.setItem("skipAutoLogin", "1");
-  window.location.href = "index.html";
-}
 
 function logout() {
   localStorage.clear();
@@ -897,6 +876,7 @@ function saveSettings() {
 }
 
 function getCurrentUsername() {
+  console.log("INPUT username:", document.getElementById("boardUsername")?.value);
   return document.getElementById("boardUsername")?.value
     || localStorage.getItem("boardUsername");
 }
