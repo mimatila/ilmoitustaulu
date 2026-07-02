@@ -67,6 +67,8 @@
 
 <div class="top-nav">
 
+  <button onclick="openRequests()">Requests</button>
+
   <button onclick="showMembers()">
     Members
   </button>
@@ -124,6 +126,22 @@
     <button onclick="closeSettings()">
       Sulje
     </button>
+
+  </div>
+
+</div>
+
+<div id="requestsPopup" class="popup">
+
+  <div class="popup-content">
+
+    <h3>Join Requests</h3>
+
+    <div id="requestsList"></div>
+
+    <br>
+
+    <button onclick="closeRequests()">Sulje</button>
 
   </div>
 

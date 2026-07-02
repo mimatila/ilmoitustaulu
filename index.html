@@ -8,6 +8,7 @@
 
 <div class="top-nav">
 
+  <button onclick="openCreatePopup()">Create Board</button>
   <button onclick="openJoinBoard()">
     Join Board
   </button>
@@ -28,6 +29,23 @@
   <button onclick="deleteBoard()">Delete Board</button>
 </div>
 
+<div id="createPopup" class="popup">
+  <div class="popup-content">
+
+    <h3>Create Board</h3>
+
+    <input id="cp_boardName" placeholder="Board Name">
+    <input id="cp_boardPassword" placeholder="Board Password">
+    <input id="cp_username" placeholder="Username">
+    <input id="cp_email" placeholder="Email">
+    <input id="cp_ownerPassword" placeholder="Owner Password" type="password">
+
+    <button onclick="submitCreateBoard()">Create</button>
+    <button onclick="closeCreatePopup()">Cancel</button>
+
+  </div>
+</div>
+
 <div id="joinBoardPopup" class="popup">
 
   <div class="popup-content">
@@ -39,6 +57,9 @@
 
     <label>Username</label>
     <input id="joinUsername">
+
+    <label>Password</label>
+    <input id="joinPassword">
 
     <label>Email</label>
     <input id="joinEmail">

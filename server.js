@@ -2,6 +2,7 @@ const express = require("express");
 const fs = require("fs");
 const cors = require("cors");
 const app = express();
+const crypto = require("crypto");
 //const board = data[boardName];
 
 // 🔥 CORS ENSIN
@@ -18,48 +19,45 @@ if (!fs.existsSync(FILE)) {
 
 app.post("/login", (req, res) => {
 
-  //console.log("REQ BODY:", req.body);
+  const { boardName, boardUsername, boardPassword } = req.body;
 
-  const { boardName, boardPassword, boardUsername } = req.body;
-
-  //const data = JSON.parse(fs.readFileSync(FILE, "utf8"));
   const data = loadData();
+  const board = data[boardName];
 
-  if (!data[boardName]) {
-    return res.status(404).json({
-      success: false,
-      message: "Taulua ei löydy"
-    });
+  if (!board) {
+    return res.status(404).json({ success: false, message: "Board not found" });
   }
 
-  if (data[boardName].boardPassword !== boardPassword) {
-    return res.status(401).json({
-      success: false,
-      message: "Väärä salasana"
-    });
+  const user = board.users.find(
+    u => u.username === boardUsername
+  );
+
+  if (!user || user.password !== boardPassword) {
+    return res.status(401).json({ success: false, message: "Invalid login" });
   }
 
-  if (
-  boardUsername &&
-  Array.isArray(data[boardName].members) &&
-  !data[boardName].members.includes(boardUsername)
-) {
-  data[boardName].members.push(boardUsername);
+  const token = crypto.randomUUID();
+  user.token = token;
 
-  //fs.writeFileSync(FILE, JSON.stringify(data, null, 2));
   saveData(data);
-}
 
-  // 👍 onnistui
-  res.status(200).json({
-    success: true
+  res.json({
+    success: true,
+    token,
+    username: boardUsername,
+    role: user.role
   });
-
 });
 
 app.post("/create", (req, res) => {
 
-  const { boardName, boardPassword, boardUsername, ownerPassword } = req.body;
+  const {
+    boardName,
+    boardPassword,
+    boardUsername,
+    ownerPassword,
+    ownerEmail   // 👈 LISÄÄ TÄMÄ
+  } = req.body;
   console.log(req.body);
 
   //const data = JSON.parse(fs.readFileSync(FILE, "utf8"));
@@ -80,12 +78,21 @@ app.post("/create", (req, res) => {
 
 data[boardName] = {
   boardPassword,
-  owner: boardUsername,
-  ownerPassword,
-  members: [boardUsername],
+
+  users: [
+  {
+    username: boardUsername,
+    email: ownerEmail,   // 👈 TÄMÄ
+    role: "owner",
+    password: ownerPassword,
+    token: null
+  }
+],
+
   boardMessages: [],
   pendingRequests: [],
   autoDeleteDays: 10,
+
   quickButtons: [
     "Kaupassa",
     "Töissä",
@@ -98,7 +105,8 @@ data[boardName] = {
     "Tauolla",
     "Kuntosalilla"
   ],
-  visitedUsers: []   // 👈 TÄMÄ
+
+  visitedUsers: []
 };
 
   //fs.writeFileSync(FILE, JSON.stringify(data, null, 2));
@@ -114,85 +122,96 @@ data[boardName] = {
 app.delete("/delete/:boardName", (req, res) => {
 
   const boardName = req.params.boardName;
-  console.log("hep: ", boardName);
-  const { ownerPassword, boardUsername } = req.body;
 
-  const data = JSON.parse(
-    fs.readFileSync(FILE, "utf8")
-  );
+  const data = loadData();
+  const board = data[boardName];
 
-  // löytyykö taulu
-  if (!data[boardName]) {
+  if (!board) {
     return res.status(404).json({
-    success: false,
-    message: "Taulua ei löytynyt"
-  });
+      success: false,
+      message: "Taulua ei löytynyt"
+    });
   }
 
-  const board = data[req.params.boardName];
-// 🔥 TÄRKEIN TARKISTUS
-console.log("hei vaan heu: ", board);
-  if (
-  board.owner !== boardUsername ||
-  board.ownerPassword !== ownerPassword
-) {
+  const user = authUser(req, board);
+
+  if (!user) {
+    return res.status(401).json({
+      success: false,
+      message: "Kirjaudu uudelleen"
+    });
+  }
+
+  if (user.role !== "owner") {
     return res.status(403).json({
       success: false,
-      message: "Ei oikeuksia (ei owner)"
+      message: "Ei oikeuksia"
     });
   }
 
   delete data[boardName];
 
-  fs.writeFileSync(
-    FILE,
-    JSON.stringify(data, null, 2)
-  );
+  saveData(data);
 
-  res.json({ success: true, message: "Taulu poistettu" });
-
+  res.json({
+    success: true,
+    message: "Taulu poistettu"
+  });
 });
 
 app.post("/boardMessage", (req, res) => {
-  
-  const { boardName, boardPassword, boardMessage, boardUsername,type } = req.body;
 
-  const data = JSON.parse(
-    fs.readFileSync(FILE, "utf8")
-  );
+  const {
+    boardName,
+    boardMessage,
+    type
+  } = req.body;
 
-  if (!data[boardName]) {
+  const token = req.headers.authorization;
+
+  const data = loadData();
+
+  const board = data[boardName];
+
+  if (!board) {
     return res.status(404).json({
       success: false,
       message: "Taulua ei löydy"
     });
   }
 
-  if (data[boardName].boardPassword !== boardPassword) {
+  console.log("HEADER TOKEN:", token);
+console.log("BOARD:", boardName);
+console.log("USERS:", board.users);
+
+  // Tarkista token
+  const user = board.users.find(u => u.token === token);
+
+  console.log("FOUND USER:", user);
+
+  if (!user) {
     return res.status(401).json({
       success: false,
-      message: "Väärä salasana"
+      message: "Kirjaudu uudelleen"
     });
   }
 
-  // 🔥 TÄMÄ PITÄÄ OLLA ENNEN RESPONSEA
-  //data[boardName].messages.push(message);
-  cleanup(data[boardName]); // 👈 aina ennen muutosta
+  cleanup(board);
 
-  data[boardName].boardMessages.push({
-  id: crypto.randomUUID(),
-  author: boardUsername,
-  time: new Date().toISOString(),
-  text: boardMessage,
-  type: type
+  board.boardMessages.push({
+    id: crypto.randomUUID(),
+    author: user.username,      // <-- käytetään tokenista löytynyttä käyttäjää
+    time: new Date().toISOString(),
+    text: boardMessage,
+    type
   });
 
-  fs.writeFileSync(
-    FILE,
-    JSON.stringify(data, null, 2)
-  );
+  saveData(data);
 
-  res.json({ success: true, message: "Viesti tallennettu" });
+  res.json({
+    success: true,
+    message: "Viesti tallennettu"
+  });
 
 });
 
@@ -230,12 +249,9 @@ app.get("/boards", (req, res) => {
 
 app.delete("/clear/:boardName", (req, res) => {
 
-  //const data = JSON.parse(fs.readFileSync(FILE, "utf8"));
   const data = loadData();
 
   const board = data[req.params.boardName];
-
-  const { ownerPassword, boardUsername } = req.body;
 
   if (!board) {
     return res.status(404).json({
@@ -244,26 +260,31 @@ app.delete("/clear/:boardName", (req, res) => {
     });
   }
 
-  // 🔥 TÄRKEIN TARKISTUS
-  if (
-  board.owner !== boardUsername ||
-  board.ownerPassword !== ownerPassword
-) {
+  const user = authUser(req, board);
+
+  if (!user) {
+    return res.status(401).json({
+      success: false,
+      message: "Kirjaudu uudelleen"
+    });
+  }
+
+  if (user.role !== "owner") {
     return res.status(403).json({
       success: false,
-      message: "Ei oikeuksia (ei owner)"
+      message: "Ei oikeuksia"
     });
   }
 
   board.boardMessages = [];
 
-  //fs.writeFileSync(FILE, JSON.stringify(data, null, 2));
   saveData(data);
 
   res.json({
     success: true,
     message: "Viestit tyhjennetty"
   });
+
 });
 
 app.get("/boards/count", (req, res) => {
@@ -282,22 +303,31 @@ app.post("/quickButtons", (req, res) => {
 
   console.log("HIT /quickButtons", req.body);
 
-  const { boardName, boardPassword, index, text } = req.body;
+  const { boardName, index, text } = req.body;
+
+  const token = req.headers.authorization;
 
   //const data = JSON.parse(fs.readFileSync(FILE, "utf8"));
   const data = loadData();
 
-  if (!data[boardName]) {
-    return res.status(404).json({ success: false });
-  }
+  const board = data[boardName];
 
-  if (data[boardName].boardPassword !== boardPassword) {
-    return res.status(401).json({ success: false });
-  }
+if (!board) {
+  return res.status(404).json({ success: false });
+}
+
+const user = board.users.find(u => u.token === token);
+
+if (!user) {
+  return res.status(401).json({
+    success: false,
+    message: "Kirjaudu uudelleen"
+  });
+}
 
   // 🔥 VARMISTUS ETTÄ ARRAY ON OLEMASSA
-  if (!data[boardName].quickButtons) {
-    data[boardName].quickButtons = [
+  if (!board.quickButtons) {
+    board.quickButtons = [
       "Kaupassa",
       "Töissä",
       "Kotona",
@@ -315,7 +345,7 @@ app.post("/quickButtons", (req, res) => {
   if (
     typeof index !== "number" ||
     index < 0 ||
-    index >= data[boardName].quickButtons.length
+    index >= board.quickButtons.length
   ) {
     return res.status(400).json({
       success: false,
@@ -323,7 +353,7 @@ app.post("/quickButtons", (req, res) => {
     });
   }
 
-  data[boardName].quickButtons[index] = text;
+  board.quickButtons[index] = text;
 
   //fs.writeFileSync(FILE, JSON.stringify(data, null, 2));
   saveData(data);
@@ -351,25 +381,48 @@ function cleanup(board) {
 }
 
 app.delete("/message/:boardName/:id", (req, res) => {
+
   const { boardName, id } = req.params;
-  const { boardPassword } = req.body;
 
-  console.log("PARAMS:", req.params);
+  const data = loadData();
 
-  const data = JSON.parse(fs.readFileSync(FILE, "utf8"));
   const board = data[boardName];
 
-  if (!board) return res.status(404).json({ success: false });
-
-  if (board.boardPassword !== boardPassword) {
-    return res.status(401).json({ success: false });
+  if (!board) {
+    return res.status(404).json({ success:false });
   }
-  
-  board.boardMessages = board.boardMessages.filter(m => m.id !== id);
 
-  fs.writeFileSync(FILE, JSON.stringify(data, null, 2));
+  const user = authUser(req, board);
 
-  res.json({ success: true });
+  if (!user) {
+    return res.status(401).json({ success:false });
+  }
+
+  const message = board.boardMessages.find(m => m.id === id);
+
+  if (!message) {
+    return res.status(404).json({ success:false });
+  }
+
+  // Owner saa poistaa kaiken
+  // Muut saavat poistaa vain omat viestinsä
+  if (
+    user.role !== "owner" &&
+    message.author !== user.username
+  ) {
+    return res.status(403).json({
+      success:false,
+      message:"Ei oikeuksia"
+    });
+  }
+
+  board.boardMessages =
+    board.boardMessages.filter(m => m.id !== id);
+
+  saveData(data);
+
+  res.json({ success:true });
+
 });
 
 app.post("/visit", (req, res) => {
@@ -410,7 +463,6 @@ app.post("/settings", (req, res) => {
 
   const {
     boardName,
-    boardPassword,
     autoDeleteDays
   } = req.body;
 
@@ -424,9 +476,19 @@ app.post("/settings", (req, res) => {
     });
   }
 
-  if (board.boardPassword !== boardPassword) {
+  const user = authUser(req, board);
+
+  if (!user) {
     return res.status(401).json({
-      success: false
+      success: false,
+      message: "Kirjaudu uudelleen"
+    });
+  }
+
+  if (user.role !== "owner") {
+    return res.status(403).json({
+      success: false,
+      message: "Ei oikeuksia"
     });
   }
 
@@ -441,7 +503,7 @@ app.post("/settings", (req, res) => {
 
 app.post("/joinRequest", (req, res) => {
 
-  const { boardName, username, email } = req.body;
+  const { boardName, username, password, email } = req.body;
 
   const data = loadData();
 
@@ -474,7 +536,9 @@ app.post("/joinRequest", (req, res) => {
   board.pendingRequests.push({
   id: crypto.randomUUID(),
   username,
+  password,
   email,
+  status: "pending",
   time: new Date().toISOString()
 });
 
@@ -486,6 +550,99 @@ app.post("/joinRequest", (req, res) => {
   });
 
 });
+
+app.post("/acceptRequest", (req, res) => {
+
+  const { boardName, id } = req.body;
+
+  const data = loadData();
+  const board = data[boardName];
+
+  if (!board) {
+    return res.status(404).json({ success: false });
+  }
+
+  const reqItem = board.pendingRequests.find(r => r.id === id);
+
+  if (!reqItem) {
+    return res.status(404).json({ success: false });
+  }
+
+  // 1. lisää users-listaan
+  board.users.push({
+    username: reqItem.username,
+    email: reqItem.email,
+    password: reqItem.password,
+    role: "member",
+    token: null
+  });
+
+  // 2. poista pendingistä
+  board.pendingRequests =
+    board.pendingRequests.filter(r => r.id !== id);
+
+  saveData(data);
+
+  res.json({ success: true });
+});
+
+app.post("/rejectRequest", (req, res) => {
+
+  const { boardName, id } = req.body;
+
+  const data = loadData();
+  const board = data[boardName];
+
+  if (!board) {
+    return res.status(404).json({ success: false });
+  }
+
+  // poista vain pendingistä
+  board.pendingRequests =
+    board.pendingRequests.filter(r => r.id !== id);
+
+  saveData(data);
+
+  res.json({
+    success: true,
+    message: "Request rejected"
+  });
+});
+
+app.post("/authCheck", (req, res) => {
+
+  const { boardName, token } = req.body;
+
+  const data = loadData();
+  const board = data[boardName];
+
+  if (!board) {
+    return res.status(404).json({ success: false });
+  }
+
+  const user = board.users.find(u => u.token === token);
+
+  if (!user) {
+    return res.status(401).json({ success: false });
+  }
+
+  res.json({
+    success: true,
+    username: user.username,
+    role: user.role
+  });
+});
+
+function authUser(req, board) {
+
+    const token = req.headers.authorization;
+
+    if (!token) {
+        return null;
+    }
+
+    return board.users.find(u => u.token === token);
+}
 
 app.listen(3000, () => {
   console.log("Serveri käynnissä portissa 3000");

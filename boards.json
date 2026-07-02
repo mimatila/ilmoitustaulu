@@ -1,28 +1,60 @@
 {
   "Mika": {
     "boardPassword": "1",
-    "owner": "Opa",
-    "ownerPassword": "2",
-    "members": [
-      "Opa"
+    "users": [
+      {
+        "username": "Opa",
+        "email": "heppposti",
+        "role": "owner",
+        "password": "2",
+        "token": "4be97eff-1158-4381-b6b7-5ae5c1727a4e"
+      },
+      {
+        "username": "einartri",
+        "email": "sdsss",
+        "password": "1",
+        "role": "member",
+        "token": "f76d3174-0be7-442f-87e0-34c9066d52d5"
+      }
     ],
     "boardMessages": [
       {
-        "id": "d8e105ce-0f73-4697-89cb-3563a933bef3",
+        "id": "757aa43e-f574-4f2c-a349-970b265711c4",
         "author": "Opa",
-        "time": "2026-07-02T07:17:25.926Z",
+        "time": "2026-07-02T13:25:20.973Z",
+        "text": "hey",
+        "type": "normal"
+      },
+      {
+        "id": "2ada2517-f52d-45dc-9ae9-7ff777497b43",
+        "author": "Opa",
+        "time": "2026-07-02T13:25:23.304Z",
         "text": "Myöhässä",
+        "type": "normal"
+      },
+      {
+        "id": "8e2ee744-31f1-4099-9dc9-7ad0308aa979",
+        "author": "Opa",
+        "time": "2026-07-02T13:42:10.539Z",
+        "text": "miksi",
+        "type": "normal"
+      },
+      {
+        "id": "0b053766-146e-4a77-bdde-6369c652f7c9",
+        "author": "Opa",
+        "time": "2026-07-02T13:42:13.355Z",
+        "text": "Tauolla",
+        "type": "normal"
+      },
+      {
+        "id": "f2f76b46-cb90-400b-baca-696d4a7ce0bf",
+        "author": "einartri",
+        "time": "2026-07-02T14:08:40.927Z",
+        "text": "hep",
         "type": "normal"
       }
     ],
-    "pendingRequests": [
-      {
-        "id": "b1a88c0b-e652-499f-91a6-c8c144e5de29",
-        "username": "Teppo",
-        "email": "teppo@gmail.com",
-        "time": "2026-07-02T07:15:15.041Z"
-      }
-    ],
+    "pendingRequests": [],
     "autoDeleteDays": 10,
     "quickButtons": [
       "Kaupassa",
@@ -38,17 +70,25 @@
     ],
     "visitedUsers": [
       {
+        "name": "einartri",
+        "lastSeen": 1783001310855
+      },
+      {
         "name": "Opa",
-        "lastSeen": 1782976613147
+        "lastSeen": 1783001265992
       }
     ]
   },
-  "Heppu": {
+  "EIno": {
     "boardPassword": "1",
-    "owner": "Kalevi",
-    "ownerPassword": "2",
-    "members": [
-      "Kalevi"
+    "users": [
+      {
+        "username": "eikka",
+        "email": "jk",
+        "role": "owner",
+        "password": "5",
+        "token": null
+      }
     ],
     "boardMessages": [],
     "pendingRequests": [],

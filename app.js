@@ -7,10 +7,9 @@ function sendQuick(text) {
   console.log("SENDQUICK INPUT:", text);
 
   const boardName = localStorage.getItem("boardName");
-  const boardPassword = localStorage.getItem("boardPassword");
   const boardUsername = localStorage.getItem("boardUsername") || boardName;
 
-   let type="normal";
+  let type="normal";
 
 
   if (document.getElementById("importantMode").checked) {
@@ -21,17 +20,19 @@ function sendQuick(text) {
     type="info";
   }
 
+  console.log("TOKEN:", localStorage.getItem("token"));
 
   fetch("http://localhost:3000/boardMessage", {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: {
+  "Content-Type": "application/json",
+  "Authorization": localStorage.getItem("token")
+},
     body: JSON.stringify({
-      boardName,
-      boardPassword,
-      boardMessage: text,
-      boardUsername,
-      type
-    })
+    boardName,
+    boardMessage: text,
+    type
+})
   })
   .then(res => res.json())
   .then(data => {
@@ -181,27 +182,33 @@ function getBoardName() {
 
 function autoLoginFill() {
 
-  if (location.pathname.includes("board.html")) return;
+  const boardName = localStorage.getItem("boardName");
+  const boardUsername = localStorage.getItem("boardUsername");
+  const token = localStorage.getItem("token");
 
-  const boardName = localStorage.getItem("boardName") || "";
-  const boardPassword = localStorage.getItem("boardPassword") || "";
-  const boardUsername = localStorage.getItem("boardUsername") || "";
+  // Täytä kentät aina
+  const boardNameInput = document.getElementById("boardName");
+  const boardUsernameInput = document.getElementById("boardUsername");
 
-  const loggedIn = localStorage.getItem("loggedIn");
-  const skip = sessionStorage.getItem("skipAutoLogin");
+  if (boardNameInput) {
+    boardNameInput.value = boardName || "";
+  }
 
-  const nameInput = document.getElementById("boardName");
+  if (boardUsernameInput) {
+    boardUsernameInput.value = boardUsername || "";
+  }
 
-  if (!nameInput) return;
-
-  if (!skip && loggedIn === "true") {
-    window.location.href = "board.html";
+  // Home -> älä tee autologinia
+  if (sessionStorage.getItem("skipAutoLogin")) {
+    sessionStorage.removeItem("skipAutoLogin");
     return;
   }
 
-  nameInput.value = boardName;
-  document.getElementById("boardPassword").value = boardPassword;
-  document.getElementById("boardUsername").value = boardUsername;
+  if (!boardName || !token) {
+    return;
+  }
+
+  // authCheck...
 }
 
 
@@ -333,7 +340,7 @@ messages.forEach(msg => {
   text.className = "msg-text";
   text.innerText = `${msg.author}: ${msg.text}`;
 */
-  const text = document.createElement("div");
+const text = document.createElement("div");
 text.className = "msg-text";
 
 const author = document.createElement("span");
@@ -422,7 +429,6 @@ function updateMessage() {
   const boardMessage = messageEl.value;
 
   const boardName = localStorage.getItem("boardName");
-  const boardPassword = localStorage.getItem("boardPassword");
   const boardUsername = localStorage.getItem("boardUsername") || boardName;
   let type="normal";
 
@@ -435,10 +441,20 @@ function updateMessage() {
     type="info";
   }
 
+  console.log("TOKEN:", localStorage.getItem("token"));
+
   fetch("http://localhost:3000/boardMessage", {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ boardName, boardPassword, boardMessage, boardUsername, type })
+    headers: {
+  "Content-Type": "application/json",
+  "Authorization": localStorage.getItem("token")
+},
+    body: JSON.stringify({
+    boardName,
+    boardMessage,
+    boardUsername,
+    type
+})
   })
   .then(res => res.json())
   .then(data => {
@@ -461,28 +477,45 @@ function updateMessage() {
 // =====================
 
 function loginBoard() {
+
   const boardName = document.getElementById("boardName").value;
   const boardPassword = document.getElementById("boardPassword").value;
   const boardUsername = document.getElementById("boardUsername").value;
 
   fetch("http://localhost:3000/login", {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ boardName, boardPassword, boardUsername })
+    headers: {
+  "Content-Type": "application/json",
+  "Authorization": localStorage.getItem("token")
+},
+    body: JSON.stringify({
+  boardName,
+  boardPassword,
+  boardUsername
+})
   })
   .then(res => res.json())
   .then(async data => {
-    if (!data.success) return alert(data.message);
 
+    if (!data.success) {
+      return alert("Login failed");
+    }
+
+    // ✔ token talteen
+    localStorage.setItem("token", data.token);
     localStorage.setItem("boardName", boardName);
-    localStorage.setItem("boardPassword", boardPassword);
     localStorage.setItem("boardUsername", boardUsername);
-    localStorage.setItem("loggedIn", "true");
 
     await fetch("http://localhost:3000/visit", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ boardName, boardUsername })
+      headers: {
+  "Content-Type": "application/json",
+  "Authorization": localStorage.getItem("token")
+},
+      body: JSON.stringify({
+        boardName,
+        boardUsername
+      })
     });
 
     window.location.href = "board.html";
@@ -500,38 +533,29 @@ function createBoard() {
   const boardPassword = document.getElementById("boardPassword").value;
   const boardUsername = document.getElementById("boardUsername").value;
 
-  const ownerPassword = prompt("Anna owner-salasana:");
+  const ownerEmail = prompt("Anna owner email:");
+  const ownerPassword = prompt("Anna owner salasana:");
 
-  if (!ownerPassword) {
-    alert("Owner-salasana vaaditaan");
+  if (!ownerEmail || !ownerPassword) {
+    alert("Email ja owner-salasana vaaditaan");
     return;
   }
 
   fetch("http://localhost:3000/create", {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: {
+  "Content-Type": "application/json",
+  "Authorization": localStorage.getItem("token")
+},
     body: JSON.stringify({
       boardName,
       boardPassword,
-      ownerPassword,
-      boardUsername
+      boardUsername,
+      ownerEmail,
+      ownerPassword
     })
   })
-  .then(res => res.json())
-  .then(data => {
-
-    if (!data.success) {
-      alert(data.message);
-      return;
-    }
-
-    localStorage.setItem("boardName", boardName);
-    localStorage.setItem("boardPassword", boardPassword);
-    localStorage.setItem("boardUsername", boardUsername);
-
-    alert(data.message);
-  });
-}
+} 
 
 
 // =====================
@@ -551,11 +575,10 @@ function deleteBoard() {
 
   fetch(`http://localhost:3000/delete/${boardName}`, {
     method: "DELETE",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      ownerPassword,
-      boardUsername
-    })
+    headers: {
+  "Content-Type": "application/json",
+  "Authorization": localStorage.getItem("token")
+}
   })
   .then(res => res.json())
   .then(data => {
@@ -583,11 +606,10 @@ function clearTable() {
 
   fetch(`http://localhost:3000/clear/${boardName}`, {
     method: "DELETE",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      ownerPassword,
-      boardUsername
-    })
+    headers: {
+  "Content-Type": "application/json",
+  "Authorization": localStorage.getItem("token")
+}
   })
   .then(res => res.json())
   .then(data => {
@@ -642,20 +664,20 @@ function handleSaveClick() {
     document.getElementById("boardNewMsg").value.trim();
 
   const boardName = localStorage.getItem("boardName");
-  const boardPassword = localStorage.getItem("boardPassword");
+const token = localStorage.getItem("token");
 
-  fetch("http://localhost:3000/quickButtons", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      boardName,
-      boardPassword,
-      index: editingIndex,
-      text
-    })
+fetch("http://localhost:3000/quickButtons", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+    "Authorization": token
+  },
+  body: JSON.stringify({
+    boardName,
+    index: editingIndex,
+    text
   })
+})
   .then(res => res.json())
   .then(() => {
 
@@ -693,12 +715,17 @@ function deleteMessage(id) {
   }
 
   const boardName = localStorage.getItem("boardName");
-  const boardPassword = localStorage.getItem("boardPassword");
+  const token = localStorage.getItem("token");
 
   fetch(`http://localhost:3000/message/${boardName}/${id}`, {
     method: "DELETE",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ boardPassword })
+    headers: {
+    "Content-Type":"application/json",
+    "Authorization":token
+},
+    body: JSON.stringify({
+    boardName
+})
   })
   .then(res => res.json())
   .then(data => {
@@ -778,8 +805,7 @@ function saveSettings() {
   const boardName =
     localStorage.getItem("boardName");
 
-  const boardPassword =
-    localStorage.getItem("boardPassword");
+  const token = localStorage.getItem("token");
 
   const autoDeleteDays =
     Number(
@@ -790,14 +816,14 @@ function saveSettings() {
 
   fetch("http://localhost:3000/settings", {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      boardName,
-      boardPassword,
-      autoDeleteDays
-    })
+    headers:{
+   "Content-Type":"application/json",
+   "Authorization":token
+},
+    body:JSON.stringify({
+    boardName,
+    autoDeleteDays
+})
   })
   .then(res => res.json())
   .then(data => {
@@ -862,16 +888,22 @@ function showMembers() {
     .then(res => res.json())
     .then(board => {
 
+      console.log(board);
+  console.log(board.users);
+
       const el = document.getElementById("membersList");
       const popup = document.getElementById("membersPopup");
 
       if (!el || !popup) return;
 
-      const members = board.members || [];
+      const members = board.users || [];
 
-      el.innerHTML = members.map(m => `
+el.innerHTML = members.map(m => `
   <div class="member-row">
-    <div class="member-name">${m}</div>
+    <div class="member-name">
+      ${m.username}
+      <span class="member-role">(${m.role})</span>
+    </div>
   </div>
 `).join("");
 
@@ -899,24 +931,150 @@ function sendJoinRequest() {
 
   const boardName = document.getElementById("joinBoardName").value;
   const username = document.getElementById("joinUsername").value;
+  const password = document.getElementById("joinPassword").value;
   const email = document.getElementById("joinEmail").value;
 
   console.log(boardName, username, email);
 
- 
-
   fetch("http://localhost:3000/joinRequest", {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json"
-  },
-  body: JSON.stringify({
-    boardName,
-    username,
-    email
+    method: "POST",
+    headers: {
+  "Content-Type": "application/json",
+  "Authorization": localStorage.getItem("token")
+},
+    body: JSON.stringify({
+      boardName,
+      username,
+      password,
+      email
+    })
   })
-});
+  .then(res => res.json())
+  .then(data => {
 
+    if (!data.success) {
+      alert(data.message || "Join request failed");
+      return;
+    }
+
+    alert("Join request sent!");
+  })
+  .catch(err => {
+    console.error(err);
+    alert("Server error");
+  });
+
+}
+
+function openCreatePopup() {
+  document.getElementById("createPopup").style.display = "flex";
+}
+
+function closeCreatePopup() {
+  document.getElementById("createPopup").style.display = "none";
+}
+
+function submitCreateBoard() {
+
+  const boardName = document.getElementById("cp_boardName").value;
+  const boardPassword = document.getElementById("cp_boardPassword").value;
+  const boardUsername = document.getElementById("cp_username").value;
+  const ownerEmail = document.getElementById("cp_email").value;
+  const ownerPassword = document.getElementById("cp_ownerPassword").value;
+
+  fetch("http://localhost:3000/create", {
+    method: "POST",
+    headers: {
+  "Content-Type": "application/json",
+  "Authorization": localStorage.getItem("token")
+},
+    body: JSON.stringify({
+      boardName,
+      boardPassword,
+      boardUsername,
+      ownerEmail,
+      ownerPassword
+    })
+  })
+  .then(r => r.json())
+  .then(data => {
+    alert(data.message);
+
+    if (data.success) {
+      closeCreatePopup();
+
+      localStorage.setItem("boardName", boardName);
+      localStorage.setItem("boardPassword", boardPassword);
+      localStorage.setItem("boardUsername", boardUsername);
+    }
+  });
+}
+
+function openRequests() {
+  document.getElementById("requestsPopup").style.display = "block";
+  loadRequests();
+}
+
+function closeRequests() {
+  document.getElementById("requestsPopup").style.display = "none";
+}
+
+function loadRequests() {
+
+  const boardName = localStorage.getItem("boardName");
+
+  fetch(`http://localhost:3000/board/${boardName}`)
+    .then(res => res.json())
+    .then(board => {
+
+      const list = document.getElementById("requestsList");
+      list.innerHTML = "";
+
+      board.pendingRequests.forEach(req => {
+
+        const div = document.createElement("div");
+
+        div.innerHTML = `
+          <b>${req.username}</b> (${req.email})
+          <br>
+          <button onclick="acceptRequest('${req.id}')">Accept</button>
+          <button onclick="rejectRequest('${req.id}')">Reject</button>
+          <hr>
+        `;
+
+        list.appendChild(div);
+      });
+    });
+}
+
+function acceptRequest(id) {
+
+  const boardName = localStorage.getItem("boardName");
+
+  fetch(`http://localhost:3000/acceptRequest`, {
+    method: "POST",
+   headers: {
+  "Content-Type": "application/json",
+  "Authorization": localStorage.getItem("token")
+},
+    body: JSON.stringify({ boardName, id })
+  })
+  .then(() => loadRequests());
+}
+
+function rejectRequest(id) {
+
+  const boardName = localStorage.getItem("boardName");
+
+  fetch(`http://localhost:3000/rejectRequest`, {
+    method: "POST",
+    headers: {
+  "Content-Type": "application/json",
+  "Authorization": localStorage.getItem("token")
+},
+    body: JSON.stringify({ boardName, id })
+  })
+  .then(() => loadRequests());
 }
 
 document.addEventListener("click", (e) => {
