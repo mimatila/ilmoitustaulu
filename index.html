@@ -16,12 +16,17 @@
 </div>
 
 <div id="boardCount">Boards: ...</div>
+
 <div class="login-box">
-  <h2>Board Login</h2> 
-  <input id="boardName" placeholder="Board Name">
-  <input id="boardUsername" placeholder="Username">
-  <input id="boardPassword" type="password" placeholder="Password">
-  <button onclick="loginBoard()">Open Board</button>
+  <h2>Board Login</h2>
+
+  <form onsubmit="loginBoard(); return false;">
+    <input id="boardName" placeholder="Board Name">
+    <input id="boardUsername" placeholder="Username">
+    <input id="boardPassword" type="password" placeholder="Password">
+
+    <button type="submit">Open Board</button>
+  </form>
 </div>
 
 <div id="createPopup" class="popup">

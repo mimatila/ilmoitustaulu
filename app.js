@@ -299,13 +299,19 @@ function loadMessage(forceScroll = false) {
   .then(res => res.json())
   .then(data => {
 
-    //renderQuickButtons(currentButtonsCache);
+    const requestButton = document.getElementById("requestsBtn");
+
+if (requestButton) {
+  if (data.pendingRequests.length > 0) {
+    requestButton.classList.add("pending");
+  } else {
+    requestButton.classList.remove("pending");
+  }
+}
+
     currentButtonsCache = data.quickButtons ?? [];
 
     console.log("RENDER QUICK SELECT");
-
-    //renderQuickSelect(currentButtonsCache);
-    //renderVisitedUsers(data.visitedUsers);
 
     updateQuickUI(data);
 
@@ -337,8 +343,6 @@ if (todayMode) {
 
 messages.forEach(msg => {
 
-    /*data.boardMessages.forEach(msg => {*/
-
   console.log("TYPE:", msg.type);
   const div = document.createElement("div");
   div.className = "msg-row";
@@ -351,19 +355,9 @@ messages.forEach(msg => {
     div.classList.add("info-msg");
   }
 
-  /*
-  const text = document.createElement("span");
-  text.innerText = formatMessage(msg);
-  div.appendChild(text);*/
-
-  
   const wrapper = document.createElement("div");
   wrapper.className = "msg-content";
-/*
-  const text = document.createElement("div");
-  text.className = "msg-text";
-  text.innerText = `${msg.author}: ${msg.text}`;
-*/
+
 const text = document.createElement("div");
 text.className = "msg-text";
 
@@ -407,11 +401,19 @@ div.appendChild(wrapper);
 
 
   const editMode = document.getElementById("editMode")?.checked;
-  const username = localStorage.getItem("boardUsername");
-  //const owner = localStorage.getItem("boardUsername") === boardName; // jos käytät owner-logiikkaa erikseen
-  const owner = data.owner === username;
+const username = localStorage.getItem("boardUsername");
 
-  const showTrash =
+const user = data.users.find(u => u.username === username);
+const owner = user?.role === "owner";
+
+console.log({
+  user,
+  username,
+  ownerCheck: owner,
+  msgAuthor: msg.author
+});
+
+const showTrash =
   editMode && (owner || msg.author === username);
 
   if (showTrash) {

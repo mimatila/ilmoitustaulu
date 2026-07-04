@@ -1,1 +1,74 @@
-{}
+{
+  "Mika": {
+    "users": [
+      {
+        "username": "Opa",
+        "email": "mika@gmail.com",
+        "role": "owner",
+        "password": "olli70",
+        "token": "65c8d8b7-6ed3-43ca-83f1-3ca9b38a0dfe"
+      },
+      {
+        "username": "Teppo",
+        "email": "heppu",
+        "password": "1",
+        "role": "member",
+        "token": "01810ba7-6116-43e9-b108-8d8f681d1837"
+      },
+      {
+        "username": "Teppo",
+        "email": "tepi",
+        "password": "1",
+        "role": "member",
+        "token": null
+      }
+    ],
+    "boardMessages": [
+      {
+        "id": "2433ca36-68f6-4442-8261-9417fd928ffc",
+        "author": "Opa",
+        "time": "2026-07-04T15:48:19.406Z",
+        "text": "hello",
+        "type": "normal"
+      },
+      {
+        "id": "f6621fd3-4d4f-488d-ba27-46e822880039",
+        "author": "Opa",
+        "time": "2026-07-04T15:49:57.290Z",
+        "text": "hei",
+        "type": "normal"
+      },
+      {
+        "id": "343fe266-8cd9-4c41-8600-1034c206985a",
+        "author": "Opa",
+        "time": "2026-07-04T15:50:22.540Z",
+        "text": "hello",
+        "type": "important"
+      }
+    ],
+    "pendingRequests": [],
+    "autoDeleteDays": 10,
+    "quickButtons": [
+      "Kaupassa",
+      "Töissä",
+      "Kotona",
+      "Nukkumassa",
+      "Syömässä",
+      "Tulossa",
+      "Myöhässä",
+      "Sairas",
+      "Tauolla",
+      "Kuntosalilla"
+    ],
+    "visitedUsers": [
+      {
+        "name": "Teppo",
+        "lastSeen": 1783180484189
+      },
+      {
+        "name": "Opa",
+        "lastSeen": 1783180452945
+      }
+    ]
+  }
+}

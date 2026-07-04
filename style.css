@@ -241,9 +241,18 @@ input::placeholder {
   padding: 4px 10px;
 }
 
+.pending {
+  border: 2px solid red;
+}
+
 #boardNewMsg {
   flex: 1;
   font-size: 0.9rem;
+  text-align: left;
+}
+
+#boardNewMsg::placeholder {
+  text-align: left;
 }
 
 #quickButtons {
@@ -302,10 +311,10 @@ input::placeholder {
 }*/
 
 .msg-content {
+  flex: 1;
   position: relative;
-  padding: 6px 0 14px 0; /* tilaa alareunaan ajalle */
+  padding: 6px 0 14px 0;
 }
-
 .msg-text {
   font-size: 0.9rem;
   line-height: 1.1;
@@ -363,6 +372,9 @@ input::placeholder {
 }
 
 .msg-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
   margin: 6px 0;
   padding: 8px 10px;
   background: #fff9d6;
@@ -374,8 +386,8 @@ input::placeholder {
   all: unset;
   cursor: pointer;
   font-size: 12px;
-  padding: 2px 6px;
-  line-height: 1;
+  margin-left: 10px;
+  align-self: flex-start;
 }
 
 .visited-users {
