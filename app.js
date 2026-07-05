@@ -5,6 +5,22 @@ let currentButtonsCache = [];
 
 console.log("APP.JS VERSION 123");
 
+console.log("APP START");
+
+location.reload = () => {
+  console.log("RELOAD BLOCKED 1001");
+};
+
+document.addEventListener("click", e => {
+  console.log("TARGET:", e.target);
+  console.log("CURRENT:", e.currentTarget);
+});
+
+document.addEventListener("submit", e => {
+  console.trace("SUBMIT");
+  e.preventDefault();
+});
+
 function sendQuick(text) {
   
   //console.log("SENDQUICK INPUT:", text);
@@ -221,8 +237,9 @@ function initBoard() {
 
   const role = localStorage.getItem("role");
 
-if (role !== "owner") {
-  document.getElementById("requestsBtn").style.display = "none";
+const btn = document.getElementById("requestsBtn");
+if (btn && role !== "owner") {
+  btn.style.display = "none";
 }
 
   console.log("INITBOARD CALLED");
@@ -240,13 +257,13 @@ if (role !== "owner") {
 
 if (refreshInterval) clearInterval(refreshInterval);
 
-
+/*
 refreshInterval = setInterval(() => {
   if (!document.hidden) {
     loadMessage(false);
   }
 }, 5000);
-
+*/
 }
 
 // =====================
@@ -263,8 +280,6 @@ function loadMessage(forceScroll = false) {
   if (loading) return;
   loading = true;
 
-  //console.log("checkbox state:", document.getElementById("todayMode")?.checked);
-
   const boardName = getBoardName();
   if (!boardName) {
     loading = false;
@@ -277,13 +292,13 @@ function loadMessage(forceScroll = false) {
 
   const requestButton = document.getElementById("requestsBtn");
 
-if (requestButton) {
-  if (data.pendingRequests.length > 0) {
-    requestButton.classList.add("pending");
-  } else {
+  if (requestButton) {
+    if (data.pendingRequests.length > 0) {
+      requestButton.classList.add("pending");
+    } else {
     requestButton.classList.remove("pending");
+    }
   }
-}
 
     currentButtonsCache = data.quickButtons ?? [];
 
@@ -319,7 +334,7 @@ if (todayMode) {
 
 messages.forEach(msg => {
 
-  console.log("TYPE:", msg.type);
+  //console.log("TYPE:", msg.type);
   const div = document.createElement("div");
   div.className = "msg-row";
 
@@ -382,12 +397,13 @@ const username = localStorage.getItem("boardUsername");
 const user = data.users.find(u => u.username === username);
 const owner = user?.role === "owner";
 
+/*
 console.log({
   user,
   username,
   ownerCheck: owner,
   msgAuthor: msg.author
-});
+});*/
 
 const showTrash =
   editMode && (owner || msg.author === username);
@@ -1020,6 +1036,7 @@ function submitCreateBoard() {
 function openRequests() {
   console.log("OPEN REQUESTS");
   document.getElementById("requestsPopup").style.display = "block";
+  console.log("LOAD REQUESTS FROM OPEN");
   loadRequests();
 }
 
@@ -1050,42 +1067,49 @@ function loadRequests() {
   <div><b>Email:</b> ${req.email}</div>
   <br>
 
-  <button type="button" onclick="acceptRequest('${req.id}', event)">
-  Accept
-</button>
+  <button
+    type="button"
+    onclick="console.log('INLINE CLICK'); acceptRequest('${req.id}', event)">
+    Accept
+  </button>
 
-<button type="button" onclick="rejectRequest('${req.id}')">
-  Reject
-</button>
+  <button
+    type="button"
+    onclick="rejectRequest('${req.id}')">
+    Reject
+  </button>
 
-<hr>
+  <hr>
 `;
-
+        console.log(div.innerHTML);
         list.appendChild(div);
       });
     });
+
+    console.log("LOAD REQUESTS FINISHED");
+    setTimeout(() => {
+    console.log("AFTER LOADREQUESTS 2s");
+}, 2000);
+
 }
 
 function acceptRequest(id, event) {
 
+  console.log(document.activeElement);
+
+  console.log("1");
+  console.log("ACCEPT CLICK");
+  console.trace("ACCEPT TRACE");
+
+  setTimeout(() => {
+    console.log("2");
+}, 1000);
+  
+  const role = localStorage.getItem("role");
+  if (role !== "owner") return;
+
   event?.preventDefault();
   event?.stopPropagation();
-  event?.stopImmediatePropagation?.();
-
-  const role = localStorage.getItem("role");
-
-  if (role !== "owner") {
-    console.log("NO PERMISSION");
-    return;
-  }
-
-  if (event) event.preventDefault();
-
-   console.log("ACCEPT START");
-
-  console.log("ACCEPT SAFE START", id);
-
-  console.log("ACCEPT CONTINUES", id);
 
   fetch("http://localhost:3000/acceptRequest", {
     method: "POST",
@@ -1097,11 +1121,18 @@ function acceptRequest(id, event) {
       boardName: localStorage.getItem("boardName"),
       id
     })
-  }).then(() => {
-    console.log("ACCEPT DONE");
-    loadRequests();
-  });
+  })
+  .then(() => {
+    console.log("LOAD REQUESTS FROM THEN");
+    loadRequests(); 
+});
+
+setTimeout(() => {
+    console.log("ACTIVE:", document.activeElement);
+}, 100);
+console.log("3");
 }
+
 
 function rejectRequest(id) {
 
@@ -1115,18 +1146,18 @@ function rejectRequest(id) {
 },
     body: JSON.stringify({ boardName, id })
   })
-  .then(() => loadRequests());
+  .then(() => {
+    console.log("LOAD REQUESTS FROM THEN");
+    loadRequests(); 
+});
 }
-
-window.acceptRequest = acceptRequest;
-window.rejectRequest = rejectRequest;
 
 document.addEventListener("click", (e) => {
   console.log("CLICK:", e.target);
 });
 
 window.addEventListener("beforeunload", () => {
-  console.log("PAGE RELOAD / NAVIGATE");
+    console.trace("PAGE RELOAD");
 });
 
 document.addEventListener("submit", e => {

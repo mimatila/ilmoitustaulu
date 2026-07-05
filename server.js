@@ -69,12 +69,6 @@ app.post("/create", (req, res) => {
     });
   }
 
-  /*
-  data[boardName] = {
-  password,
-  messages: []
-  };*/
-
 data[boardName] = {
   users: [
   {
@@ -291,7 +285,6 @@ app.delete("/clear/:boardName", (req, res) => {
 
 app.get("/boards/count", (req, res) => {
 
-  //const data = JSON.parse(fs.readFileSync(FILE, "utf8"));
   const data = loadData();
 
   const count = Object.keys(data).length;
@@ -309,7 +302,6 @@ app.post("/quickButtons", (req, res) => {
 
   const token = req.headers.authorization;
 
-  //const data = JSON.parse(fs.readFileSync(FILE, "utf8"));
   const data = loadData();
 
   const board = data[boardName];
