@@ -241,8 +241,27 @@ input::placeholder {
   padding: 4px 10px;
 }
 
+/*
 .pending {
   border: 2px solid red;
+}*/
+
+#requestsBtn {
+  position: relative;
+}
+
+#requestsBtn.pending::after {
+  content: "";
+  position: absolute;
+
+  width: 8px;
+  height: 8px;
+
+  background: red;
+  border-radius: 50%;
+
+  top: 2px;
+  right: 2px;
 }
 
 #boardNewMsg {

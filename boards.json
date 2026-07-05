@@ -3,47 +3,103 @@
     "users": [
       {
         "username": "Opa",
-        "email": "mika@gmail.com",
+        "email": "1",
         "role": "owner",
-        "password": "olli70",
-        "token": "65c8d8b7-6ed3-43ca-83f1-3ca9b38a0dfe"
+        "password": "1",
+        "token": "0ae1a01c-bcf2-43ea-8350-755ce59e5d8f"
       },
       {
-        "username": "Teppo",
-        "email": "heppu",
-        "password": "1",
+        "username": "ooo",
+        "email": "ooo",
+        "password": "ooo",
         "role": "member",
-        "token": "01810ba7-6116-43e9-b108-8d8f681d1837"
+        "token": "b213a32d-d6b2-47b8-83c4-d48cbb9c60d2"
       },
       {
-        "username": "Teppo",
-        "email": "tepi",
-        "password": "1",
+        "username": "oooo",
+        "email": "oooo",
+        "password": "oooo",
+        "role": "member",
+        "token": null
+      },
+      {
+        "username": "jjj",
+        "email": "jj",
+        "password": "jj",
+        "role": "member",
+        "token": null
+      },
+      {
+        "username": "kj",
+        "email": "k",
+        "password": "k",
         "role": "member",
         "token": null
       }
     ],
     "boardMessages": [
       {
-        "id": "2433ca36-68f6-4442-8261-9417fd928ffc",
+        "id": "3e273262-6895-4c93-8dc9-760a424174ae",
         "author": "Opa",
-        "time": "2026-07-04T15:48:19.406Z",
+        "time": "2026-07-05T17:23:15.817Z",
+        "text": "hey",
+        "type": "normal"
+      },
+      {
+        "id": "d1abeda7-9413-424f-9b11-26f79497d0e1",
+        "author": "ooo",
+        "time": "2026-07-05T17:27:06.231Z",
+        "text": "hey",
+        "type": "normal"
+      },
+      {
+        "id": "37e88ad0-2c2a-4ca7-b12a-0df80cf4ea5a",
+        "author": "ooo",
+        "time": "2026-07-05T17:30:10.071Z",
+        "text": "hep",
+        "type": "normal"
+      },
+      {
+        "id": "467c886f-06d0-4ff3-a984-3755dd97b17d",
+        "author": "ooo",
+        "time": "2026-07-05T17:31:29.331Z",
         "text": "hello",
         "type": "normal"
       },
       {
-        "id": "f6621fd3-4d4f-488d-ba27-46e822880039",
+        "id": "a0a1cff7-2861-4014-a303-3c65e4fe4c46",
         "author": "Opa",
-        "time": "2026-07-04T15:49:57.290Z",
-        "text": "hei",
+        "time": "2026-07-05T17:32:08.529Z",
+        "text": "hello",
         "type": "normal"
       },
       {
-        "id": "343fe266-8cd9-4c41-8600-1034c206985a",
+        "id": "ac199346-db27-4754-ad29-be6fd576125a",
         "author": "Opa",
-        "time": "2026-07-04T15:50:22.540Z",
-        "text": "hello",
-        "type": "important"
+        "time": "2026-07-05T17:40:25.568Z",
+        "text": "hep",
+        "type": "normal"
+      },
+      {
+        "id": "2e9bdd9e-2245-4222-bb9a-d4ac3f93f756",
+        "author": "ooo",
+        "time": "2026-07-05T17:43:00.449Z",
+        "text": "hep",
+        "type": "normal"
+      },
+      {
+        "id": "6966ebcc-cefe-45c1-85ff-b03509163c84",
+        "author": "ooo",
+        "time": "2026-07-05T17:43:07.769Z",
+        "text": "hep",
+        "type": "normal"
+      },
+      {
+        "id": "7cbf0f66-a6da-499b-ab9f-d512984bdd3e",
+        "author": "ooo",
+        "time": "2026-07-05T17:43:17.654Z",
+        "text": "hey",
+        "type": "normal"
       }
     ],
     "pendingRequests": [],
@@ -62,12 +118,12 @@
     ],
     "visitedUsers": [
       {
-        "name": "Teppo",
-        "lastSeen": 1783180484189
+        "name": "Opa",
+        "lastSeen": 1783273431385
       },
       {
-        "name": "Opa",
-        "lastSeen": 1783180452945
+        "name": "ooo",
+        "lastSeen": 1783273374406
       }
     ]
   }

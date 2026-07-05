@@ -146,11 +146,8 @@ console.log("AUTH USER:", user);
   console.log("ROLE:", user.role);
 
   if (user.role !== "owner") {
-    return res.status(403).json({
-      success: false,
-      message: "Ei oikeuksia"
-    });
-  }
+  return res.status(403).json({ success: false, message: "Not owner" });
+}
 
   delete data[boardName];
 
@@ -513,6 +510,20 @@ app.post("/joinRequest", (req, res) => {
   const data = loadData();
 
   const board = data[boardName];
+
+  if (board.users.some(u => u.username === username)) {
+    return res.json({
+        success: false,
+        message: "Username already exists."
+    });
+}
+
+if (board.pendingRequests.some(r => r.username === username)) {
+  return res.json({
+    success: false,
+    message: "Join request already exists."
+  });
+}
 
   if (!board) {
     return res.status(404).json({
