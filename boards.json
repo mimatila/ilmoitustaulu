@@ -3,120 +3,50 @@
     "users": [
       {
         "username": "Opa",
-        "email": "1",
+        "email": "mika",
         "role": "owner",
         "password": "1",
-        "token": "647610dc-02f3-4501-be7d-d93c3e4cd191"
+        "token": "ec6a3fad-2d21-499c-b1b0-1993dd60a4b1"
       },
       {
-        "username": "ooo",
-        "email": "ooo",
-        "password": "ooo",
+        "username": "uuno2",
+        "email": "uuno2",
+        "password": "2",
         "role": "member",
-        "token": "b213a32d-d6b2-47b8-83c4-d48cbb9c60d2"
+        "token": "2c9891f4-018b-4fab-8611-2c49e673d522"
       },
       {
-        "username": "oooo",
-        "email": "oooo",
-        "password": "oooo",
+        "username": "j",
+        "email": "a",
+        "password": "a",
         "role": "member",
         "token": null
       },
       {
         "username": "jjj",
-        "email": "jj",
-        "password": "jj",
+        "email": "jjj",
+        "password": "jjj",
         "role": "member",
         "token": null
       },
       {
-        "username": "kj",
-        "email": "k",
-        "password": "k",
+        "username": "b",
+        "email": "b",
+        "password": "b",
         "role": "member",
         "token": null
       },
       {
-        "username": "ff",
-        "email": "fg",
-        "password": "ff",
+        "username": "c",
+        "email": "c",
+        "password": "c",
         "role": "member",
         "token": null
       },
       {
-        "username": "ffs",
-        "email": "fgs",
-        "password": "ffs",
-        "role": "member",
-        "token": null
-      },
-      {
-        "username": "j",
-        "email": "j",
-        "password": "j",
-        "role": "member",
-        "token": null
-      },
-      {
-        "username": "jk",
-        "email": "jj",
-        "password": "jj",
-        "role": "member",
-        "token": null
-      },
-      {
-        "username": "k",
-        "email": "k",
-        "password": "k",
-        "role": "member",
-        "token": null
-      },
-      {
-        "username": "ko",
-        "email": "ki",
-        "password": "ki",
-        "role": "member",
-        "token": null
-      },
-      {
-        "username": "ak",
-        "email": "aj",
-        "password": "akj",
-        "role": "member",
-        "token": null
-      },
-      {
-        "username": "aaaa",
-        "email": "aa",
-        "password": "aa",
-        "role": "member",
-        "token": null
-      },
-      {
-        "username": "aaaaaaa",
-        "email": "e",
-        "password": "aaaaaaa",
-        "role": "member",
-        "token": null
-      },
-      {
-        "username": "m ",
-        "email": "m",
-        "password": "§m",
-        "role": "member",
-        "token": null
-      },
-      {
-        "username": "m",
-        "email": "m",
-        "password": "l",
-        "role": "member",
-        "token": null
-      },
-      {
-        "username": "kk",
-        "email": "k",
-        "password": "k",
+        "username": "d",
+        "email": "d",
+        "password": "d",
         "role": "member",
         "token": null
       },
@@ -128,290 +58,87 @@
         "token": null
       },
       {
-        "username": "jjh",
-        "email": "j",
-        "password": "j",
+        "username": "g",
+        "email": "g",
+        "password": "g",
         "role": "member",
         "token": null
       },
       {
-        "username": "kkk",
-        "email": "hh",
-        "password": "kk",
+        "username": "ii",
+        "email": "i",
+        "password": "ii",
         "role": "member",
         "token": null
       },
       {
-        "username": "jjjjj",
-        "email": "jjjjj",
-        "password": "jjj",
+        "username": "o",
+        "email": "o",
+        "password": "i",
         "role": "member",
         "token": null
       },
       {
-        "username": "jjjjjj",
-        "email": "jjjjj",
-        "password": "jjj",
-        "role": "member",
-        "token": null
-      },
-      {
-        "username": "lll",
-        "email": "lll",
-        "password": "lll",
-        "role": "member",
-        "token": null
-      },
-      {
-        "username": "ooa",
-        "email": "a",
-        "password": "hep",
-        "role": "member",
-        "token": null
-      },
-      {
-        "username": "R",
-        "email": "R",
-        "password": "R",
-        "role": "member",
-        "token": null
-      },
-      {
-        "username": "kkkkk",
-        "email": "kkkkk",
-        "password": "kkkkkk",
-        "role": "member",
-        "token": null
-      },
-      {
-        "username": "jjjj",
-        "email": "jj",
-        "password": "jjj",
-        "role": "member",
-        "token": null
-      },
-      {
-        "username": "kkkkkkkkk",
-        "email": "kkkkkkkk",
-        "password": "kkkkkkkk",
-        "role": "member",
-        "token": null
-      },
-      {
-        "username": "ee",
-        "email": "ee",
-        "password": "ee",
-        "role": "member",
-        "token": null
-      },
-      {
-        "username": "kkkkkkkkkkk",
-        "email": "kkkkkkkkkk",
-        "password": "kkkkkkkkkk",
-        "role": "member",
-        "token": null
-      },
-      {
-        "username": "oo",
-        "email": "oo",
-        "password": "oo",
-        "role": "member",
-        "token": null
-      },
-      {
-        "username": "kaa",
-        "email": "k",
-        "password": "k",
-        "role": "member",
-        "token": null
-      },
-      {
-        "username": "sss",
-        "email": "sss",
-        "password": "sss",
-        "role": "member",
-        "token": null
-      },
-      {
-        "username": "mmm",
-        "email": "mm",
-        "password": "mmm",
-        "role": "member",
-        "token": null
-      },
-      {
-        "username": "llll",
-        "email": "lllll",
-        "password": "llll",
-        "role": "member",
-        "token": null
-      },
-      {
-        "username": "jhhh",
-        "email": "hhhhh",
-        "password": "hhhhj",
-        "role": "member",
-        "token": null
-      },
-      {
-        "username": "ook",
-        "email": "ooo",
-        "password": "ooo",
-        "role": "member",
-        "token": null
-      },
-      {
-        "username": "hhhhh",
-        "email": "hhhh",
-        "password": "hhhh",
-        "role": "member",
-        "token": null
-      },
-      {
-        "username": "pp",
-        "email": "ppp",
-        "password": "ppp",
-        "role": "member",
-        "token": null
-      },
-      {
-        "username": "hhhhhhh",
-        "email": "hhhhhhh",
-        "password": "hhhhhhh",
-        "role": "member",
-        "token": null
-      },
-      {
-        "username": "z",
-        "email": "z",
-        "password": "zz",
-        "role": "member",
-        "token": null
-      },
-      {
-        "username": "aa",
-        "email": "aa",
-        "password": "aa",
-        "role": "member",
-        "token": null
-      },
-      {
-        "username": "e",
-        "email": "e",
-        "password": "e",
-        "role": "member",
-        "token": null
-      },
-      {
-        "username": "rr",
-        "email": "rr",
-        "password": "rr",
-        "role": "member",
-        "token": null
-      },
-      {
-        "username": "jjjjjjjjjjj",
-        "email": "jjjjjjj",
-        "password": "jjjjjj",
-        "role": "member",
-        "token": null
-      },
-      {
-        "username": "iiii",
-        "email": "iiiii",
+        "username": "iiiiii",
+        "email": "iiiiii",
         "password": "iiiii",
         "role": "member",
         "token": null
       },
       {
-        "username": "hh",
-        "email": "hh",
-        "password": "hh",
-        "role": "member",
-        "token": null
-      },
-      {
-        "username": "33",
-        "email": "33",
-        "password": "33",
+        "username": "jajaj",
+        "email": "jjaja",
+        "password": "jajaj",
         "role": "member",
         "token": null
       }
     ],
     "boardMessages": [
       {
-        "id": "3e273262-6895-4c93-8dc9-760a424174ae",
+        "id": "ce582b58-78f5-497c-b6f0-25bf12f49464",
         "author": "Opa",
-        "time": "2026-07-05T17:23:15.817Z",
-        "text": "hey",
-        "type": "normal"
-      },
-      {
-        "id": "d1abeda7-9413-424f-9b11-26f79497d0e1",
-        "author": "ooo",
-        "time": "2026-07-05T17:27:06.231Z",
-        "text": "hey",
-        "type": "normal"
-      },
-      {
-        "id": "37e88ad0-2c2a-4ca7-b12a-0df80cf4ea5a",
-        "author": "ooo",
-        "time": "2026-07-05T17:30:10.071Z",
-        "text": "hep",
-        "type": "normal"
-      },
-      {
-        "id": "467c886f-06d0-4ff3-a984-3755dd97b17d",
-        "author": "ooo",
-        "time": "2026-07-05T17:31:29.331Z",
+        "time": "2026-07-06T09:22:28.829Z",
         "text": "hello",
         "type": "normal"
       },
       {
-        "id": "a0a1cff7-2861-4014-a303-3c65e4fe4c46",
+        "id": "8231bfd5-0206-4a57-beb7-dc41e37b944c",
         "author": "Opa",
-        "time": "2026-07-05T17:32:08.529Z",
-        "text": "hello",
+        "time": "2026-07-06T09:22:33.822Z",
+        "text": "Myöhässä",
         "type": "normal"
       },
       {
-        "id": "ac199346-db27-4754-ad29-be6fd576125a",
+        "id": "db6e2676-7296-435d-88fb-d3617ff29b9b",
         "author": "Opa",
-        "time": "2026-07-05T17:40:25.568Z",
-        "text": "hep",
+        "time": "2026-07-06T09:55:12.731Z",
+        "text": "Myöhässä",
         "type": "normal"
       },
       {
-        "id": "2e9bdd9e-2245-4222-bb9a-d4ac3f93f756",
-        "author": "ooo",
-        "time": "2026-07-05T17:43:00.449Z",
-        "text": "hep",
-        "type": "normal"
-      },
-      {
-        "id": "6966ebcc-cefe-45c1-85ff-b03509163c84",
-        "author": "ooo",
-        "time": "2026-07-05T17:43:07.769Z",
-        "text": "hep",
-        "type": "normal"
-      },
-      {
-        "id": "7cbf0f66-a6da-499b-ab9f-d512984bdd3e",
-        "author": "ooo",
-        "time": "2026-07-05T17:43:17.654Z",
-        "text": "hey",
-        "type": "normal"
-      },
-      {
-        "id": "4e2ae04c-1071-4daf-8e2e-18407fb8cb8a",
+        "id": "4867cede-2ea2-4ccc-952c-b574fbe3f6ab",
         "author": "Opa",
-        "time": "2026-07-05T21:37:22.805Z",
-        "text": "joo",
+        "time": "2026-07-06T09:55:17.687Z",
+        "text": "Tulossa",
+        "type": "important"
+      },
+      {
+        "id": "4b7be250-4fad-4d3f-8aaa-bd5a0ccd09d0",
+        "author": "Opa",
+        "time": "2026-07-06T09:55:24.285Z",
+        "text": "Tulossa",
+        "type": "normal"
+      },
+      {
+        "id": "9341601e-b298-43ff-9fb9-8db00e06c267",
+        "author": "uuno2",
+        "time": "2026-07-06T09:59:18.989Z",
+        "text": "hep",
         "type": "normal"
       }
     ],
     "pendingRequests": [],
-    "autoDeleteDays": 10,
+    "autoDeleteDays": 5,
     "quickButtons": [
       "Kaupassa",
       "Töissä",
@@ -426,12 +153,12 @@
     ],
     "visitedUsers": [
       {
-        "name": "Opa",
-        "lastSeen": 1783293300871
+        "name": "uuno2",
+        "lastSeen": 1783331821215
       },
       {
-        "name": "ooo",
-        "lastSeen": 1783273374406
+        "name": "Opa",
+        "lastSeen": 1783331517146
       }
     ]
   }

@@ -257,13 +257,12 @@ if (btn && role !== "owner") {
 
 if (refreshInterval) clearInterval(refreshInterval);
 
-/*
 refreshInterval = setInterval(() => {
   if (!document.hidden) {
     loadMessage(false);
   }
 }, 5000);
-*/
+
 }
 
 // =====================
@@ -584,6 +583,7 @@ function loginWithPassword() {
 // CREATE BOARD
 // =====================
 
+/*
 function createBoard() {
 
   const boardName = document.getElementById("boardName").value;
@@ -612,7 +612,7 @@ function createBoard() {
       ownerPassword
     })
   })
-} 
+} */
 
 
 // =====================
@@ -949,6 +949,7 @@ function openJoinBoard() {
 }
 
 function closeJoinBoard() {
+  console.log("CLOSE JOIN POPUP");
   document.getElementById("joinBoardPopup").style.display = "none";
 }
 
@@ -978,12 +979,24 @@ function sendJoinRequest() {
   .then(data => {
 
     if (!data.success) {
-      alert(data.message || "Join request failed");
-      return;
+        alert(data.message || "Join request failed");
+        return;
     }
 
     alert("Join request sent!");
-  })
+
+    console.log("BEFORE CLOSE");
+
+    document.getElementById("joinBoardName").value = "";
+    document.getElementById("joinUsername").value = "";
+    document.getElementById("joinPassword").value = "";
+    document.getElementById("joinEmail").value = "";
+
+    closeJoinBoard();
+
+    console.log("AFTER CLOSE");
+
+})
   .catch(err => {
     console.error(err);
     alert("Server error");
@@ -1004,7 +1017,7 @@ function submitCreateBoard() {
   const boardName = document.getElementById("cp_boardName").value;
   const boardUsername = document.getElementById("cp_username").value;
   const ownerEmail = document.getElementById("cp_email").value;
-  const ownerPassword = document.getElementById("cp_ownerPassword").value;
+  const boardPassword = document.getElementById("cp_ownerPassword").value;
 
   fetch("http://localhost:3000/create", {
     method: "POST",
@@ -1016,7 +1029,7 @@ function submitCreateBoard() {
       boardName,
       boardUsername,
       ownerEmail,
-      ownerPassword
+      boardPassword
     })
   })
   .then(r => r.json())
@@ -1024,6 +1037,12 @@ function submitCreateBoard() {
     alert(data.message);
 
     if (data.success) {
+
+      loadBoardCount();      // <-- tämä
+      document.getElementById("cp_boardName").value = "";
+      document.getElementById("cp_username").value = "";
+      document.getElementById("cp_email").value = "";
+      document.getElementById("cp_ownerPassword").value = "";
       closeCreatePopup();
 
       localStorage.setItem("boardName", boardName);
@@ -1055,42 +1074,46 @@ function loadRequests() {
     .then(res => res.json())
     .then(board => {
 
-      const list = document.getElementById("requestsList");
-      list.innerHTML = "";
+  const list = document.getElementById("requestsList");
+  list.innerHTML = "";
 
-      board.pendingRequests.forEach(req => {
+  if (!board.pendingRequests || board.pendingRequests.length === 0) {
 
-        const div = document.createElement("div");
+    list.innerHTML = "<b>No pending requests.</b>";
 
-        div.innerHTML = `
-  <div><b>Username:</b> ${req.username}</div>
-  <div><b>Email:</b> ${req.email}</div>
-  <br>
-
-  <button
-    type="button"
-    onclick="console.log('INLINE CLICK'); acceptRequest('${req.id}', event)">
-    Accept
-  </button>
-
-  <button
-    type="button"
-    onclick="rejectRequest('${req.id}')">
-    Reject
-  </button>
-
-  <hr>
-`;
-        console.log(div.innerHTML);
-        list.appendChild(div);
-      });
-    });
-
-    console.log("LOAD REQUESTS FINISHED");
     setTimeout(() => {
-    console.log("AFTER LOADREQUESTS 2s");
-}, 2000);
+      closeRequests();
+    }, 1500);
 
+    return;
+  }
+
+  board.pendingRequests.forEach(req => {
+
+    const div = document.createElement("div");
+
+    div.innerHTML = `
+      <div><b>Username:</b> ${req.username}</div>
+      <div><b>Email:</b> ${req.email}</div>
+      <br>
+
+      <button type="button"
+        onclick="acceptRequest('${req.id}', event)">
+        Accept
+      </button>
+
+      <button type="button"
+        onclick="rejectRequest('${req.id}')">
+        Reject
+      </button>
+
+      <hr>
+    `;
+
+    list.appendChild(div);
+  });
+
+});
 }
 
 function acceptRequest(id, event) {
@@ -1163,11 +1186,3 @@ window.addEventListener("beforeunload", () => {
 document.addEventListener("submit", e => {
   console.trace("GLOBAL SUBMIT TRIGGERED");
 });
-
-
-
-
-
-
-
-

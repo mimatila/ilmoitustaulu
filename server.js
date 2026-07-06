@@ -54,7 +54,7 @@ app.post("/create", (req, res) => {
   const {
     boardName,
     boardUsername,
-    ownerPassword,
+    boardPassword,
     ownerEmail   // 👈 LISÄÄ TÄMÄ
   } = req.body;
   console.log(req.body);
@@ -75,7 +75,7 @@ data[boardName] = {
     username: boardUsername,
     email: ownerEmail,   // 👈 TÄMÄ
     role: "owner",
-    password: ownerPassword,
+    password: boardPassword,
     token: null
   }
 ],
@@ -105,7 +105,7 @@ data[boardName] = {
 
   res.json({
     success: true,
-    message: "Taulu luotu"
+    message: "Board created!"
   });
 
 });
@@ -496,6 +496,8 @@ app.post("/settings", (req, res) => {
 });
 
 app.post("/joinRequest", (req, res) => {
+
+  console.log("JOIN REQUEST HIT");
 
   const { boardName, username, password, email } = req.body;
 
