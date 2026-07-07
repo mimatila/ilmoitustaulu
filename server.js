@@ -3,7 +3,6 @@ const fs = require("fs");
 const cors = require("cors");
 const app = express();
 const crypto = require("crypto");
-//const board = data[boardName];
 
 // 🔥 CORS ENSIN
 app.use(cors());

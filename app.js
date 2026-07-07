@@ -578,43 +578,6 @@ function loginWithPassword() {
   });
 } 
 
-
-// =====================
-// CREATE BOARD
-// =====================
-
-/*
-function createBoard() {
-
-  const boardName = document.getElementById("boardName").value;
-  const boardPassword = document.getElementById("boardPassword").value;
-  const boardUsername = document.getElementById("boardUsername").value;
-
-  const ownerEmail = prompt("Anna owner email:");
-  const ownerPassword = prompt("Anna owner salasana:");
-
-  if (!ownerEmail || !ownerPassword) {
-    alert("Email ja owner-salasana vaaditaan");
-    return;
-  }
-
-  fetch("http://localhost:3000/create", {
-    method: "POST",
-    headers: {
-  "Content-Type": "application/json",
-  "Authorization": localStorage.getItem("token")
-},
-    body: JSON.stringify({
-      boardName,
-      boardPassword,
-      boardUsername,
-      ownerEmail,
-      ownerPassword
-    })
-  })
-} */
-
-
 // =====================
 // DELETE BOARD
 // =====================
@@ -667,7 +630,6 @@ function clearTable() {
   });
 }
 
-
 // =====================
 // NAV
 // =====================
@@ -688,7 +650,7 @@ function handleSaveClick() {
     document.getElementById("boardNewMsg").value.trim();
 
   const boardName = localStorage.getItem("boardName");
-const token = localStorage.getItem("token");
+  const token = localStorage.getItem("token");
 
 fetch("http://localhost:3000/quickButtons", {
   method: "POST",
@@ -758,21 +720,24 @@ function deleteMessage(id) {
 }
 
 function renderVisitedUsers(users) {
+
   const el = document.getElementById("visitedUsers");
   if (!el) return;
 
   const sorted = (users || [])
-  .sort((a, b) => b.lastSeen - a.lastSeen)
-  .slice(0, 5);
+    .sort((a, b) => b.lastSeen - a.lastSeen)
+    .slice(0, 5);
 
-  el.innerText = "🟢 Last visited: " +
+  const loggedUser = localStorage.getItem("boardUsername") || "";
+
+  el.innerHTML =
+  `👤 Logged in as: <b>${loggedUser}</b>&nbsp;&nbsp;&nbsp;&nbsp;🟢 Last visited: ` +
   sorted.map(u => u.name).join(", ");
 }
 
 function updateQuickUI(data) {
   currentButtonsCache = data.quickButtons ?? [];
 
-  //renderQuickButtons(currentButtonsCache);
   renderVisitedUsers(data.visitedUsers);
   renderQuickSelect(currentButtonsCache);
 
@@ -836,7 +801,7 @@ function saveSettings() {
   .then(data => {
 
     if (data.success) {
-      alert("Tallennettu");
+      alert("Tallennettu!");
       closeSettings();
     }
   });
@@ -916,9 +881,6 @@ function showMembers() {
   fetch(`http://localhost:3000/board/${boardName}`)
     .then(res => res.json())
     .then(board => {
-
-      console.log(board);
-  console.log(board.users);
 
       const el = document.getElementById("membersList");
       const popup = document.getElementById("membersPopup");
@@ -1017,14 +979,14 @@ function submitCreateBoard() {
   const boardName = document.getElementById("cp_boardName").value;
   const boardUsername = document.getElementById("cp_username").value;
   const ownerEmail = document.getElementById("cp_email").value;
-  const boardPassword = document.getElementById("cp_ownerPassword").value;
+  const boardPassword = document.getElementById("cp_boardPassword").value;
 
   fetch("http://localhost:3000/create", {
     method: "POST",
     headers: {
-  "Content-Type": "application/json",
-  "Authorization": localStorage.getItem("token")
-},
+    "Content-Type": "application/json",
+    "Authorization": localStorage.getItem("token")
+  },
     body: JSON.stringify({
       boardName,
       boardUsername,
@@ -1042,7 +1004,7 @@ function submitCreateBoard() {
       document.getElementById("cp_boardName").value = "";
       document.getElementById("cp_username").value = "";
       document.getElementById("cp_email").value = "";
-      document.getElementById("cp_ownerPassword").value = "";
+      document.getElementById("cp_boardPassword").value = "";
       closeCreatePopup();
 
       localStorage.setItem("boardName", boardName);
@@ -1123,10 +1085,6 @@ function acceptRequest(id, event) {
   console.log("1");
   console.log("ACCEPT CLICK");
   console.trace("ACCEPT TRACE");
-
-  setTimeout(() => {
-    console.log("2");
-}, 1000);
   
   const role = localStorage.getItem("role");
   if (role !== "owner") return;
@@ -1149,13 +1107,7 @@ function acceptRequest(id, event) {
     console.log("LOAD REQUESTS FROM THEN");
     loadRequests(); 
 });
-
-setTimeout(() => {
-    console.log("ACTIVE:", document.activeElement);
-}, 100);
-console.log("3");
 }
-
 
 function rejectRequest(id) {
 
