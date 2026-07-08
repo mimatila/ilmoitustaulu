@@ -24,7 +24,6 @@ input:not([type="checkbox"]) {
 button {
   padding: 8px 15px;
   cursor: pointer;
-  
 }
 
 .board {
@@ -153,6 +152,7 @@ input::placeholder {
 .clear-btn {
   grid-column: 3;
   justify-self: end;
+  background-color: red;
 }
 
 
@@ -334,11 +334,19 @@ input::placeholder {
   background: #e6e6e6;
 }
 
+.send-btn {
+  background-color: green;
+}
+
 .input-row button,
 #saveBtn {
   width: 120px !important;
   flex: 0 0 120px;
   box-sizing: border-box;
+}
+
+#saveBtn {
+  background-color: yellow;
 }
 
 .msg-content {

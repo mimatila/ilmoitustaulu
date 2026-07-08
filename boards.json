@@ -6,7 +6,7 @@
         "email": "mika",
         "role": "owner",
         "password": "1",
-        "token": "90bbdf2b-7657-414a-9ec6-6de6b6100356"
+        "token": "8d61383b-0ad4-444c-bd1b-8378fb4f4c2e"
       },
       {
         "username": "uuno2",
@@ -371,7 +371,7 @@
     "visitedUsers": [
       {
         "name": "Opa",
-        "lastSeen": 1783547081137
+        "lastSeen": 1783549642258
       },
       {
         "name": "uuno2",
