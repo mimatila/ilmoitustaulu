@@ -237,10 +237,18 @@ function initBoard() {
 
   const role = localStorage.getItem("role");
 
-const btn = document.getElementById("requestsBtn");
-if (btn && role !== "owner") {
-  btn.style.display = "none";
-}
+  const ownerButtons = [
+    "requestsBtn",
+    "settingsBtn",
+    "deleteBoardBtn"
+  ];
+
+  ownerButtons.forEach(id => {
+    const btn = document.getElementById(id);
+    if (btn && role !== "owner") {
+      btn.style.display = "none";
+    }
+  });
 
   console.log("INITBOARD CALLED");
 
@@ -356,6 +364,7 @@ author.className = "msg-author";
 author.innerText = `${msg.author}: `;
 
 const body = document.createElement("span");
+body.className = "msg-body";
 body.innerText = msg.text;
 
 text.appendChild(author);
@@ -428,6 +437,7 @@ const showTrash =
   .finally(() => {
     loading = false;
   });
+  document.getElementById("boardNewMsg").blur();
 }
 
 
@@ -731,7 +741,7 @@ function renderVisitedUsers(users) {
   const loggedUser = localStorage.getItem("boardUsername") || "";
 
   el.innerHTML =
-  `👤 Logged in as: <b>${loggedUser}</b>&nbsp;&nbsp;&nbsp;&nbsp;🟢 Last visited: ` +
+  `👤 Logged in: <b>${loggedUser}</b>&nbsp;&nbsp;&nbsp;&nbsp;🟢 Last visited: ` +
   sorted.map(u => u.name).join(", ");
 }
 
@@ -1137,4 +1147,17 @@ window.addEventListener("beforeunload", () => {
 
 document.addEventListener("submit", e => {
   console.trace("GLOBAL SUBMIT TRIGGERED");
+});
+
+const menuBtn = document.getElementById("menuBtn");
+const topMenu = document.getElementById("topMenu");
+
+menuBtn.onclick = () => {
+  topMenu.classList.toggle("open");
+};
+
+document.getElementById("requestsPopup").addEventListener("click", function(e) {
+  if (e.target === this) {
+    closeRequests();
+  }
 });

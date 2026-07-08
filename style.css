@@ -24,10 +24,12 @@ input:not([type="checkbox"]) {
 button {
   padding: 8px 15px;
   cursor: pointer;
+  
 }
 
 .board {
   border: 2px solid black;
+  background-color: #eef2f7;
   margin: 0 auto;
   max-width: 600px;
   min-height: 150px;
@@ -117,10 +119,8 @@ button {
   position: fixed;
   top: 10px;
   right: 10px;
-
   display: flex;
   gap: 8px;
-
   z-index: 2000;
 }
 
@@ -169,11 +169,6 @@ input::placeholder {
   align-items: center;
   gap: 6px;
   cursor: pointer;
-}
-
-.msg-author {
-  font-weight: bold;
-  margin-right: 4px;
 }
 
 .popup {
@@ -250,6 +245,50 @@ input::placeholder {
   flex: 1;
   font-size: 0.9rem;
   text-align: left;
+  color: #2c5aa0;
+}
+
+#menuBtn {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 9999;
+  background-color: #eef2f7;
+}
+
+#topMenu {
+  display: none;
+}
+
+#topMenu button {
+  background-color: greenyellow;
+   border-radius: 10px;
+}
+
+#topMenu.open {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 50px;
+  right: 10px;
+  left: auto;
+  background-color: #eef2f7;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  z-index: 9999;
+  animation: slideDown 1.0s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 #boardNewMsg::placeholder {
@@ -307,11 +346,24 @@ input::placeholder {
   position: relative;
   padding: 6px 0 14px 0;
 }
+
 .msg-text {
   font-size: 0.9rem;
   line-height: 1.1;
   white-space: normal;
   overflow-wrap: anywhere;
+}
+
+.msg-author {
+    margin-right: 0;
+    font-weight: bold;
+    color: black;
+}
+
+.msg-body {
+    margin: 0;
+    padding: 0;
+    color: #2c5aa0;
 }
 
 .message-options {
@@ -321,15 +373,6 @@ input::placeholder {
   justify-content: flex-start;
   gap: 20px;
   margin: 8px auto 0 auto;
-}
-
-.top-nav {
-  position: fixed;
-  top: 10px;
-  right: 10px;
-
-  display: flex;
-  gap: 8px;
 }
 
 .popup {

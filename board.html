@@ -61,9 +61,11 @@
 </button>
 </div>
 
-<div class="top-nav">
+<button id="menuBtn">☰</button>
 
-  <button onclick="deleteBoard()">Delete Board</button>
+<div class="top-nav" id="topMenu">
+
+  <button id="deleteBoardBtn" onclick="deleteBoard()">Delete Board</button>
 
   <button id="requestsBtn" onclick="openRequests()">
   Requests
@@ -73,7 +75,7 @@
     Members
   </button>
 
-  <button onclick="openSettings()">
+  <button id="settingsBtn" onclick="openSettings()">
     Settings
   </button>
 
