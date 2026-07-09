@@ -288,7 +288,7 @@ function loadMessage(forceScroll = false) {
     }
   }
 
-    currentButtonsCache = data.quickButtons ?? [];
+    currentButtonsCache = data.quickMessages ?? [];
 
     console.log("RENDER QUICK SELECT");
 
@@ -616,7 +616,7 @@ function logout() {
   window.location.href = "index.html";
 }
 
-function handleSaveClick() {
+function saveQuickMessage() {
 
   if (editingIndex === null) {
     alert("Valitse ensin Edit-moodi");
@@ -629,7 +629,7 @@ function handleSaveClick() {
   const boardName = localStorage.getItem("boardName");
   const token = localStorage.getItem("token");
 
-fetch("http://localhost:3000/quickButtons", {
+fetch("http://localhost:3000/quickMessages", {
   method: "POST",
   headers: {
     "Content-Type": "application/json",
@@ -713,7 +713,7 @@ function renderVisitedUsers(users) {
 }
 
 function updateQuickUI(data) {
-  currentButtonsCache = data.quickButtons ?? [];
+  currentButtonsCache = data.quickMessages ?? [];
 
   renderVisitedUsers(data.visitedUsers);
   renderQuickSelect(currentButtonsCache);
@@ -1100,6 +1100,18 @@ const topMenu = document.getElementById("topMenu");
 menuBtn.onclick = () => {
   topMenu.classList.toggle("open");
 };
+
+document.addEventListener("click", function(e) {
+
+  // Jos klikattiin menupainiketta, ei tehdä mitään
+  if (menuBtn.contains(e.target)) return;
+
+  // Jos klikattiin valikon ulkopuolelle, sulje valikko
+  if (!topMenu.contains(e.target)) {
+    topMenu.classList.remove("open");
+  }
+
+});
 
 document.getElementById("requestsPopup").addEventListener("click", function(e) {
   if (e.target === this) {

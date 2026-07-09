@@ -31,15 +31,24 @@ button {
   width: 120px;
 }
 
-.button-row button {
-  width: 80px;
-  padding: 6px 8px;
-  box-sizing: border-box;
-}
-
 .top-nav button {
   width: auto;
 }
+
+.board-actions {
+  position: relative;
+  max-width: 600px;
+  margin: 4px auto 6px auto;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+}
+
+/*
+.board-actions label {
+  font-size: 13px;
+  cursor: pointer;
+}*/
 
 .board-actions button {
   font-size: 12px;
@@ -52,36 +61,7 @@ button {
 
 #topMenu button {
   background-color: greenyellow;
-   border-radius: 10px;
-}
-
-#quickButtons button {
-  width: 100%;
-  height: 34px;
-
-  font-size: 13px;
-  border-radius: 8px;
-
-  text-align: left;
-  padding-left: 10px;
-}
-
-#quickButtons button:hover {
-  background: #f0f0f0;
-}
-
-#quickButtons button {
-  transition: 0.1s;
-}
-
-.button-row {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin: 20px auto;
-  max-width: 600px;
+  border-radius: 10px;
 }
 
 .clear-btn {
@@ -109,26 +89,6 @@ button {
   right: 10px;
   z-index: 9999;
   background-color: #eef2f7;
-}
-
-#quickButtons {
-  max-width: var(--content-width);
-  margin: 10px auto;
-
-  display: grid;
-  grid-template-columns: 1fr; /* 1 per rivi */
-  gap: 6px;
-}
-
-.button-row label {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  font-size: 12px;
-}
-
-#quickButtons button:hover {
-  background: #e6e6e6;
 }
 
 .send-btn {
@@ -199,21 +159,9 @@ button {
   
 }
 
-.quick-row {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  max-width: 500px;
-  margin: 10px auto;
-}
-
-#quickEditInput {
-  flex: 1;
-}
-
 #quickSelect {
+  max-width: 370px;
   width: 100%;
-  max-width: 500px;
   padding: 8px;
 }
 
@@ -234,22 +182,9 @@ input::placeholder {
   text-align: center;
 }
 
-.board-actions {
-  position: relative;
-  max-width: 600px;
-  margin: 4px auto 6px auto;
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  align-items: center;
-}
-
-.actions-center {
-  grid-column: 2;
-  justify-self: center;
-}
-
 .actions-center {
   display: flex;
+  grid-column: 2;
   flex-direction: row;   /* 🔥 tärkein */
   justify-content: center;
   gap: 20px;
@@ -289,6 +224,13 @@ input::placeholder {
   box-shadow: 0 8px 20px rgba(0,0,0,0.3);
 }
 
+#membersPopup .popup-content {
+  background: #2b6cb0;
+  color: white;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
 .msg-row.important-msg {
   border-color: red;
   background: #ffeaea;
@@ -299,16 +241,15 @@ input::placeholder {
   background: #eaf2ff;
 }
 
-.board-actions label {
-  font-size: 13px;
-  cursor: pointer;
-}
-
 #boardNewMsg {
   flex: 1;
   font-size: 0.9rem;
   text-align: left;
   color: #2c5aa0;
+}
+
+#boardNewMsg::placeholder {
+  text-align: left;
 }
 
 #topMenu {
@@ -327,7 +268,7 @@ input::placeholder {
   border: 1px solid #ccc;
   border-radius: 10px;
   z-index: 9999;
-  animation: slideDown 1.0s ease;
+  animation: slideDown 1.5s ease;
 }
 
 @keyframes slideDown {
@@ -339,10 +280,6 @@ input::placeholder {
     opacity: 1;
     transform: translateY(0);
   }
-}
-
-#boardNewMsg::placeholder {
-  text-align: left;
 }
 
 .msg-content {
@@ -383,18 +320,8 @@ input::placeholder {
   display: flex;
   align-items: center;
   gap: 6px;
-  cursor: pointer;
-}
-
-.message-options label {
-  display: flex;
-  align-items: center;
-  gap: 6px;
   font-size: 0.9em;   /* tai 11px, 0.8rem jne. */
-}
-
-#quickSelect {
-  max-width: 370px;
+  cursor: pointer;
 }
 
 .msg-time {
@@ -423,7 +350,6 @@ input::placeholder {
   color: #444;
   border-bottom: 1px solid #ddd;
   margin-bottom: 8px;
-  /*border-bottom: none;*/ 
 }
 
 .member-row {
@@ -436,10 +362,5 @@ input::placeholder {
   flex: 1;
 }
 
-#membersPopup .popup-content {
-  background: #2b6cb0;
-  color: white;
-  border-radius: 10px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-}
+
 

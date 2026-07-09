@@ -6,7 +6,7 @@
         "email": "mika",
         "role": "owner",
         "password": "1",
-        "token": "8eb2a90a-81cb-4b18-91f1-cf23d5b658c5"
+        "token": "93a9349f-1433-42a3-9660-d7f765d8285a"
       },
       {
         "username": "uuno2",
@@ -95,268 +95,23 @@
     ],
     "boardMessages": [
       {
-        "id": "ce582b58-78f5-497c-b6f0-25bf12f49464",
+        "id": "01c346ef-745d-4575-b719-8c29577224fa",
         "author": "Opa",
-        "time": "2026-07-06T09:22:28.829Z",
+        "time": "2026-07-09T11:58:50.468Z",
         "text": "hello",
         "type": "normal"
       },
       {
-        "id": "8231bfd5-0206-4a57-beb7-dc41e37b944c",
+        "id": "702bceea-8329-49cf-b7a6-d4f5e11ed7b7",
         "author": "Opa",
-        "time": "2026-07-06T09:22:33.822Z",
+        "time": "2026-07-09T11:58:52.825Z",
         "text": "Myöhässä",
-        "type": "normal"
-      },
-      {
-        "id": "db6e2676-7296-435d-88fb-d3617ff29b9b",
-        "author": "Opa",
-        "time": "2026-07-06T09:55:12.731Z",
-        "text": "Myöhässä",
-        "type": "normal"
-      },
-      {
-        "id": "4867cede-2ea2-4ccc-952c-b574fbe3f6ab",
-        "author": "Opa",
-        "time": "2026-07-06T09:55:17.687Z",
-        "text": "Tulossa",
-        "type": "important"
-      },
-      {
-        "id": "4b7be250-4fad-4d3f-8aaa-bd5a0ccd09d0",
-        "author": "Opa",
-        "time": "2026-07-06T09:55:24.285Z",
-        "text": "Tulossa",
-        "type": "normal"
-      },
-      {
-        "id": "9341601e-b298-43ff-9fb9-8db00e06c267",
-        "author": "uuno2",
-        "time": "2026-07-06T09:59:18.989Z",
-        "text": "hep",
-        "type": "normal"
-      },
-      {
-        "id": "6fb07505-6fb9-49e9-99ea-d24f9fcb3620",
-        "author": "uuno2",
-        "time": "2026-07-07T15:16:49.498Z",
-        "text": "terve taas",
-        "type": "normal"
-      },
-      {
-        "id": "b0443fa4-bef2-41b3-899c-f5028959cb5a",
-        "author": "uuno2",
-        "time": "2026-07-08T19:12:32.302Z",
-        "text": "hep",
-        "type": "normal"
-      },
-      {
-        "id": "5b558c64-78e8-400b-8b41-ef8b99ae894f",
-        "author": "uuno2",
-        "time": "2026-07-08T19:22:01.609Z",
-        "text": "heyhello",
-        "type": "normal"
-      },
-      {
-        "id": "01a05572-3fd1-427c-9eaa-887f0e658774",
-        "author": "Opa",
-        "time": "2026-07-08T19:27:03.160Z",
-        "text": "hello",
-        "type": "normal"
-      },
-      {
-        "id": "b57c48cd-05d5-4109-a835-89898924b105",
-        "author": "uuno2",
-        "time": "2026-07-08T19:28:48.737Z",
-        "text": "Nukkumassa",
-        "type": "normal"
-      },
-      {
-        "id": "c8fd940d-a9c0-4498-96b5-0fef006b679b",
-        "author": "Opa",
-        "time": "2026-07-08T20:17:00.897Z",
-        "text": "TEKSTI",
-        "type": "normal"
-      },
-      {
-        "id": "c9331118-0a91-424a-80ed-d366a028c178",
-        "author": "Opa",
-        "time": "2026-07-08T20:18:57.581Z",
-        "text": "HRPOI",
-        "type": "normal"
-      },
-      {
-        "id": "044920d6-2510-4ff3-aade-271b23b89796",
-        "author": "Opa",
-        "time": "2026-07-08T20:24:13.878Z",
-        "text": "MOI",
-        "type": "normal"
-      },
-      {
-        "id": "00c99cb1-28f7-4f83-ac2b-c20cd369eec6",
-        "author": "Opa",
-        "time": "2026-07-08T20:28:26.409Z",
-        "text": "MOIKKA",
-        "type": "normal"
-      },
-      {
-        "id": "491f90c9-efe3-4fc4-a1b4-d8e3c1cfef6f",
-        "author": "Opa",
-        "time": "2026-07-08T20:30:25.472Z",
-        "text": "MOI",
-        "type": "normal"
-      },
-      {
-        "id": "2f95559c-a784-4795-adef-ceafb1e5f5f1",
-        "author": "Opa",
-        "time": "2026-07-08T20:32:39.770Z",
-        "text": "MOI",
-        "type": "normal"
-      },
-      {
-        "id": "0b2c32f9-341b-440f-a849-bd2bc8b482aa",
-        "author": "Opa",
-        "time": "2026-07-08T20:33:41.279Z",
-        "text": "MOI",
-        "type": "normal"
-      },
-      {
-        "id": "64d99281-363d-4949-ab67-a8786747c303",
-        "author": "Opa",
-        "time": "2026-07-08T20:34:15.510Z",
-        "text": "Moikka",
-        "type": "normal"
-      },
-      {
-        "id": "6ee64afa-7086-4f8d-b54a-e6e8d0f9b78f",
-        "author": "Opa",
-        "time": "2026-07-08T20:36:36.178Z",
-        "text": "miten menee",
-        "type": "normal"
-      },
-      {
-        "id": "6df1c030-4ec0-4ab6-a36e-3d8c2b30e41d",
-        "author": "Opa",
-        "time": "2026-07-08T20:39:54.495Z",
-        "text": "miten menee",
-        "type": "normal"
-      },
-      {
-        "id": "97d550c2-67b2-442a-a81b-23f5196b4b30",
-        "author": "Opa",
-        "time": "2026-07-08T20:42:46.171Z",
-        "text": "hekooa",
-        "type": "normal"
-      },
-      {
-        "id": "37768e68-9345-4d95-bb40-477a5db5d981",
-        "author": "Opa",
-        "time": "2026-07-08T20:43:08.476Z",
-        "text": "hello",
-        "type": "normal"
-      },
-      {
-        "id": "9713a1c5-6d07-4041-af18-bb1e4b91e29d",
-        "author": "Opa",
-        "time": "2026-07-08T20:43:16.113Z",
-        "text": ",,oten ,enee",
-        "type": "normal"
-      },
-      {
-        "id": "1ff3956c-b636-476d-b762-8e39730fe6e8",
-        "author": "Opa",
-        "time": "2026-07-08T20:43:20.676Z",
-        "text": "miten menee",
-        "type": "normal"
-      },
-      {
-        "id": "6654a89c-3c0a-4b0a-a509-ca7a235b1562",
-        "author": "Opa",
-        "time": "2026-07-08T20:43:24.523Z",
-        "text": "miten menee",
-        "type": "normal"
-      },
-      {
-        "id": "d5160187-f025-49f5-968e-babc439b7d69",
-        "author": "Opa",
-        "time": "2026-07-08T20:49:18.244Z",
-        "text": "hello",
-        "type": "normal"
-      },
-      {
-        "id": "27b71736-d1cc-4712-8491-a077d27bfb95",
-        "author": "Opa",
-        "time": "2026-07-08T20:49:24.826Z",
-        "text": "hello",
-        "type": "normal"
-      },
-      {
-        "id": "b1e5dcf3-d6cd-4625-8b41-d8cbf8f6b290",
-        "author": "Opa",
-        "time": "2026-07-08T20:51:24.429Z",
-        "text": "hello",
-        "type": "normal"
-      },
-      {
-        "id": "0ef26f55-2bc9-4f84-9436-b61dd53eaa58",
-        "author": "Opa",
-        "time": "2026-07-08T20:51:27.907Z",
-        "text": "erbe",
-        "type": "normal"
-      },
-      {
-        "id": "9e80fccf-f6cf-4549-871e-e7f7cefa5be4",
-        "author": "Opa",
-        "time": "2026-07-08T20:51:28.158Z",
-        "text": "",
-        "type": "normal"
-      },
-      {
-        "id": "0ad66e4d-c1e3-42d1-99b2-937d3f4b7dd0",
-        "author": "Opa",
-        "time": "2026-07-08T20:51:55.690Z",
-        "text": "hello",
-        "type": "normal"
-      },
-      {
-        "id": "809d65e7-8faa-41d7-a6f4-8bc8f4724d31",
-        "author": "Opa",
-        "time": "2026-07-08T20:52:00.632Z",
-        "text": "terve",
-        "type": "normal"
-      },
-      {
-        "id": "1c205345-6dd8-4a36-b329-4ae7c246c134",
-        "author": "Opa",
-        "time": "2026-07-08T20:52:06.134Z",
-        "text": "hello",
-        "type": "normal"
-      },
-      {
-        "id": "a6a7c74b-2749-42a6-a969-4cf45b76e2fd",
-        "author": "Opa",
-        "time": "2026-07-08T21:25:20.678Z",
-        "text": "hey",
-        "type": "normal"
-      },
-      {
-        "id": "bdf7bc51-6929-4e45-b5b9-ba633bb9269d",
-        "author": "uuno2",
-        "time": "2026-07-08T21:41:35.930Z",
-        "text": "hello",
-        "type": "normal"
-      },
-      {
-        "id": "b2627aab-5d1a-45e0-963d-22b618037cf9",
-        "author": "Opa",
-        "time": "2026-07-08T21:54:41.745Z",
-        "text": "Kuntosalilla",
         "type": "normal"
       }
     ],
     "pendingRequests": [],
     "autoDeleteDays": 5,
-    "quickButtons": [
+    "quickMessages": [
       "Kaupassa",
       "Töissä",
       "Kotona",
@@ -371,7 +126,7 @@
     "visitedUsers": [
       {
         "name": "Opa",
-        "lastSeen": 1783576600614
+        "lastSeen": 1783596731126
       },
       {
         "name": "uuno2",

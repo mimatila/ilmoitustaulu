@@ -81,7 +81,7 @@ app.post("/create", (req, res) => {
   pendingRequests: [],
   autoDeleteDays: 10,
 
-  quickButtons: [
+  quickMessages: [
     "Kaupassa",
     "Töissä",
     "Kotona",
@@ -282,9 +282,9 @@ app.get("/boards/count", (req, res) => {
   res.json({ count });
 });
 
-app.post("/quickButtons", (req, res) => {
+app.post("/quickMessages", (req, res) => {
 
-  console.log("HIT /quickButtons", req.body);
+  console.log("HIT /quickMessages", req.body);
 
   const { boardName, index, text } = req.body;
 
@@ -308,8 +308,8 @@ if (!user) {
 }
 
   // 🔥 VARMISTUS ETTÄ ARRAY ON OLEMASSA
-  if (!board.quickButtons) {
-    board.quickButtons = [
+  if (!board.quickMessages) {
+    board.quickMessages = [
       "Kaupassa",
       "Töissä",
       "Kotona",
@@ -327,7 +327,7 @@ if (!user) {
   if (
     typeof index !== "number" ||
     index < 0 ||
-    index >= board.quickButtons.length
+    index >= board.quickMessages.length
   ) {
     return res.status(400).json({
       success: false,
@@ -335,7 +335,7 @@ if (!user) {
     });
   }
 
-  board.quickButtons[index] = text;
+  board.quickMessages[index] = text;
 
   //fs.writeFileSync(FILE, JSON.stringify(data, null, 2));
   saveData(data);
