@@ -4,26 +4,10 @@ let editingIndex = null;
 let currentButtonsCache = [];
 
 console.log("APP.JS VERSION 123");
-
 console.log("APP START");
-
-location.reload = () => {
-  console.log("RELOAD BLOCKED 1001");
-};
-
-document.addEventListener("click", e => {
-  console.log("TARGET:", e.target);
-  console.log("CURRENT:", e.currentTarget);
-});
-
-document.addEventListener("submit", e => {
-  console.trace("SUBMIT");
-  e.preventDefault();
-});
 
 function sendQuick(text) {
   
-  //console.log("SENDQUICK INPUT:", text);
   const boardName = localStorage.getItem("boardName");
   const boardUsername = localStorage.getItem("boardUsername") || boardName;
 
@@ -138,9 +122,6 @@ function initApp() {
 // =====================
 
 function bindUI() {
-
-  //const homeBtn = document.getElementById("koti");
-  //if (homeBtn) homeBtn.addEventListener("click", koti);
 
   const msgInput = document.getElementById("boardNewMsg");
   if (msgInput) {
@@ -356,78 +337,68 @@ messages.forEach(msg => {
   const wrapper = document.createElement("div");
   wrapper.className = "msg-content";
 
-const text = document.createElement("div");
-text.className = "msg-text";
+  const text = document.createElement("div");
+  text.className = "msg-text";
 
-const author = document.createElement("span");
-author.className = "msg-author";
-author.innerText = `${msg.author}: `;
+  const author = document.createElement("span");
+  author.className = "msg-author";
+  author.innerText = `${msg.author}: `;
 
-const body = document.createElement("span");
-body.className = "msg-body";
-body.innerText = msg.text;
+  const body = document.createElement("span");
+  body.className = "msg-body";
+  body.innerText = msg.text;
 
-text.appendChild(author);
-text.appendChild(body);
-
-
-const time = document.createElement("div");
-time.className = "msg-time";
-
-const date = new Date(msg.time);
-
-if (todayMode) {
-  time.innerText = date.toLocaleTimeString("fi-FI", {
-  hour: "2-digit",
-  minute: "2-digit",
-  hour12: false
-});
-} else {
-  time.innerText = date.toLocaleString("fi-FI", {
-  day: "2-digit",
-  month: "2-digit",
-  year: "numeric",
-  hour: "2-digit",
-  minute: "2-digit",
-  hour12: false
-});
-}
-
-wrapper.appendChild(text);
-wrapper.appendChild(time);
-
-div.appendChild(wrapper);
+  text.appendChild(author);
+  text.appendChild(body);
 
 
-const editMode = document.getElementById("editMode")?.checked;
-const username = localStorage.getItem("boardUsername");
+  const time = document.createElement("div");
+  time.className = "msg-time";
 
-const user = data.users.find(u => u.username === username);
-const owner = user?.role === "owner";
+  const date = new Date(msg.time);
 
-/*
-console.log({
-  user,
-  username,
-  ownerCheck: owner,
-  msgAuthor: msg.author
-});*/
-
-const showTrash =
-  editMode && (owner || msg.author === username);
-
-  if (showTrash) {
-    const trash = document.createElement("button");
-    trash.innerText = "🗑";
-    trash.className = "trash-btn";
-
-    trash.onclick = () => deleteMessage(msg.id);
-
-    div.appendChild(trash);
+  if (todayMode) {
+    time.innerText = date.toLocaleTimeString("fi-FI", {
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false
+    });
+  } else {
+    time.innerText = date.toLocaleString("fi-FI", {
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false
+    });
   }
+
+  wrapper.appendChild(text);
+  wrapper.appendChild(time);
+
+  div.appendChild(wrapper);
+
+
+  const editMode = document.getElementById("editMode")?.checked;
+  const username = localStorage.getItem("boardUsername");
+
+  const user = data.users.find(u => u.username === username);
+  const owner = user?.role === "owner";
+
+  const showTrash =
+    editMode && (owner || msg.author === username);
+
+    if (showTrash) {
+      const trash = document.createElement("button");
+      trash.innerText = "🗑";
+      trash.className = "trash-btn";
+      trash.onclick = () => deleteMessage(msg.id);
+      div.appendChild(trash);
+    }
    
   box.appendChild(div);
-});
+  });
 
     if (forceScroll || isAtBottom) {
       box.scrollTop = box.scrollHeight;
@@ -449,8 +420,6 @@ function updateMessage() {
 
   const messageEl = document.getElementById("boardNewMsg");
 
-  console.log("INPUT VALUE:", messageEl.value);
-
   if (!messageEl) return;
 
   const boardMessage = messageEl.value;
@@ -462,13 +431,11 @@ function updateMessage() {
 
   if (document.getElementById("importantMode").checked) {
   type = "important";
-}
+  }
 
   if (document.getElementById("infoMode").checked) { 
     type="info";
   }
-
-  //console.log("TOKEN:", localStorage.getItem("token"));
 
   fetch("http://localhost:3000/boardMessage", {
     method: "POST",
@@ -544,7 +511,8 @@ function loginBoard() {
 }
 
 function loginWithPassword() {
- const boardName = document.getElementById("boardName").value;
+
+  const boardName = document.getElementById("boardName").value;
   const boardPassword = document.getElementById("boardPassword").value;
   const boardUsername = document.getElementById("boardUsername").value;
 
@@ -552,13 +520,13 @@ function loginWithPassword() {
     method: "POST",
     headers: {
   "Content-Type": "application/json"
-},
+  },
     body: JSON.stringify({
     boardName,
     boardPassword,
     boardUsername
 })
-  })
+    })
   .then(res => res.json())
   .then(async data => {
 
@@ -575,8 +543,7 @@ function loginWithPassword() {
     await fetch("http://localhost:3000/visit", {
       method: "POST",
       headers: {
-  "Content-Type": "application/json",
-  "Authorization": localStorage.getItem("token")
+  "Content-Type": "application/json"
 },
       body: JSON.stringify({
         boardName,
@@ -818,6 +785,7 @@ function saveSettings() {
 }
 
 function getCurrentUsername() {
+  
   console.log("INPUT username:", document.getElementById("boardUsername")?.value);
   return document.getElementById("boardUsername")?.value
     || localStorage.getItem("boardUsername");
@@ -884,8 +852,9 @@ if (settingsPopup) {
 }
 
 function showMembers() {
-   console.log("SHOW MEMBERS TRIGGERED BY CLICK");
-  console.trace();
+  
+  console.log("SHOW MEMBERS TRIGGERED BY CLICK");
+  
   const boardName = localStorage.getItem("boardName");
 
   fetch(`http://localhost:3000/board/${boardName}`)
@@ -899,14 +868,14 @@ function showMembers() {
 
       const members = board.users || [];
 
-el.innerHTML = members.map(m => `
-  <div class="member-row">
-    <div class="member-name">
-      ${m.username}
-      <span class="member-role">(${m.role})</span>
-    </div>
-  </div>
-`).join("");
+      el.innerHTML = members.map(m => `
+        <div class="member-row">
+        <div class="member-name">
+        ${m.username}
+        <span class="member-role">(${m.role})</span>
+        </div>
+        </div>
+      `).join("");
 
       popup.style.display = "block";
     });
@@ -937,8 +906,7 @@ function sendJoinRequest() {
   fetch("http://localhost:3000/joinRequest", {
     method: "POST",
     headers: {
-  "Content-Type": "application/json",
-  "Authorization": localStorage.getItem("token")
+  "Content-Type": "application/json"
 },
     body: JSON.stringify({
       boardName,
@@ -957,16 +925,12 @@ function sendJoinRequest() {
 
     alert("Join request sent!");
 
-    console.log("BEFORE CLOSE");
-
     document.getElementById("joinBoardName").value = "";
     document.getElementById("joinUsername").value = "";
     document.getElementById("joinPassword").value = "";
     document.getElementById("joinEmail").value = "";
 
     closeJoinBoard();
-
-    console.log("AFTER CLOSE");
 
 })
   .catch(err => {
@@ -994,8 +958,7 @@ function submitCreateBoard() {
   fetch("http://localhost:3000/create", {
     method: "POST",
     headers: {
-    "Content-Type": "application/json",
-    "Authorization": localStorage.getItem("token")
+    "Content-Type": "application/json"
   },
     body: JSON.stringify({
       boardName,
@@ -1089,12 +1052,6 @@ function loadRequests() {
 }
 
 function acceptRequest(id, event) {
-
-  console.log(document.activeElement);
-
-  console.log("1");
-  console.log("ACCEPT CLICK");
-  console.trace("ACCEPT TRACE");
   
   const role = localStorage.getItem("role");
   if (role !== "owner") return;
@@ -1136,18 +1093,6 @@ function rejectRequest(id) {
     loadRequests(); 
 });
 }
-
-document.addEventListener("click", (e) => {
-  console.log("CLICK:", e.target);
-});
-
-window.addEventListener("beforeunload", () => {
-    console.trace("PAGE RELOAD");
-});
-
-document.addEventListener("submit", e => {
-  console.trace("GLOBAL SUBMIT TRIGGERED");
-});
 
 const menuBtn = document.getElementById("menuBtn");
 const topMenu = document.getElementById("topMenu");

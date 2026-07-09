@@ -56,9 +56,7 @@ app.post("/create", (req, res) => {
     boardPassword,
     ownerEmail   // 👈 LISÄÄ TÄMÄ
   } = req.body;
-  console.log(req.body);
 
-  //const data = JSON.parse(fs.readFileSync(FILE, "utf8"));
   const data = loadData();
 
   if (data[boardName]) {
@@ -68,16 +66,16 @@ app.post("/create", (req, res) => {
     });
   }
 
-data[boardName] = {
-  users: [
-  {
-    username: boardUsername,
-    email: ownerEmail,   // 👈 TÄMÄ
-    role: "owner",
-    password: boardPassword,
-    token: null
-  }
-],
+  data[boardName] = {
+    users: [
+    {
+      username: boardUsername,
+      email: ownerEmail,   // 👈 TÄMÄ
+      role: "owner",
+      password: boardPassword,
+      token: null
+    }
+  ],
 
   boardMessages: [],
   pendingRequests: [],
@@ -99,7 +97,6 @@ data[boardName] = {
   visitedUsers: []
 };
 
-  //fs.writeFileSync(FILE, JSON.stringify(data, null, 2));
   saveData(data);
 
   res.json({
@@ -124,10 +121,6 @@ app.delete("/delete/:boardName", (req, res) => {
   }
 
   const user = authUser(req, board);
-
-  console.log("DELETE BOARD:", boardName);
-console.log("HEADER TOKEN:", req.headers.authorization);
-console.log("AUTH USER:", user);
 
   if (!user) {
     return res.status(401).json({
@@ -172,10 +165,6 @@ app.post("/boardMessage", (req, res) => {
       message: "Taulua ei löydy"
     });
   }
-
-  console.log("HEADER TOKEN:", token);
-console.log("BOARD:", boardName);
-console.log("USERS:", board.users);
 
   // Tarkista token
   const user = board.users.find(u => u.token === token);
@@ -604,6 +593,16 @@ app.post("/rejectRequest", (req, res) => {
 
   if (!board) {
     return res.status(404).json({ success: false });
+  }
+
+  const user = authUser(req, board);
+
+  if (!user) {
+    return res.status(401).json({ success: false });
+  }
+
+  if (user.role !== "owner") {
+    return res.status(403).json({ success: false });
   }
 
   // poista vain pendingistä
