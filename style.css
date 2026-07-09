@@ -142,7 +142,8 @@ button {
   display: block;
   font-family: monospace;
   text-align: left;
-  padding: 12px;
+  /*padding: 12px;*/
+  padding: 12px 20px 12px 20px;
   border: 1px solid #ccc;
   border-radius: 10px;
   background: #f7f7f7;
@@ -299,12 +300,16 @@ input::placeholder {
     margin-right: 0;
     font-weight: bold;
     color: black;
+    user-select: none;
+    -webkit-user-select: none;
 }
 
 .msg-body {
     margin: 0;
     padding: 0;
     color: #2c5aa0;
+    user-select: none;
+    -webkit-user-select: none;
 }
 
 .message-options {

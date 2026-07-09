@@ -6,7 +6,7 @@
         "email": "mika",
         "role": "owner",
         "password": "1",
-        "token": "93a9349f-1433-42a3-9660-d7f765d8285a"
+        "token": "1ac1622e-745a-4150-8402-05a583d7ceaa"
       },
       {
         "username": "uuno2",
@@ -107,6 +107,125 @@
         "time": "2026-07-09T11:58:52.825Z",
         "text": "Myöhässä",
         "type": "normal"
+      },
+      {
+        "id": "4838020c-bbc1-492a-9f7d-26aa0c4dc68e",
+        "author": "Opa",
+        "time": "2026-07-09T19:02:54.666Z",
+        "text": "Kaupassa",
+        "type": "normal"
+      },
+      {
+        "id": "71969987-ccd8-4b97-a159-f2186577e095",
+        "author": "Opa",
+        "time": "2026-07-09T19:03:38.897Z",
+        "text": "Kaupassa",
+        "type": "normal"
+      },
+      {
+        "id": "a14346ec-a1cc-4de9-b81b-57c92bcf7b4b",
+        "author": "Opa",
+        "time": "2026-07-09T19:18:36.016Z",
+        "text": "hello",
+        "type": "normal"
+      },
+      {
+        "id": "158bc303-7637-4daa-b41d-d0c3474ce4b4",
+        "author": "Opa",
+        "time": "2026-07-09T19:18:40.266Z",
+        "text": "Nukkumassa",
+        "type": "normal"
+      },
+      {
+        "id": "c0410676-6a25-4d62-b1e9-6ff70838d8a6",
+        "author": "Opa",
+        "time": "2026-07-09T19:18:55.603Z",
+        "text": "Kuntosalilla tänään",
+        "type": "normal"
+      },
+      {
+        "id": "416ac1f9-6522-4918-9a47-20ab2ef82b1d",
+        "author": "Opa",
+        "time": "2026-07-09T19:25:59.511Z",
+        "text": "jääkaapille",
+        "type": "normal"
+      },
+      {
+        "id": "286a188a-bdc8-455c-bcb1-1eae0c6e6320",
+        "author": "Opa",
+        "time": "2026-07-09T19:26:07.307Z",
+        "text": "jääkaapille",
+        "type": "important"
+      },
+      {
+        "id": "f0df76f6-f856-4ef5-b10c-e30ad66bebe4",
+        "author": "Opa",
+        "time": "2026-07-09T19:26:12.658Z",
+        "text": "miten menee",
+        "type": "info"
+      },
+      {
+        "id": "7c7658ac-0df7-4cd2-927d-6b8172fd3dc0",
+        "author": "Opa",
+        "time": "2026-07-09T19:29:45.510Z",
+        "text": "hello",
+        "type": "normal"
+      },
+      {
+        "id": "fc29b680-9524-45df-a43e-3f208b2a44be",
+        "author": "Opa",
+        "time": "2026-07-09T19:29:51.779Z",
+        "text": "jääkaapille",
+        "type": "normal"
+      },
+      {
+        "id": "10e963bc-016f-4294-935e-c74ac84c1f7b",
+        "author": "Opa",
+        "time": "2026-07-09T19:29:55.357Z",
+        "text": "heimo",
+        "type": "normal"
+      },
+      {
+        "id": "f85a50f4-781a-4e42-b87e-895ef6a9239d",
+        "author": "Opa",
+        "time": "2026-07-09T19:30:26.459Z",
+        "text": "hello",
+        "type": "normal"
+      },
+      {
+        "id": "f105b9e4-a810-412e-ab7f-0f414d278636",
+        "author": "Opa",
+        "time": "2026-07-09T19:31:10.948Z",
+        "text": "hello",
+        "type": "normal"
+      },
+      {
+        "id": "cb039f66-0425-48fe-a9d8-2997b8dae8d7",
+        "author": "Opa",
+        "time": "2026-07-09T19:31:16.112Z",
+        "text": "heimo",
+        "type": "normal"
+      },
+      {
+        "id": "eaeed134-4f12-416d-ba29-c2e97ed89193",
+        "author": "Opa",
+        "time": "2026-07-09T19:31:20.136Z",
+        "text": "jääkaapille",
+        "type": "normal"
+      },
+      {
+        "id": "dd2f383e-9dd2-4095-a602-9766ef7d4d31",
+        "author": "Opa",
+        "time": "2026-07-09T19:31:23.622Z",
+        "text": "turhaan",
+        "type": "normal"
+      },
+      {
+        "id": "f3a1abb0-5e52-482e-af1e-bd741569a9e5",
+        "author": "Opa",
+        "time": "2026-07-09T19:31:27.787Z",
+        "text": "hienoa opa",
+        "type": "normal"
       }
     ],
     "pendingRequests": [],
@@ -121,12 +240,12 @@
       "Myöhässä",
       "Sairas",
       "Tauolla",
-      "Kuntosalilla"
+      "Kuntosalilla tänään"
     ],
     "visitedUsers": [
       {
         "name": "Opa",
-        "lastSeen": 1783596731126
+        "lastSeen": 1783623633342
       },
       {
         "name": "uuno2",

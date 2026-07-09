@@ -9,7 +9,8 @@ console.log("APP START");
 function sendQuick(text) {
   
   const boardName = localStorage.getItem("boardName");
-  const boardUsername = localStorage.getItem("boardUsername") || boardName;
+  const boardUsername = localStorage.getItem("boardUsername");
+  /*const boardUsername = localStorage.getItem("boardUsername") || boardName;*/
 
   let type="normal";
 
@@ -304,12 +305,12 @@ function loadMessage(forceScroll = false) {
 
     const todayMode = document.getElementById("todayMode")?.checked;
 
-let messages = data.boardMessages;
+    let messages = data.boardMessages;
 
-if (todayMode) {
-  const now = new Date();
+    if (todayMode) {
+    const now = new Date();
 
-  messages = messages.filter(msg => {
+    messages = messages.filter(msg => {
     const d = new Date(msg.time);
 
     return (
@@ -350,7 +351,6 @@ messages.forEach(msg => {
 
   text.appendChild(author);
   text.appendChild(body);
-
 
   const time = document.createElement("div");
   time.className = "msg-time";
@@ -408,7 +408,7 @@ messages.forEach(msg => {
   .finally(() => {
     loading = false;
   });
-  document.getElementById("boardNewMsg").blur();
+  /*document.getElementById("boardNewMsg").blur();*/
 }
 
 
@@ -457,6 +457,8 @@ function updateMessage() {
 
     messageEl.value = "";
     loadMessage(true);
+
+    document.getElementById("boardNewMsg").blur();
 
     document.getElementById("importantMode").checked = false;
     document.getElementById("infoMode").checked = false;
