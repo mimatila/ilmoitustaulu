@@ -870,14 +870,27 @@ function showMembers() {
 
       const members = board.users || [];
 
-      el.innerHTML = members.map(m => `
-        <div class="member-row">
-        <div class="member-name">
-        ${m.username}
-        <span class="member-role">(${m.role})</span>
+      const owners = members.filter(m => m.role === "owner");
+      const others = members.filter(m => m.role !== "owner");
+
+      console.log(members);
+
+      el.innerHTML =
+      owners.map(m => `
+        <div class="member-owner">
+            ${m.username}
+            <span class="member-role">(${m.role})</span>
         </div>
-        </div>
-      `).join("");
+      `).join("") +
+
+    `<div class="member-grid">
+        ${others.map(m => `
+            <div class="member-row">
+                ${m.username}
+                <span class="member-role">(${m.role})</span>
+            </div>
+        `).join("")}
+    </div>`;
 
       popup.style.display = "block";
     });
